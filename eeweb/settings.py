@@ -104,12 +104,12 @@ DATE_INPUT_FORMATS = ('%m-%d-%Y',)
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 
- DATABASES = {
-     'default': {
-         'ENGINE': 'django.db.backends.sqlite3',
-         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-     }
- }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 # if not Online:
 #     DATABASES = {
@@ -209,29 +209,29 @@ AWS_DEFAULT_REGION = os.environ['AWS_DEFAULT_REGION']
 
 ACCOUNT_EMAIL_SUBJECT_PREFIX = 'Esports Equity '
 
-if Online:
-
-    MEDIA_URL = S3_URL + '/media/'
-    AWS_QUERYSTRING_AUTH = False
-    CSRF_COOKIE_SECURE = True
-    SESSION_COOKIE_SECURE = True
-    SECURE_SSL_REDIRECT = True
-    AWS_S3_SECURE_URLS = True
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# if Online:
+#
+#     MEDIA_URL = S3_URL + '/media/'
+#     AWS_QUERYSTRING_AUTH = False
+#     CSRF_COOKIE_SECURE = True
+#     SESSION_COOKIE_SECURE = True
+#     SECURE_SSL_REDIRECT = True
+#     AWS_S3_SECURE_URLS = True
+#     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+#     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+#
+#     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
-if Online:
-    EMAIL_BACKEND = os.environ['EMAIL_BACKEND']
-    EMAIL_HOST = os.environ['EMAIL_HOST']
-    EMAIL_PORT = os.environ['EMAIL_PORT']
-    EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
-    EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
-else:
-    EMAIL_BACKEND = os.environ['OFFLINE_EMAIL_BACKEND']
-    EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+# if Online:
+#     EMAIL_BACKEND = os.environ['EMAIL_BACKEND']
+#     EMAIL_HOST = os.environ['EMAIL_HOST']
+#     EMAIL_PORT = os.environ['EMAIL_PORT']
+#     EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
+#     EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
+# else:
+#     EMAIL_BACKEND = os.environ['OFFLINE_EMAIL_BACKEND']
+#     EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
