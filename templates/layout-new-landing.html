@@ -1,0 +1,235 @@
+{% load static %}
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Esports Equity</title>
+  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search resu...">
+
+
+
+{#  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">#}
+{#  <link rel="stylesheet" href="{% static 'css/font-awesome/css/font-awesome.min.css' %}">#}
+  <link rel="canonical" href="/">
+  <link rel="alternate" type="application/rss+xml" title="Esports Equity" href="/feed.xml">
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+{#  <script src="javascripts/scrollPosStyler.js"></script>#}
+  <!-- JavaScript -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.1/vue.min.js" ></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.4/vue.min.js"></script>
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
+  <link rel="stylesheet" href="{% static 'css/crowdfund/css/main.css' %}">
+
+           <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.6/tinymce.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.6/jquery.tinymce.min.js"></script>
+
+     <script>
+            tinymce.init({selector: 'textarea#tinymce_short',
+              height: 500,
+              menubar: false,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table contextmenu paste code'
+              ],
+              toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+              content_css: [
+                '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+                '//www.tinymce.com/css/codepen.min.css']
+              });
+    </script>
+           <script>
+            tinymce.init({selector: 'textarea#tinymce_story',
+              height: 300,
+              menubar: false,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table contextmenu paste code'
+              ],
+              toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+              content_css: [
+                '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+                '//www.tinymce.com/css/codepen.min.css']
+              });
+    </script>
+           <script>
+            tinymce.init({selector: 'textarea#tinymce_description',
+              height: 300,
+              menubar: false,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table contextmenu paste code'
+              ],
+              toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+              content_css: [
+                '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+                '//www.tinymce.com/css/codepen.min.css']
+              });
+    </script>
+
+
+
+
+
+</head>
+<body>
+    <div class="navbar-wrapper">
+        <nav class="navbar navbar-toggleable-sm navbar-light bg-primary fixed-top"  id="navbar" v-cloak >
+    <div class="container top-nav" v-if="!search">
+
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+      <a class="navbar-brand" href="{% url 'home' %}"><img style="width:50%;" src="{% static 'img/icons/logoproto2.png' %}"></a>
+
+{#      <div class="collapse navbar-collapse" id="navbarColor01">#}
+{#        <ul class="navbar-nav mr-auto" >#}
+{#          <li class="nav-item active">#}
+{#            <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>#}
+{#          </li>#}
+{#          <li class="nav-item">#}
+{#            <a class="nav-link" href="{% url 'teams:explore' %}">Explore</a>#}
+{#          </li>#}
+{#          <li class="nav-item">#}
+{#            <a class="nav-link" href="{% url 'teams:create_project_2' %}">Start a Project</a>#}
+{#          </li>#}
+{#          <li class="nav-item">#}
+{#            <a class="nav-link" href="{% url 'about' %}">About Us</a>#}
+{#          </li>#}
+{#        </ul>#}
+{#        <ul class="navbar-nav" >#}
+
+{#            {% if not user.is_authenticated  %}#}
+{#              <li class="nav-item">#}
+{#                <a class="nav-link" href="{% url 'accounts:login' %}" >Login</a>#}
+{#              </li>#}
+{#              <li class="nav-item">#}
+{#                <a class="nav-link" href="{% url 'accounts:signup' %}">Sign Up</a>#}
+{#              </li>#}
+{#            {% endif %}#}
+{#            {% if user.is_authenticated %}#}
+{#                <li class="nav-item">#}
+{#                    <a class='nav-link' href="{% url 'accounts:profile' %}" style="color: black">Your ProfilePage</a>#}
+{#                </li>#}
+{#                <li class="nav-item">#}
+{#                    <a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a>#}
+{#                </li>#}
+{#            {% endif %}#}
+{#        </ul>#}
+        <form class="form-inline" style="display: none">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="container" v-else>
+        <div class="input-group search-bar">
+          <span class="input-group-addon"><i class="icon-magnifier icons"></i></span>
+          <input type="text" class="form-control form-control-lg" placeholder="Search">
+          <span class="input-group-addon" ><a href="" class="text-muted" v-on:click.prevent="hideSearchBar"><i class="icon-close icons"></i></a></span>
+        </div>
+    </div>
+
+</nav>
+    </div>
+
+
+    {% block body %}
+    {% endblock %}
+
+<footer class="footer text-white mt-5">
+		<div class="container">
+			<div class="row mt-5">
+
+				<div class="col-12">
+                    <div class="row">
+
+				<div class="col-4 col-md-3">
+					<h5 class="mt-4 mb-4">About us</h5>
+					<ul class="list-unstyled">
+                        <li><a href="/about.html">How it works</a></li>
+                        <li><a href="/about.html">About us</a></li>
+                        <li><a href="/about.html">Partners</a></li>
+                        <li><a href="{% url 'about' %}">Payment methods</a></li>
+                        <li><a href="/about.html">Glossary</a></li>
+                        <li><a href="/about.html">Blog</a></li>
+					</ul>
+				</div>
+
+				<div class="col-4 col-md-3">
+					<h5 class="mt-4 mb-4">Help</h5>
+					<ul class="list-unstyled">
+                        <li><a class="transition-all navy-400 hover-navy-500" href="{% url 'handbook' %}">FAQ</a></li>
+                        <li><a class="transition-all navy-400 hover-navy-500" href="{% url 'contact' %}">Support</a></li>
+                        <li><a class="transition-all navy-400 hover-navy-500" href="{% url 'tos' %}">Terms of Service</a></li>
+                        <li><a class="transition-all navy-400 hover-navy-500" href="{% url 'privacy' %}">Privacy Policy</a></li>
+					</ul>
+				</div>
+
+				<div class="col-4 col-md-3">
+                    <h5 class="mt-4 mb-4">Contact</h5>
+                    <p style="text-align: left;">
+                        Esports Equity LLC<br />
+                        (213) 863-6888<br />
+                        help@esportsequity.com<br />
+                    </p>
+				</div>
+
+				<div class="col-12 col-md-3">
+                    <h5 class="mt-4 mb-4">Join us</h5>
+                    <ul class="social-network social-circle">
+                        <li><a href="https://www.facebook.com/esportsequity/" class="icoFacebook" title="Facebook"><i class="fa fa-facebook fa-fw"></i></a></li>
+                        <li><a href="https://twitter.com/esportsequity" class="icoTwitter" title="Twitter"><i class="fa fa-twitter fa-fw"></i></a></li>
+{#                        <li><a href="https://www.linkedin.com/company/esports-equity" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin fa-fw"></i></a></li>#}
+                    </ul>
+				</div>
+
+
+				</div>
+				</div>
+
+
+			</div>
+			<br />
+			<br />
+			<p class="text-center">Copyright &copy;  2017, Esports Equity LLC</p>
+		</div>
+    <script>
+
+
+var app = new Vue({
+  el: '#navbar',
+  data: {
+    search: false
+  },
+  methods: {
+    showSearchBar: function () {
+      this.search = true;
+    },
+    hideSearchBar: function () {
+      this.search = false;
+    }
+  }
+})
+
+</script>
+</footer>
+</body>
+</html>

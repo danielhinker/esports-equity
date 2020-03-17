@@ -1,0 +1,60 @@
+{% extends "layout-new.html" %}
+{% load bootstrap3 %}
+{% load static %}
+{% block title_tag %}eSports Equity: FAQ{% endblock %}
+{% block title %}eSports Equity: Frequently Asked Questions{% endblock %}
+
+{% block body %}
+  <head>
+    <link href="{% static 'css/land.css' %}" rel="stylesheet">
+    <link href="{% static 'css/Contact/contact.css' %}" rel="stylesheet">
+  </head>
+    <div class="container-fluid">
+    <div class="page-header">
+        <h2>We are here to help!</h2>
+    </div>
+        <div class="service">
+            <div class="col-md-6">
+                <h3>Give us a call</h3>
+                <img class="CSicon" src="{% static 'img/icon/phone.png' %}">
+                <p>Phone number</p>
+            </div>
+            <div class="col-md-6">
+                <h3>Send us an E-mail</h3>
+                <a href="mailto:help@esportsequity.com">
+                    <img class="CSicon" src="{% static 'img/icon/subscribedicon.png' %}"><br></a>
+                <a href="mailto:help@esportsequity.com" class="email">help@esportsequity.com</a>
+            </div>
+        </div>
+
+            <ul class="mbm_social">
+                <div class="page-header">
+                    <h2>Follow us on Social Media!</h2>
+                </div>
+                <li><a class="social-facebook" href="#">
+                    <i class="fa fa-facebook"><small>facebook</small></i>
+
+                    <div class="tooltip"><span>facebook</span></div>
+                    </a>
+                </li>
+                <li><a class="social-twitter" href="#">
+                    <i class="fa fa-twitter"><small>Twitter</small></i>
+                    <div class="tooltip"><span>Twitter</span></div>
+                    </a>
+                </li>
+                <li><a class="social-google-plus" href="#">
+                    <i class="fa fa-google-plus"><small>google +</small></i>
+                    <div class="tooltip"><span>google</span></div>
+                    </a>
+                </li>
+                <li><a class="social-linkedin" href="#">
+                    <i class="fa  fa-linkedin"><small>linkedin</small></i>
+                    <div class="tooltip"><span>linkedin</span></div>
+                    </a>
+                </li>
+            </ul>
+    </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,444 @@
+{% load bootstrap3 %}
+{% load static %}
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Esports Equity</title>
+
+    <!-- Bootstrap Core CSS -->
+{#    <link href="css/bootstrap.min.css" rel="stylesheet">#}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link href="{% static 'css/stylish-portfolio.css' %}" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="{% static 'css/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="{% static 'js/jqeury/external/jquery/jquery.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+            <li>
+                <a href="#top" onclick=$("#menu-close").click();>Home</a>
+            </li>
+            <li>
+                <a href="#about" onclick=$("#menu-close").click();>About this Platform</a>
+            </li>
+            <li>
+                <a href="#services" onclick=$("#menu-close").click();>Crowdfunding Types</a>
+            </li>
+            <li>
+                <a href="#portfolio" onclick=$("#menu-close").click();>About Esports</a>
+            </li>
+            <li>
+                <a href="#about-team" onclick=$("#menu-close").click();>About Us</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header id="top" class="header">
+        <div class="text-vertical-center">
+            <h1><img id="header-logo" src="{% static 'img/land/img/logoproto2.0.png' %}"></h1>
+            <h2 id="sub-line">A Crowdfunding Platform for Esports</h2>
+            <br>
+            <h2 id="sub-line-2"><div id="rotate"> You can<div>host tournaments</div> <div>start a team</div> <div>support your favorite projects</div></div> </h2>
+            <br>
+            <a href="#about" id="fint-out-btn" class="btn btn-lg">Find Out More</a>
+        </div>
+    </header>
+
+
+    <!-- About -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1>A platform for you to fund your dreams!</h1>
+                    <!--<p class="lead">This theme features some wonderful photography courtesy of <a target="_blank" href="http://join.deathtothestockphoto.com/">Death to the Stock Photo</a>.</p>-->
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+        <!-- Services -->
+    <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
+    <section id="about-us" class="services bg-primary">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <h2>About this platform</h2>
+                    <hr class="small">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="service-item">
+                                <p>We wanted to create a funding platform that
+                                    takes into consideration the unique nature of
+                                    the gaming community in addition to providing
+                                    members with the tools needed to help esports
+                                    grow.<br><br>
+                                      For creators, community figures, fans, or
+                                    anyone else interested with the global phenomenon
+                                    known as esports, our website is meant to provide
+                                    you full access to the power of the community.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="service-item">
+                                <img class="img-responsive" src="{% static 'img/land/img/illustration-land-png.png' %}">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.col-lg-10 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+
+
+
+    <!-- Services -->
+    <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
+    <section id="services" class="services bg-primary" style="background-color: white;">
+">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <h1>Crowdfunding Types</h1>
+                    <hr class="small">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x" style="height: 5em; width: 5em;">
+                                <!--<i class="fa fa-circle fa-stack-2x"></i>-->
+                                <!--<i class="fa fa-flask fa-stack-1x text-primary"></i>-->
+                                <img class="service-icon" src="{% static 'img/land/img/allornothing.png' %}">
+                            </span>
+                                <h4>
+                                    <strong style="font-size: 25px">All or Nothing</strong>
+                                </h4>
+                                <p>If the project chooses to utilize all or nothing as their funding
+                                    strategy, then funds are disbursed to the project owner only
+                                    if and when that project reaches their minimum goal. If a project
+                                    chooses this option then we take 5% in addition to a transaction
+                                    fee of 2.9% + $.30 per transaction.
+                                </p>
+                                <!--<a href="#" class="btn btn-dark">Learn More</a>-->
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-6">
+                            <div class="service-item">
+                                <h2>OR</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x" style="height: 5em; width: 5em;">
+                                <!--<i class="fa fa-circle fa-stack-2x"></i>-->
+                                <!--<i class="fa fa-flask fa-stack-1x text-primary"></i>-->
+                                <img class="service-icon" src="{% static 'img/land/img/takeasyougopng.png' %}">
+                            </span>
+                                <h4>
+                                    <strong style="font-size: 25px;">Take as you go</strong>
+                                </h4>
+                                <p style="padding-bottom: 20px;">Take as you go differs from all or nothing in that a
+                                    project owner would be able to withdraw funds at any
+                                    point during the campaign’s raise regardless of whether
+                                    or not the funding campaign is successful.
+                                </p>
+                                <!--<a href="#" class="btn btn-dark">Learn More</a>-->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.col-lg-10 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <!-- Callout -->
+    <aside class="callout">
+        <div class="text-vertical-center">
+            <h1>Fund your Dreams Here</h1>
+            <a href="{% url 'accounts:signup' %}" class="btn btn-lg btn-light" style="margin-top: 20px;">Sign Up Now</a>
+        </div>
+    </aside>
+
+    <!-- Portfolio -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h2>The Rise of Esports</h2>
+                    <hr class="small">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>
+                                Esports is one of the fastest growing markets today and
+                                there are thousands of people who are integral to the
+                                success of the scene. <br><br>How many thousands more are unable
+                                to follow their dreams as a result of lacking support
+                                mechanisms in esports? How many are currently limited
+                                by financial constraints? We want esports to be the best
+                                it can be, and we think that through our platform we
+                                could make a difference in the esports scene.
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="{% static 'img/land/img/graph1.png' %}">
+                        </div>
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.col-lg-10 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <!-- Call to Action -->
+    <aside class="call-to-action bg-primary">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h3>We will launch in early June</h3>
+                    <h3>Sign up now to get more updates in the future!</h3>
+                    <a href="{% url 'accounts:signup' %}" class="btn btn-lg btn-light">Sign Up Now!</a>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+
+    <section id="about-team" class="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h2>About our Team</h2>
+                    <hr class="small">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>
+                                Esports Equity is a new company founded by passionate gamers.
+                                We wanted to provide a website where fans could support professional
+                                and amateur players, content creators, and members of the gaming
+                                community that help the scene thrive.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row" id="team-images">
+                            <div class="col-md-3">
+                                <img src="{% static 'img/land/img/robot1.png' %}">
+                            </div>
+                            <div class="col-md-3">
+                                <img src="{% static 'img/land/img/robot2.png' %}">
+                            </div>
+                            <div class="col-md-3">
+                                <img src="{% static 'img/land/img/robot3.png' %}">
+                            </div>
+                            <div class="col-md-3">
+                                <img src="{% static 'img/land/img/robot4.png' %}">
+                            </div>
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.col-lg-10 -->
+            </div>
+            <!-- /.row -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h4><strong>Esports Equity LLC</strong>
+                    </h4>
+                    <!--<p>8009 E Sandstone-->
+                        <!--<br>Anaheim, CA 92808</p>-->
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-phone fa-fw"></i>(213) 814-2640</li>
+                        <li><i class="fa fa-envelope-o fa-fw"></i> <a href="mailto:name@example.com">help@esportsequity.com</a>
+                        <li><i class="fa fa-pencil-square-o fa-fw"></i> <a href="{% url 'tos' %}">Terms of Service</a>
+                        <li><i class="fa fa-lock fa-fw"></i> <a href="{% url 'privacy' %}">Privacy Policy</a>
+
+                        </li>
+                    </ul>
+                    <br>
+                    <ul class="list-inline">
+                        <li>
+                            <a href="https://www.facebook.com/esportsequity/"><i class="fa fa-facebook fa-fw fa-3x"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/esportsequity"><i class="fa fa-twitter fa-fw fa-3x"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/company/esports-equity"><i class="fa fa-linkedin fa-fw fa-3x"></i></a>
+                        </li>
+                    </ul>
+                    <hr class="small">
+                    <p class="text-muted">Copyright &copy; Esports Equity 2017</p>
+                </div>
+            </div>
+        </div>
+        <a id="to-top" href="#top" class="btn btn-dark btn-lg"><i class="fa fa-chevron-up fa-fw fa-1x"></i></a>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery/external/jquery/jquery.js' %}"></script>
+    <link href="{% static 'css/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <!-- Custom Theme JavaScript -->
+
+                <script>
+                (function($){
+                    $.fn.extend({
+                        rotaterator: function(options) {
+
+                            var defaults = {
+                                fadeSpeed: 1000,
+                                pauseSpeed:500,
+                                child:null
+                            };
+
+                            var options = $.extend(defaults, options);
+
+                            return this.each(function() {
+                                  var o =options;
+                                  var obj = $(this);
+                                  var items = $(obj.children(), obj);
+                                  items.each(function() {$(this).hide();})
+                                  if(!o.child){var next = $(obj).children(':first');
+                                  }else{var next = o.child;
+                                  }
+                                  $(next).fadeIn(o.fadeSpeed, function() {
+                                        $(next).delay(o.pauseSpeed).fadeOut(o.fadeSpeed, function() {
+                                            var next = $(this).next();
+                                            if (next.length == 0){
+                                                    next = $(obj).children(':first');
+                                            }
+                                            $(obj).rotaterator({child : next, fadeSpeed : o.fadeSpeed, pauseSpeed : o.pauseSpeed});
+                                        })
+                                    });
+                            });
+                        }
+                    });
+                })(jQuery);
+
+                 $(document).ready(function() {
+                        $('#rotate').rotaterator({fadeSpeed:1000, pauseSpeed:500});
+                 });
+            </script>
+    <script>
+
+    // Closes the sidebar menu
+    $("#menu-close").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+    // Opens the sidebar menu
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+    // Scrolls to the selected menu item on the page
+    $(function() {
+        $('a[href*=#]:not([href=#],[data-toggle],[data-target],[data-slide])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+    //#to-top button appears after scrolling
+    var fixed = false;
+    $(document).scroll(function() {
+        if ($(this).scrollTop() > 250) {
+            if (!fixed) {
+                fixed = true;
+                // $('#to-top').css({position:'fixed', display:'block'});
+                $('#to-top').show("slow", function() {
+                    $('#to-top').css({
+                        position: 'fixed',
+                        display: 'block'
+                    });
+                });
+            }
+        } else {
+            if (fixed) {
+                fixed = false;
+                $('#to-top').hide("slow", function() {
+                    $('#to-top').css({
+                        display: 'none'
+                    });
+                });
+            }
+        }
+    });
+    // Disable Google Maps scrolling
+    // See http://stackoverflow.com/a/25904582/1607849
+    // Disable scroll zooming and bind back the click event
+    var onMapMouseleaveHandler = function(event) {
+        var that = $(this);
+        that.on('click', onMapClickHandler);
+        that.off('mouseleave', onMapMouseleaveHandler);
+        that.find('iframe').css("pointer-events", "none");
+    }
+    var onMapClickHandler = function(event) {
+            var that = $(this);
+            // Disable the click handler until the user leaves the map area
+            that.off('click', onMapClickHandler);
+            // Enable scrolling zoom
+            that.find('iframe').css("pointer-events", "auto");
+            // Handle the mouse leave event
+            that.on('mouseleave', onMapMouseleaveHandler);
+        }
+        // Enable map zooming with mouse scroll when the user clicks the map
+    $('.map').on('click', onMapClickHandler);
+    </script>
+
+</body>
+
+</html>

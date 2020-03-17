@@ -1,0 +1,359 @@
+{% extends 'layout-new.html' %}
+{% load account_extras %}
+{% load static %}
+{% load bootstrap3 %}
+
+{% block title_tag %}Explore | {{ block.super }}{% endblock %}
+
+{% block body %}
+
+<head>
+    <link href="{% static 'css/pagination.css' %}" rel="stylesheet">
+</head>
+  <body>
+
+
+    <div class="mt-5">
+	<div class="container inner">
+<br />
+		<br />
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h3>Fund campaigns you love.</h3>
+			</div>
+		</div>
+
+				<div class="row">
+			<div class="col-md-10 offset-md-1 text-center">
+		<div class="row">
+{#			<div class="col-sm-4">#}
+{#				<!-- Large button groups (default and split) -->#}
+{#				<div class="btn-group  btn-block">#}
+{#				<button class="btn btn-secondary btn-lg  btn-block dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
+{#					All categories#}
+{#				</button>#}
+{#				<div class="dropdown-menu" style="width: 100%">#}
+{#				<a class="dropdown-item" href="#">Action</a>#}
+{##}
+{#						<a class="dropdown-item" href="#art">Art</a>#}
+{##}
+{#						<a class="dropdown-item" href="#comics">Comics</a>#}
+{##}
+{#						<a class="dropdown-item" href="#crafts">Crafts</a>#}
+{##}
+{#						<a class="dropdown-item" href="#dance">Dance</a>#}
+{##}
+{#						<a class="dropdown-item" href="#design">Design</a>#}
+{##}
+{#						<a class="dropdown-item" href="#fashion">Fashion</a>#}
+{##}
+{#						<a class="dropdown-item" href="#film-video">Film & Video</a>#}
+{##}
+{#						<a class="dropdown-item" href="#food">Food</a>#}
+{##}
+{#						<a class="dropdown-item" href="#games">Games</a>#}
+{##}
+{#						<a class="dropdown-item" href="#journalism">Journalism</a>#}
+{##}
+{#						<a class="dropdown-item" href="#music">Music</a>#}
+{##}
+{#						<a class="dropdown-item" href="#photography">Photography</a>#}
+{##}
+{#						<a class="dropdown-item" href="#publishing">Publishing</a>#}
+{##}
+{#						<a class="dropdown-item" href="#technology">Technology</a>#}
+{##}
+{#						<a class="dropdown-item" href="#theater">Theater</a>#}
+{##}
+{#				</div>#}
+{#				</div>#}
+{#			</div>#}
+{#			<div class="col-sm-4">#}
+{#<!-- Large button groups (default and split) -->#}
+{#				<div class="btn-group  btn-block">#}
+{#				<button class="btn btn-secondary btn-lg  btn-block dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
+{#					All project types#}
+{#				</button>#}
+{#				<div class="dropdown-menu" style="width: 100%">#}
+{#					<a class="dropdown-item" href="#">Almost ending</a>#}
+{#					<a class="dropdown-item" href="#">Finished</a>#}
+{#					<a class="dropdown-item" href="#">Low funding</a>#}
+{#					<a class="dropdown-item" href="#">Another action</a>#}
+{#					<a class="dropdown-item" href="#">Something else here</a>#}
+{#				</div>#}
+{#				</div>#}
+{#			</div>#}
+{#			<div class="col-sm-4">#}
+{#<!-- Large button groups (default and split) -->#}
+{#				<div class="btn-group  btn-block">#}
+{#				<button class="btn btn-secondary btn-lg  btn-block dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
+{#					Trending#}
+{#				</button>#}
+{#				<div class="dropdown-menu" style="width: 100%">#}
+{#				<a class="dropdown-item" href="#">Most popular</a>#}
+{#					<a class="dropdown-item" href="#">Recently updated</a>#}
+{#					<a class="dropdown-item" href="#">Featured</a>#}
+{#				</div>#}
+{#				</div>#}
+{#			</div>#}
+		</div>
+		</div>
+		</div>
+		<br />
+
+{#		<a href="" class="float-right"  data-toggle="collapse" data-target="#filters">Toggle filters</a>#}
+				<br />
+<hr />
+		<div id="filters" class="collapse in">
+
+		<div class="row">
+			<div class="col-sm-3">
+				<h6>Percent funded</h6>
+				<label class="custom-control custom-radio">
+  					<input id="radio1" name="radio" type="radio" class="custom-control-input" checked>
+  					<span class="custom-control-indicator"></span>
+  					<span class="custom-control-description">All</span>
+				</label><br />
+				<label class="custom-control custom-radio">
+  					<input id="radio1" name="radio" type="radio" class="custom-control-input">
+  					<span class="custom-control-indicator"></span>
+  					<span class="custom-control-description">0 - 25%</span>
+				</label><br />
+				<label class="custom-control custom-radio">
+  					<input id="radio1" name="radio" type="radio" class="custom-control-input">
+  					<span class="custom-control-indicator"></span>
+  					<span class="custom-control-description">25 - 75%</span>
+				</label><br />
+				<label class="custom-control custom-radio">
+  					<input id="radio1" name="radio" type="radio" class="custom-control-input">
+  					<span class="custom-control-indicator"></span>
+  					<span class="custom-control-description">75 - 100+%</span>
+				</label>
+
+			</div>
+			<div class="col-sm-3">
+				<h6>Goal type</h6>
+				<label class="custom-control custom-radio">
+  					<input id="radio1" name="radio_goal" type="radio" class="custom-control-input" checked>
+  					<span class="custom-control-indicator"></span>
+  					<span class="custom-control-description">All</span>
+				</label><br />
+								<label class="custom-control custom-radio">
+  					<input id="radio1" name="radio_goal" type="radio" class="custom-control-input">
+  					<span class="custom-control-indicator"></span>
+  					<span class="custom-control-description">Fixed</span>
+				</label><br />
+								<label class="custom-control custom-radio">
+  					<input id="radio1" name="radio_goal" type="radio" class="custom-control-input">
+  					<span class="custom-control-indicator"></span>
+  					<span class="custom-control-description">Flexible</span>
+				</label><br />
+			</div>
+			<div class="col-sm-3">
+				<h6>Location</h6>
+								<label class="custom-control custom-radio">
+  					<input id="radio1" name="radio_location" type="radio" class="custom-control-input" checked>
+  					<span class="custom-control-indicator"></span>
+  					<span class="custom-control-description">Everywhere</span>
+				</label><br />
+								<label class="custom-control custom-radio">
+  					<input id="radio1" name="radio_location" type="radio" class="custom-control-input">
+  					<span class="custom-control-indicator"></span>
+  					<span class="custom-control-description">Near me</span>
+				</label><br />
+								<label class="custom-control custom-radio">
+  					<input id="radio1" name="radio_location" type="radio" class="custom-control-input">
+  					<span class="custom-control-indicator"></span>
+  					<span class="custom-control-description">Flexible</span>
+				</label><br />
+			</div>
+			<div class="col-sm-3">
+				<h6>Project status</h6>
+								<label class="custom-control custom-radio">
+  					<input id="radio1" name="radio_project" type="radio" class="custom-control-input" checked>
+  					<span class="custom-control-indicator"></span>
+  					<span class="custom-control-description">All</span>
+				</label><br />
+								<label class="custom-control custom-radio">
+  					<input id="radio1" name="radio_project" type="radio" class="custom-control-input">
+  					<span class="custom-control-indicator"></span>
+  					<span class="custom-control-description">Open</span>
+				</label><br />
+								<label class="custom-control custom-radio">
+  					<input id="radio1" name="radio_project" type="radio" class="custom-control-input">
+  					<span class="custom-control-indicator"></span>
+  					<span class="custom-control-description">Ended</span>
+				</label><br />
+
+			</div>
+		</div>
+    </div>
+        <br />
+        <br />
+
+
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="row mt-2">
+
+
+                        {% for team in team_list %}
+                            <div class="col-sm-3 mb-4">
+                                <div class="card box">
+                                    <a href="{% url 'teams:detail' team.id %}" >
+                                        {% if team.project_image %}
+                                        <img src="{{ team.project_image.url }}" class="img-fluid hidden-xs-down"/>
+                                        <img src="{{ team.project_image.url }}" class="img-fluid hidden-sm-up"/>
+                                        {% else %}
+                                        {% endif %}
+                                    </a>
+                                    <div class="card-block" class="pb-1" style="position: relative; padding-bottom: 60px; min-height: 250px;">
+
+                                                <h6><a href="{% url 'teams:detail' team.id %}">{{ team.title }}</a></h6>
+                                                <p class="text-muted">By <strong><a href="{% url 'accounts:profile' profile_pk=team.user.pk %}" class="text-muted">{{ team.user.first_name }} {{ team.user.last_name|make_list|first }}.</a></strong></p>
+                                                <p class="desc">{{ team.short_description }}</p>
+
+                                                <div style="position: absolute; bottom: 10px; width: 86%; ">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-striped progress-bar-animated active" role="progressbar" style="width: {% widthratio team.current_raise team.funding_goal 100 %}%" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                    {% if team.current_raise == 0 %}
+                                                    <p class="mb-1">0% funded</p>
+                                                    {% else %}
+                                                <p class="mb-1">{% widthratio team.current_raise team.funding_goal 100 %}% funded</p>
+                                                    {% endif %}
+                                                </div>
+
+
+                                </div>
+                                <div class="card-footer text-muted">
+                                    <div class="row ">
+                                            <div class="col-12">
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-4 text-center">
+                                                        <p class="mt-0 mb-0">Backers</p>
+                                                        {% if not team.backed_by %}
+                                                        <h6 class="mt-0 mb-0"><strong>0</strong></h6>
+                                                        {% else %}
+                                                        <h6 class="mt-0 mb-0"><strong>{{ team.backed_by.count }}</strong></h6>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col-4 text-center">
+                                                        <p class="mt-0 mb-0">Pledged</p>
+                                                        <h6 class="mt-0 mb-0"><strong>&dollar;{{ team.current_raise }}</strong></h6>
+                                                    </div>
+                                                    <div class="col-4 text-center">
+                                                        <p class="mt-0 mb-0">Days&nbsp;Left</p>
+                                                        <h6 class="mt-0 mb-0"><strong>{{ team.duration|days_left }}</strong></h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        {% endfor %}
+
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <ul class="pagination pagination-centered" style="">
+                        {% if paginator.num_pages == 1 %}
+                    {% else %}
+                        {% for i in paginator.page_range %}
+                          {% if page_obj.number == i %}
+                            <li class="active"><a href="?page={{ i }}">{{ i }}</a></li>
+                          {% else %}
+                            <li><a href="?page={{ i }}">{{ i }}</a></li>
+                          {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    </ul>
+                </div>
+            </div>
+
+{#    <div class="pagination">#}
+{#    <span class="step-links">#}
+{#        {% if team_list.has_previous %}#}
+{#            <a href="?page={{ team_list.previous_page_number }}">previous</a>#}
+{#        {% endif %}#}
+{##}
+{#        <span class="current">#}
+{#            Page {{ team_list.number }} of {{ team_list.paginator.num_pages }}.#}
+{#        </span>#}
+{##}
+{#        {% if team_list.has_next %}#}
+{#            <a href="?page={{ team_list.next_page_number }}">next</a>#}
+{#        {% endif %}#}
+{#    </span>#}
+</div>
+
+
+
+
+
+
+
+                <div class="mt-5 pt-2 pb-2">
+
+                    <div class="container">
+
+                        <div class="row">
+
+                            <div class="col-md-10 offset-md-1  col--sm-12">
+                                <div class="card ">
+                                  <div class="card-block">
+                                      <div class="row">
+                                      <div class="col-md-8">
+                                        <h4 class="card-title">Get Started</h4>
+                                        <p class="card-text">Create your own project. Raise money online. Get started today.</p>
+                                      </div>
+                                        <div class="col-md-4 text-center">
+                                            <br />
+                                            {% if user.is_authenticated %}
+            <a href="{% url 'teams:create_project' %}" class="btn btn-primary btn-lg">Start your project <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+            {% else %}
+            <a href="{% url 'accounts:login' %}" class="btn btn-primary btn-lg">Start your project <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+            {% endif %}
+                                        </div>
+                                        </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+		</div>
+    </div>
+
+
+
+
+
+	<script>
+		var eventTime = moment().add(8, 'hours'); // Timestamp - Sun, 21 Apr 2013 13:00:00 GMT
+		var currentTime = 1366547400; // Timestamp - Sun, 21 Apr 2013 12:30:00 GMT
+		var diffTime = eventTime - currentTime;
+		var duration = moment.duration(diffTime*1000, 'milliseconds');
+		var interval = 1000;
+
+		setInterval(function(){
+		  duration = moment.duration(duration - interval, 'milliseconds');
+			$('#current_time').text(moment().format('MMMM Do YYYY, h:mma'));
+		}, interval);
+	</script>
+
+
+  {% endblock %}

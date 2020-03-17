@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block title_tag %}eSports Equity: Choose Funding Type{% endblock %}
+{% block title %}Funding Type Selection{% endblock %}
+
+{% block body %}
+    <head>
+{#        <link href="{% static 'css/teams/startteam.css' %}" rel="stylesheet">#}
+        <link href="{% static 'css/teams/CreateStep1.css' %}" rel="stylesheet">
+        <link href="{% static 'css/teams/Type_Select.css' %}" rel="stylesheet">
+
+    </head>
+    <div class="container-fluid">
+        <div class="page-header">
+            <h1>Please Select a CrowdFunding Type</h1>
+        </div>
+        <div class="option-group">
+            <a href="{% url 'teams:investor_type' %}">
+                <div class="option option1 col-xs-5">
+                    <h3>Equity CrowdFunding</h3>
+                    <p>Choose equity crowd funding if you are interested in viewing potential investment opportunities in companies on our platform</p>
+                    <img src="{% static 'img/icons/equitycrowdfundicon.png' %}">
+{#                    <p>#}
+{#                    This is a paragraph for equity crowdfunding.#}
+{#                    This is a paragraph for equity crowdfunding.#}
+{#                    This is a paragraph for equity crowdfunding.#}
+{#                    This is a paragraph for equity crowdfunding.#}
+{#                    This is a paragraph for equity crowdfunding.#}
+{#                    This is a paragraph for equity crowdfunding.#}
+{#                    This is a paragraph for equity crowdfunding.#}
+{#                    </p>#}
+                </div>
+            </a>
+            <a href="{% url 'teams:apply' %}">
+                <div class="option option2 col-xs-5">
+                    <h3>Traditional CrowdFunding</h3>
+                    <p>Choose traditional crowd funding if you want to view projects that aren't investments but could use your support</p>
+                    <img src="{% static 'img/icons/crowdfundicon.png' %}">
+                </div>
+            </a>
+        </div>
+    </div>
+{% endblock %}

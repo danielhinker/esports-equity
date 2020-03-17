@@ -1,0 +1,36 @@
+{% extends "layout-new-landing.html" %}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block title_tag %}Login | {{ block.super }}{% endblock %}
+
+{% block body %}
+<head>
+    <link href="{% static 'css/buttons/button.css' %}" rel="stylesheet">
+    <link href="{% static 'css/login.css' %}" rel="stylesheet">
+    <link href="{% static 'css/land.css'%}" rel="stylesheet">
+</head>
+{#<div class="container">#}
+{#    <div class="login">#}
+{#    <h1>Login</h1>#}
+{#    <form method="POST" class="form-signin">#}
+{#        {% csrf_token %}#}
+{#        {{ form }}#}
+{#        <input type="hidden" name="next" value="{{ next }}">#}
+{#        <input type="submit" value="Login" class="btn btn-default">#}
+{#    </form>#}
+{#    <h5><a href="{% url 'password_reset' %}">Forgot Your Password?</a></h5>#}
+{#    </div>#}
+{#</div>#}
+<div class="container">
+    <form action="" method="POST" class="form-login">
+          <div class="page-header">
+              <h2>Login</h2>
+          </div>
+          {% csrf_token %}
+          {% bootstrap_form form %}
+          <button type="submit" class="btn btn-lg btn-theme btn-outline btn-primary btn-block" value="Sign Up">Login</button>
+        <p><a href="{% url 'password_reset' %}">Forgot your password?</a></p>
+      </form>
+    </div>
+{% endblock %}

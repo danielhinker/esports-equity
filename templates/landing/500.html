@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block title_tag %}eSports Equity: Server Error{% endblock %}
+{% block title %}eSports Equity Server Error{% endblock %}
+
+{% block body %}
+    <head>
+        <link href="{% static 'css/404.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="page-header">
+                <h1>Internal Server Error</h1>
+            </div>
+            <div class="col-md-4">
+                <h1>5</h1>
+            </div>
+                        <div class="col-md-4 zero">
+                <h1>0</h1>
+            </div>
+                        <div class="col-md-4">
+                <h1>0</h1>
+            </div>
+            <div class="col-md-12">
+                <h2>There's a server error, please wait</h2>
+            </div>
+        </div>
+    </body>
+{% endblock %}

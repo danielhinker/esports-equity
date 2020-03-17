@@ -1,0 +1,60 @@
+@media (min-width: 1200px){
+    .container-fluid{
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+    .form-general{
+        margin-left: 10%;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px){
+    .container-fluid{
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px){
+    .container-fluid{
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    .help-text{
+        margin-top: 10px;
+        margin-bottom: 50px;
+    }
+}
+
+@media (max-width: 768px){
+    .container-fluid{
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+    .width{
+        width: 0%;
+    }
+    .col-xs-5{
+        width: 90%;
+    }
+    .option{
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+    .help-text{
+        margin-top: 10px;
+        margin-bottom: 50px;
+    }
+    .pull-right{
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    .pull-left{
+        width: 100%;
+    }
+
+    .btn-primary{
+        margin-bottom: 40px;
+        margin-top: 5px;
+    }
+}

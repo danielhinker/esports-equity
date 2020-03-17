@@ -1,0 +1,305 @@
+/* TESTING AREA*/
+
+.teamarea{
+  margin-left: 24%;
+  width:60%;
+}
+
+
+@media (min-width: 768px){
+.placeholderteam{
+    width: 60%;
+}
+  .stats{
+    width:30%
+  }
+  .about{
+    width:90%
+  }
+}
+
+.placeholderteam{
+  text-align: center;
+}
+@media(max-width:992px){
+  .teamarea{
+    display: none;
+  }
+}
+
+
+
+
+
+
+
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+/*body {*/
+  /*padding-top: 50px;*/
+  /*padding-bottom: 0px;*/
+  /*font-family: STHeiti;*/
+/*}*/
+
+
+/*
+ * Global add-ons
+ */
+
+/*.sub-header {*/
+  /*padding-bottom: 10px;*/
+  /*border-bottom: 1px solid #eee;*/
+/*}*/
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+
+
+
+/*
+ * Main content
+ */
+
+/*.main {*/
+  /*padding: 20px;*/
+/*}*/
+/*@media (min-width: 768px) {*/
+  /*.main {*/
+    /*padding-right: 40px;*/
+    /*padding-left: 40px;*/
+  /*}*/
+  /*.productinfo {*/
+    /*padding: 200px 0;*/
+    /*background-color: rgba(240, 240, 240, 1);*/
+  /*}*/
+
+  /*.about{*/
+    /*padding:800px 0;*/
+  /*}*/
+
+
+
+/*}*/
+
+.placeholderteam h4{
+  margin-top: 40px;
+}
+.placeholderteam p{
+  margin-bottom: 30px;
+}
+
+
+.placeholderteam{
+  margin-bottom: 50px;
+  border:1px solid #e7eaec;
+}
+
+.placeholderteam{
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+
+/*.main .page-header {*/
+  /*margin-top: 0;*/
+/*}*/
+
+
+/*.placeholders {*/
+  /*margin-bottom: 30px;*/
+  /*text-align: center;*/
+/*}*/
+/*.placeholders h4 {*/
+  /*margin-bottom: 0;*/
+/*}*/
+.placeholderteam {
+  margin-bottom: 20px;
+}
+
+
+/*.placeholder{*/
+  /*-moz-box-shadow: 0 0 10px #ccc;*/
+  /*-webkit-box-shadow: 0 0 10px #ccc;*/
+  /*box-shadow: 0 0 10px #ccc;*/
+/*}*/
+
+
+/*.img-circle{*/
+  /*margin-left: 5px;*/
+  /*margin-right: 5px;*/
+/*}*/
+
+/*.form-control{*/
+  /*padding:0px 0px;*/
+/*}*/
+
+.progress-stats{
+  text-align: left;
+  padding-left: 40px;
+  margin-bottom: 30px;
+}
+
+.currentamout{
+  font-size: 30px;
+  color:rgba(0, 109, 204, 1);
+}
+
+.totalamout{
+  font-size:15px;
+}
+
+.progress{
+  border-radius: 0px;
+}
+
+#level-bar{
+  width: 250px;
+  background-color: rgba(0,137,255,0.3);
+}
+/*.backers{*/
+  /*color:black;*/
+  /*font-size:30px;*/
+/*}*/
+
+/*.aboutsection p{*/
+    /*width: auto;*/
+    /*word-wrap: break-word;*/
+    /*padding-left: 30px;*/
+    /*padding-right: 30px;*/
+/*}*/
+
+body {
+  padding-top: 50px;
+  padding-bottom: 0px;
+  /*font-family: stheiti;*/
+}
+
+
+.jumbotron{
+  background: linear-gradient(rgba(255,255,255,0.9),rgba(255,255,255,0.9)), url("../../img/main/landing.jpg") fixed center center ;
+  background-size: cover;
+}
+
+@media screen and (min-width: 768px){
+  .jumbotron{
+    padding-top:300px;
+    padding-bottom:100px;
+  }
+}
+
+@media (max-width: 768px){
+  .jumbotron{
+    padding-top:300px;
+    padding-bottom:100px;
+  }
+}
+
+
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+
+.main {
+  padding: 20px;
+}
+
+@media(min-width: 992px){
+  .col-md-offset-2{
+    margin-left: 8.3333%;
+  }
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+  /*.col-md-2{*/
+    /*width:16.66666667%;*/
+  /*}*/
+  .placeholder{
+    width:23%;
+  }
+  .productinfo{
+  padding:90px 0;
+  background-color:rgba(240, 240, 240, 1);
+}
+
+.placeholder h4{
+  margin-top: 40px;
+}
+.placeholder p{
+  margin-bottom: 30px;
+}
+
+
+.placeholder{
+  margin-bottom: 50px;
+  border:1px solid #e7eaec;
+}
+
+.placeholder{
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+
+.placeholder:hover{
+  -moz-box-shadow: 0 0 10px #ccc;
+  -webkit-box-shadow: 0 0 10px #ccc;
+  box-shadow: 0 0 10px #ccc;
+
+}
+
+.img-circle{
+  /*margin-left: 5px;*/
+  margin-right: 5px;
+  margin-bottom: 20px;
+}
+
+.form-control{
+  padding:0px 0px;
+}
+
+.glyphicon{
+  padding-right: 3px;
+}
+
+

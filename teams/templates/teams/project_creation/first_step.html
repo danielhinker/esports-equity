@@ -1,0 +1,46 @@
+{% extends 'layout-new.html' %}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block title_tag %}Stating a Project | {{ block.super }}{% endblock %}
+{#{% block title %}Project Creation Step 1{% endblock %}#}
+
+{% block body %}
+    <head>
+{#        <link href="{% static 'css/teams/startteam.css' %}" rel="stylesheet">#}
+        <link href="{% static 'css/teams/CreateStep1.css' %}" rel="stylesheet">
+    </head>
+
+    <div class="container-fluid">
+        <div class="page-header">
+
+            <br>
+<br>
+<br>
+<br>
+
+            <h1>Start a Project</h1>
+
+        </div>
+
+    </div>
+        {% load widget_tweaks %}
+        <form action='' method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+            <div class="form-horizontal">
+
+{#            {% for field in form.visible_fields %}#}
+{#              <div class="form-group">#}
+{#                  <label for="{{ field.id_for_label }}" class="control-label">{{ field.label }}</label>#}
+{#                    <div class="col-sm-10">#}
+{#                        {{ field|add_class:'form-control' }}#}
+                  {% bootstrap_form form %}
+{#                    </div>#}
+
+
+{#                {% endfor %}#}
+                  <button type="submit" class="btn btn-lg btn-primary btn-block" value="save">Save and Continue</button>
+{#            <input type="submit" value='Save and Continue' class="btn btn-primary btn-lg float-right" data-wow-delay="0.7s">#}
+</div>
+        </form>
+{% endblock %}

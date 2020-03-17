@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+{% load bootstrap3 %}
+{% load static %}
+{% load account_extras %}
+{% block title_tag %}Update KYC and AML | {{ block.super }}{% endblock %}
+
+{% block body %}
+    <head>
+        <link href="{% static 'css/teams/investor_account.css' %}" rel="stylesheet">
+        <link href="{% static 'css/teams/entity.css' %}" rel="stylesheet">
+        <link href="{% static 'css/kycstatus2.css' %}" rel="stylesheet">
+    </head>
+
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Update KYC and AML</h1>
+        </div>
+        <div class="row">
+            <div class="">
+                <h3>{{ object.prompt1 }}</h3>
+            </div>
+                <div class="answers">
+                    {% for thing in object.answer2|string_to_list %}
+                        <div class="col-lg-2">
+                            <p><input class="check-box" type="checkbox" value="">{{ thing }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+        </div>
+        <div class="row">
+            <div class="">
+                <h3>{{ object.prompt2 }}</h3>
+            </div>
+                <div class="answers">
+                    {% for thing in object.answer2|string_to_list %}
+                        <div class="col-lg-2">
+                            <p><input class="check-box" type="checkbox" value="">{{ thing }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+        </div>
+
+        <div class="row">
+            <div class="">
+                <h3>{{ object.prompt3 }}</h3>
+            </div>
+                <div class="answers">
+                    {% for thing in object.answer2|string_to_list %}
+                        <div class="col-lg-2">
+                            <p><input class="check-box" type="checkbox" value="">{{ thing }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+        </div>
+
+        <div class="row">
+            <div class="">
+                <h3>{{ object.prompt4 }}</h3>
+            </div>
+                <div class="answers">
+                    {% for thing in object.answer2|string_to_list %}
+                        <div class="col-lg-2">
+                            <p><input class="check-box" type="checkbox" value="">{{ thing }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+        </div>
+
+        <div class="row">
+            <div class="">
+                <h3>{{ object.prompt5 }}</h3>
+            </div>
+                <div class="answers">
+                    {% for thing in object.answer2|string_to_list %}
+                        <div class="col-lg-2">
+                            <p><input class="check-box" type="checkbox" value="">{{ thing }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+        </div>
+
+
+
+
+            <form method="POST">
+                {% csrf_token %}
+{#                {% bootstrap_form form %}#}
+{#                <input type="submit" value="Update KYC and AML" class="btn btn-default">#}
+                  <button type="submit" class="btn btn-lg btn-primary pull-right">Save and Continue<span class="glyphicon glyphicon-chevron-right"></span></button>
+                  <button type="submit" class="btn btn-lg btn-primary pull-left"><span class="glyphicon glyphicon-chevron-left"></span>Go Back</button>
+            </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,283 @@
+{% extends 'layout-new.html' %}
+{% load account_extras %}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block title_tag %}Profile | {{ block.super }}{% endblock %}
+{#{% block title %}title{% endblock %}#}
+
+{% block body %}
+    {% if user.is_authenticated %}
+  <head>
+    <link href="{% static 'css/accounts/profile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/crowdfund/css/profile-page.css' %}" rel="stylesheet">
+  </head>
+
+    <section class="jumbotron text-center">
+      <div class="container">
+          {% if user_object.avatar %}
+              <img alt="image" class="img-circle jumbotron-heading" src="{{ user_object.avatar.url }}" style="height: 100px;width: 100px; border: 1px solid #ddd; ">
+          {% else %}
+              <img alt="image" class="img-circle jumbotron-heading" src="{% static 'img/main/avatar.jpg' %}" style="height: 100px;width: 100px; border: 1px solid #ddd; ">
+          {% endif %}
+        <h2 class="jumbotron-heading">{{ user_object.first_name }} {{ user_object.last_name|make_list|first }}.</h2>
+          <h3 class="text-muted">{{ user_object.company_name }}</h3>
+        <p class="lead text-muted">{{ user_object.bio }}</p>
+
+{#          {% if not request.user.is_subscribed %}#}
+{#          <a href="{% url 'accounts:subscribe' %}">#}
+{#                <button type="submit"  formmethod="post" class="btn btn-default">Subscribe</button>#}
+{#            </a>#}
+{#              {% else %}#}
+{#            <a href="{% url 'accounts:unsubscribe' %}">#}
+{#                <button type="submit" class="btn btn-default">Unsubscribe</button>#}
+{#            </a>#}
+{#              {% endif %}#}
+      {% if user.pk == user_object.pk %}
+            <a href="{% url 'accounts:profile_dashboard' %}">
+
+                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span>Settings</button>
+                {% else %}
+                {% endif %}
+            </a>
+      </div>
+    </section>
+
+
+        <div class="mt-5" id="backed-projects">
+            <div class="container inner">
+                    <div class="row">
+                        <div class="col-8">
+                            <h3>Your Projects</h3>
+                        </div>
+                    </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="row mt-2">
+                             {% for team in user_teams %}
+                                <div class="col-sm-3 mb-4">
+                                <div class="card box">
+{#                                    <a href="{% url 'teams:detail' team.id %}" >#}
+                                        {% if team.project_image %}
+                                        <img src="{{ team.project_image.url }}" class="img-fluid hidden-xs-down"/>
+                                        <img src="{{ team.project_image.url }}" class="img-fluid hidden-sm-up"/>
+                                        {% else %}
+                                        {% endif %}
+                                    </a>
+                                    <div class="card-block" class="pb-1" style="position: relative; padding-bottom: 60px; min-height: 250px;">
+
+                                                <h6><a href="{% url 'teams:detail' team_id=team.id %}">{{ team.title }}</a></h6>
+                                                <p class="text-muted">By <strong>{{ team.user.first_name }} {{ user.last_name|make_list|first }}.</strong></p>
+                                                <p class="desc">{{ team.short_description }}</p>
+
+                                                <div style="position: absolute; bottom: 10px; width: 86%; ">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-striped progress-bar-animated active" role="progressbar" style="width: {% widthratio team.current_raise team.funding_goal 100 %}%" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                {% if team.current_raise == 0 %}
+                                                    <p class="mb-1">0% funded</p>
+                                                    {% else %}
+                                                <p class="mb-1">{% widthratio team.current_raise team.funding_goal 100 %}% funded</p>
+                                                    {% endif %}
+                                                </div>
+
+
+                                </div>
+                                <div class="card-footer text-muted">
+                                    <div class="row ">
+                                            <div class="col-12">
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-4 text-center">
+                                                        <p class="mt-0 mb-0">Backers</p>
+                                                        {% if not team.backed_by %}
+                                                        <h6 class="mt-0 mb-0"><strong>0</strong></h6>
+                                                        {% else %}
+                                                        <h6 class="mt-0 mb-0"><strong>{{ team.backed_by.count }}</strong></h6>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col-4 text-center">
+                                                        <p class="mt-0 mb-0">Pledged</p>
+                                                        <h6 class="mt-0 mb-0"><strong>&dollar;{{ team.current_raise }}</strong></h6>
+                                                    </div>
+                                                    <div class="col-4 text-center">
+                                                        <p class="mt-0 mb-0">Days&nbsp;Left</p>
+                                                        <h6 class="mt-0 mb-0"><strong>{{ team.duration|days_left }}</strong></h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+{#        <div class="mt-5" id="followed-projects">#}
+{#            <div class="container inner">#}
+{#                    <div class="row">#}
+{#                        <div class="col-8">#}
+{#                            <h3>Followed Projects</h3>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                <div class="row">#}
+{#                    <div class="col-sm-12">#}
+{#                        <div class="row mt-2">#}
+{#                             {% for team in followed_objects %}#}
+{#                                <div class="col-sm-3 mb-4">#}
+{#                                <div class="card box">#}
+{#                                    <a href="{% url 'teams:detail' team.id %}" >#}
+{#                                        {% if team.project_image %}#}
+{#                                        <img src="{{ team.project_image.url }}" class="img-fluid hidden-xs-down"/>#}
+{#                                        <img src="{{ team.project_image.url }}" class="img-fluid hidden-sm-up"/>#}
+{#                                        {% else %}#}
+{#                                        {% endif %}#}
+{#                                    </a>#}
+{#                                    <div class="card-block" class="pb-1" style="position: relative; padding-bottom: 60px; min-height: 250px;">#}
+{##}
+{#                                                <h6><a href="{% url 'teams:detail' team_id=team.id %}">{{ team.title }}</a></h6>#}
+{#                                                <p class="text-muted">By <strong>{{ team.user.first_name }} {{ user.last_name|make_list|first }}.</strong></p>#}
+{#                                                <p class="desc">{{ team.short_description }}</p>#}
+{##}
+{#                                                <div style="position: absolute; bottom: 10px; width: 86%; ">#}
+{#                                                <div class="progress">#}
+{#                                                    <div class="progress-bar progress-bar-striped progress-bar-animated active" role="progressbar" style="width: {% widthratio team.current_raise team.funding_goal 100 %}%" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"></div>#}
+{#                                                </div>#}
+{#                                                {% if team.current_raise == 0 %}#}
+{#                                                    <p class="mb-1">0% funded</p>#}
+{#                                                    {% else %}#}
+{#                                                <p class="mb-1">{% widthratio team.current_raise team.funding_goal 100 %}% funded</p>#}
+{#                                                    {% endif %}#}
+{#                                                </div>#}
+{##}
+{##}
+{#                                </div>#}
+{#                                <div class="card-footer text-muted">#}
+{#                                    <div class="row ">#}
+{#                                            <div class="col-12">#}
+{#                                            </div>#}
+{#                                            <div class="col-12">#}
+{#                                                <div class="row">#}
+{#                                                    <div class="col-4 text-center">#}
+{#                                                        <p class="mt-0 mb-0">Backers</p>#}
+{#                                                        {% if not team.backed_by %}#}
+{#                                                        <h6 class="mt-0 mb-0"><strong>0</strong></h6>#}
+{#                                                        {% else %}#}
+{#                                                        <h6 class="mt-0 mb-0"><strong>{{ team.backed_by.count }}</strong></h6>#}
+{#                                                        {% endif %}#}
+{#                                                    </div>#}
+{#                                                    <div class="col-4 text-center">#}
+{#                                                        <p class="mt-0 mb-0">Pledged</p>#}
+{#                                                        <h6 class="mt-0 mb-0"><strong>&dollar;{{ team.current_raise }}</strong></h6>#}
+{#                                                    </div>#}
+{#                                                    <div class="col-4 text-center">#}
+{#                                                        <p class="mt-0 mb-0">Days&nbsp;Left</p>#}
+{#                                                        <h6 class="mt-0 mb-0"><strong>14</strong></h6>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{#                            {% endfor %}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+
+
+
+
+        <div class="mt-5" id="backed-projects">
+            <div class="container inner">
+                    <div class="row">
+                        <div class="col-8">
+                            <h3>Backed Projects</h3>
+                        </div>
+                    </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="row mt-2">
+                             {% for team in backed_projects %}
+                                <div class="col-sm-3 mb-4">
+                                <div class="card box">
+{#                                    <a href="{% url 'teams:detail' team.id %}" >#}
+                                        {% if team.project_image %}
+                                        <img src="{{ team.project_image.url }}" class="img-fluid hidden-xs-down"/>
+                                        <img src="{{ team.project_image.url }}" class="img-fluid hidden-sm-up"/>
+                                        {% else %}
+                                        {% endif %}
+                                    </a>
+                                    <div class="card-block" class="pb-1" style="position: relative; padding-bottom: 60px; min-height: 250px;">
+
+                                                <h6><a href="{% url 'teams:detail' team_id=team.id %}">{{ team.title }}</a></h6>
+                                                <p class="text-muted">By <strong>{{ team.user.first_name }} {{ user.last_name|make_list|first }}.</strong></p>
+                                                <p class="desc">{{ team.short_description }}</p>
+
+                                                <div style="position: absolute; bottom: 10px; width: 86%; ">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-striped progress-bar-animated active" role="progressbar" style="width: {% widthratio team.current_raise team.funding_goal 100 %}%" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                {% if team.current_raise == 0 %}
+                                                    <p class="mb-1">0% funded</p>
+                                                    {% else %}
+                                                <p class="mb-1">{% widthratio team.current_raise team.funding_goal 100 %}% funded</p>
+                                                    {% endif %}
+                                                </div>
+
+
+                                </div>
+                                <div class="card-footer text-muted">
+                                    <div class="row ">
+                                            <div class="col-12">
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-4 text-center">
+                                                        <p class="mt-0 mb-0">Backers</p>
+                                                        {% if not team.backed_by %}
+                                                        <h6 class="mt-0 mb-0"><strong>0</strong></h6>
+                                                        {% else %}
+                                                        <h6 class="mt-0 mb-0"><strong>{{ team.backed_by.count }}</strong></h6>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col-4 text-center">
+                                                        <p class="mt-0 mb-0">Pledged</p>
+                                                        <h6 class="mt-0 mb-0"><strong>&dollar;{{ team.current_raise }}</strong></h6>
+                                                    </div>
+                                                    <div class="col-4 text-center">
+                                                        <p class="mt-0 mb-0">Days&nbsp;Left</p>
+                                                        <h6 class="mt-0 mb-0"><strong>{{ team.duration|days_left }}</strong></h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        {% else %}
+
+    {% endif %}
+{% endblock %}

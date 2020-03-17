@@ -1,0 +1,17 @@
+
+
+footer{
+  padding-top: 25px;
+  padding-bottom: 40px;
+  color: white;
+  background-color: black;
+  bottom:0;
+  width:100%;
+  height:170px;
+  text-align: right;
+  font-weight: lighter;
+}
+
+.socialicon{
+  margin-left: 10px;
+}

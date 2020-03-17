@@ -1,0 +1,278 @@
+body {
+  padding-top: 50px;
+  padding-bottom: 0px;
+  font-family: stheiti;
+}
+
+.teamarea{
+  /*margin-left: 25%;*/
+    margin-left: 15%;
+    margin-right: 11%;
+}
+.container-fluid{
+  margin-top: 30px;
+}
+
+
+@media (min-width: 768px){
+.placeholder{
+    width: 60%;
+}
+  .stats{
+    width:30%
+  }
+  .about{
+    width:90%
+  }
+}
+
+.placeholder{
+  text-align: center;
+}
+
+
+
+
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+
+.main {
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+  .productinfo {
+    padding: 200px 0;
+    background-color: rgba(240, 240, 240, 1);
+  }
+
+  .about{
+    padding:800px 0;
+  }
+}
+
+@media(max-width: 768px){
+  .col-xs-6{
+    width:100%;
+  }
+  .sidebar{
+    display: none;
+  }
+}
+
+.placeholder h4{
+  margin-top: 40px;
+}
+.placeholder p{
+  margin-bottom: 30px;
+}
+
+
+.placeholder{
+  margin-bottom: 50px;
+  border:1px solid #e7eaec;
+}
+
+.placeholder{
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+
+.main .page-header {
+  margin-top: 0;
+}
+
+.overview-title{
+    border-bottom: none;
+}
+
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+
+.about-placeholder{
+    border: hidden;
+}
+
+
+/*.placeholder{*/
+  /*-moz-box-shadow: 0 0 10px #ccc;*/
+  /*-webkit-box-shadow: 0 0 10px #ccc;*/
+  /*box-shadow: 0 0 10px #ccc;*/
+/*}*/
+
+
+.img-circle{
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.form-control{
+  padding:0px 0px;
+}
+
+.progress-stats{
+  text-align: left;
+  padding-left: 40px;
+  margin-bottom: 30px;
+}
+
+.currentamout{
+  font-size: 25px;
+  color:rgba(0, 109, 204, 1);
+}
+.number{
+
+}
+.totalamout{
+  font-size:15px;
+}
+
+.progress{
+  border-radius: 0px;
+}
+
+
+.aboutsection p{
+    width: auto;
+    word-wrap: break-word;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.aboutsection h1{
+    font-size: 55px;
+}
+
+.user-created a{
+    text-decoration: none;
+}
+
+
+.image-holder{
+  max-width: 828px;
+  max-height:521px;
+  overflow: hidden;
+}
+
+.teamimage{
+  width: 100%;
+}
+
+.back-button a{
+  text-decoration: none;
+}
+
+.back-button{
+  margin-bottom: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.follow-button a{
+  text-decoration: none;
+}
+
+.follow-button{
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+.category{
+    margin-left: 20px;
+}
+
+.btn-info {
+    background-color: #0089ff;
+    border-color: #348fd2;
+    text-shadow: 1px 1px 0 #238ed5;
+}
+
+
+.btn-info:hover, .btn-info:focus {
+    background-color: #005fff;
+    border-color: #347abe;
+}
+
+
+.unfollow {
+    background-color: #ff152c;
+    border-color: #ff4362;
+    text-shadow: 1px 1px 0 #660818;
+}
+
+
+.unfollow:hover, .unfollow:focus {
+    background-color: #b20e2a;
+    border-color: #ff4362;
+    text-shadow: 1px 1px 0 #660818;
+}
+
+.btn {
+    border-radius: 0;
+    border: 0;
+    border-bottom: 4px solid #CCCCCC;
+    margin:0;
+    -webkit-box-shadow: 0 5px 5px -6px rgba(0,0,0,.3);
+       -moz-box-shadow: 0 5px 5px -6px rgba(0,0,0,.3);
+            box-shadow: 0 5px 5px -6px rgba(0,0,0,.3);
+}
+.btn .btn-block:active, .btn .btn-lg:active {
+    -webkit-box-shadow: inset 0 3px 3px -5px rgba(0,0,0,.3);
+       -moz-box-shadow: inset 0 3px 3px -5px rgba(0,0,0,.3);
+            box-shadow: inset 0 3px 3px -5px rgba(0,0,0,.3);
+}
+
+.tab-content p{
+    margin-left: 10%;
+    margin-right: 10%;
+    display: block;
+    text-align: center;
+    border-bottom: none;
+}
+
+.member-name{
+    text-align: left;
+    margin-left: 20px;
+}
+
+.job-title{
+    margin-left: 20px ;
+}
+
+#member1-para{
+    text-align: left;
+}
+
+.job-title{
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.reward-image{
+    width:100%;
+}
+
+.reward-image-holder{
+    width: 500px;
+    overflow: hidden;
+}

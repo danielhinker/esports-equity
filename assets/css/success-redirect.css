@@ -1,0 +1,13 @@
+.container-fluid{
+    margin-top: 250px;
+    margin-bottom: 450px;
+}
+
+.col-md-7 img{
+    padding-left: 30px;
+    width: 600px;
+}
+
+.col-md-5{
+    padding-left: 50px;
+}

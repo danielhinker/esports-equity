@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block title_tag %}eSports Equity: {{ team.title }} {% endblock %}
+{% block title %}{{ team.title }}{% endblock %}
+
+{% block body_content %}
+    <h5>Summary</h5>
+    <ul>
+        <li>Minmum Investment: {{ team.raising_minimum }}</li>
+        <li>Goal: {{ team.raising_maximum }}</li>
+        <li>Current Backers: {{ team.current_backers }}</li>
+        <li>Current Raise: {{ team.current_raise }}</li>
+    </ul>
+
+<article>
+<h2>{{ object.title }} - Created by {{ object.user.email }}</h2>
+<img src="" style="width:300px;height:330px">
+<h4>Description</h4>
+{{ object.description }}
+<h4>Roster</h4>
+<ul>
+{% for player in object.player.all %}
+
+    <header><a href="">{{ player.name }}</a></header>
+    <img src="" alt="{{ player.name }}" style="width:280px;height:228px">
+    <li>{{ player.name }} - {{ player.description }}</li>
+{% endfor %}
+</ul>
+</article>
+    <div class="main">
+				<div class="section text-center landing-section">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-8 col-md-offset-2">
+								<h2>Interested in funding {{ team.title }}?</h2>
+								<h5>Read through the eSports Equity FAQ page to learn more about venture investing.</h5>
+                                {% if user.is_authenticated %}
+								<a href="{% url 'accounts:signup' %}" class="btn btn-danger btn-fill">Invest Now!</a>
+                                {% else %}
+                                <a href="{% url 'accounts:signup' %}" class="btn btn-danger btn-fill">Sign Up!</a>
+                                {% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+    </div>
+{% endblock %}
+

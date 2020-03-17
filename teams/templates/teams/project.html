@@ -1,0 +1,886 @@
+{% extends 'layout-new.html' %}
+{% load static %}
+
+{% block title_tag %}{{ team.title }} | {{ block.super }}{% endblock %}
+
+{% block body %}
+{#<html lang="en">#}
+<head>
+<link rel="stylesheet" href="{% static 'css/crowdfund/css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/crowdfund/css/project-page.css' %}">
+
+    <script id="dsq-count-scr" src="//esports-equity-llc.disqus.com/count.js" async></script>
+<script src="https://js.stripe.com/v2/"></script>
+<script src="https://js.stripe.com/v3/"></script>
+<script>Stripe.setPublishableKey("pk_test_GDrVvjI5isbYy25WNwZuR4sh");
+var stripe = Stripe('pk_test_GDrVvjI5isbYy25WNwZuR4sh');
+</script>
+</head>
+{#  <body>#}
+
+<div class="container inner">
+	<div class="row">
+		<div class="col-sm-8">
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="row">
+						<div class="col-sm-2">
+							<div class="avatar-me-wrapper"><span class="avatar-me">{{ team.title|make_list|first }}</span></div>
+						</div>
+
+						<div class="col-sm-10">
+							<h3>{{ team.title }}</h3>
+							<br />
+							<p class="mb-1">{% widthratio team.current_raise team.funding_goal 100 %}% Funded</p>
+							<div class="progress">
+								<div class="progress-bar progress-bar-striped progress-bar-animated active" role="progressbar" style="width: {% widthratio team.current_raise team.funding_goal 100 %}%" aria-valuenow="29" aria-valuemin="0" aria-valuemax="100"></div>
+							</div>
+
+
+							<div class="row">
+								<div class="col-sm-6">
+									<h3>${{ team.current_raise }}</h3>
+									<p class="mb-1">Backed by {{ team.backed_by.count }} people</p>
+								</div>
+								<div class="col-sm-6 text-right">
+									<h3>${{ team.funding_goal }}</h3>
+									<p class="mb-1">Funding goal</p>
+								</div>
+							</div>
+							<br />
+							<br />
+                            {% if team.project_video %}
+{#                            <img width="100%" height="350" src="{{ team.project_video.url }}">#}
+{#                                <video width="100%" height="350" src="{{ team.project_video.url }}"></video>#}
+                                <div style="position:relative; width:100%; height:0px; padding-bottom:56.25%;">
+							<iframe width="100%" height="350" src="{{ team.project_video.url }}"></iframe>
+                                </div>
+                            {% else %}
+                                {% if team.project_image_2 %}
+                                <img width="100%" height="350" src="{{ team.project_image_2.url }}">
+                                    {% else %}
+                                    {% endif %}
+                            {% endif %}
+{#                        {% if team.project_image_2 %}#}
+{#                            <img width="100%" height="350" src="{{ team.project_image_2 }}">#}
+{#                                <video width="100%" height="350" src="{{ team.project_video.url }}"></video>#}
+{#                                <div style="position:relative; width:100%; height:0px; padding-bottom:56.25%;">#}
+{#							<iframe style="position:absolute; left:0; top:0; width:100%; height:100%" src="{{ team.project_video.url }}"></iframe>#}
+{#                                </div>#}
+{#                            {% else %}#}
+{#                            {% endif %}#}
+
+						</div>
+					</div>
+
+<br />
+<br />
+					<div class="row">
+                        <div class="col-md-12">
+                        <ul class="nav nav-tabs">
+                          <li class="nav-item">
+                            <a class="nav-link active" href="#">Overview</a>
+                          </li>
+
+                          <li class="nav-item" style="width: 100%">
+
+{#                            <span class="badge badge-pill badge-info float-sm-right" style="margin-left: 5px;margin-top: 5px;">{{ team.get_category_display }}</span>#}
+                        							<span class="badge badge-pill badge-danger float-sm-right" style="margin-left: 0px;margin-top: 5px;"></span>
+
+                          </li>
+                        </ul>
+
+					</div>
+					</div>
+					<br />
+					<br />
+
+					<div class="row">
+						<div class="col-md-4">
+                            {% if team.project_image %}
+							<a href=""><img class="img-fluid" src="{{ team.project_image.url }}" class="img-fluid" /></a>
+                            {% else %}
+                            {% endif %}
+						</div>
+						<div class="col-md-8">
+
+                            <p>{{ team.project_description | safe }}</p>
+
+						</div>
+					</div>
+
+					<br />
+					<br />
+					<ul class="nav nav-tabs" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link active" data-toggle="tab" active" href="#home" role="tab">STORY</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" data-toggle="tab" href="#updates" role="tab">UPDATES</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" data-toggle="tab" href="#comments" role="tab">COMMENTS</a>
+						</li>
+						<li class="nav-item">
+{#							<a class="nav-link disabled" href="#backers" role="tab">BACKERS</a>#}
+						</li>
+					</ul>
+					<br />
+					<br />
+
+					<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="home" role="tabpanel">
+		{{ team.project_story_background | safe }}
+  </div>
+  <div class="tab-pane" id="updates" role="tabpanel">
+<div class="card mb-4">
+  <div class="card-block">
+  {% if backing_objects %}
+      {% for backings in backing_objects %}
+    <h5 class="card-title">{{ backings.user.first_name }} {{ backings.user.last_name|make_list|first }}. –– Backed {{ backings.project.title }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ backings.created_at }}</h6>
+          <p class="card-text"><b>Backed ${{ backings.amount }}</b></p>
+{#    <p class="card-text">{{ backings.message }}</p>#}
+{#    <a href="#" class="card-link">Read more</a>#}
+      {% endfor %}
+      {% else %}
+  {% endif %}
+  </div>
+</div>
+{#<div class="card mb-4">#}
+{#  <div class="card-block">#}
+{#    <h5 class="card-title">The Mid-Campaign March + 300 Backers!</h5>#}
+{#    <h6 class="card-subtitle mb-2 text-muted">March 7</h6>#}
+{#    <p class="card-text">Within the last 24 hours, our campaign has surpassed <b>300 backers and $35,000</b>! THANK YOU to everyone who has graciously donated to our campaign over the past two weeks....</p>#}
+{#    <a href="#" class="card-link">Read more</a>#}
+{#  </div>#}
+{#</div>#}
+{#<div class="card">#}
+{#  <div class="card-block">#}
+{#    <h5 class="card-title">Wow! 50% funded... in the first 9 hours???</h5>#}
+{#    <h6 class="card-subtitle mb-2 text-muted">March 7</h6>#}
+{#    <p class="card-text">Within the last 9 hours, our campaign has made 50% of what we set out to reach. Thanks so much guys!!!  Nunc id hendrerit eros. In porta, urna sed condimentum aliquam, felis orci vestibulum odio, et dictum risus libero at nisi.</p>#}
+{#    <a href="#" class="card-link">Read more</a>#}
+{#  </div>#}
+{#</div>#}
+
+  </div>
+  <div class="tab-pane" id="comments" role="tabpanel">
+{#	  <ul class="comment-section mt-0">#}
+{##}
+{#			<li class="comment user-comment">#}
+{##}
+{#                <div class="info">#}
+{#                    <a href="#">Anie Silverston</a>#}
+{#                    <span>4 hours ago</span>#}
+{#                </div>#}
+{##}
+{#                <a class="avatar" href="#">#}
+{#                    <img src="images/team/pixeliris.jpg" width="35" alt="ProfilePage Avatar" title="Anie Silverston" />#}
+{#                </a>#}
+{##}
+{#                <p>Suspendisse gravida sem?</p>#}
+{##}
+{#			</li>#}
+{##}
+{#			<li class="comment author-comment">#}
+{##}
+{#                <div class="info">#}
+{#                    <a href="#">Jack Smith</a>#}
+{#                    <span>3 hours ago</span>#}
+{#                </div>#}
+{##}
+{#                <a class="avatar" href="#">#}
+{#                    <img src="images/team/commadelimited.jpg" width="35" alt="ProfilePage Avatar" title="Jack Smith" />#}
+{#                </a>#}
+{##}
+{#                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse gravida sem sit amet molestie portitor.</p>#}
+{##}
+{#			</li>#}
+{##}
+{#			<li class="comment user-comment">#}
+{##}
+{#                <div class="info">#}
+{#                    <a href="#">Bradley Jones</a>#}
+{#                    <span>1 hour ago</span>#}
+{#                </div>#}
+{##}
+{#                <a class="avatar" href="#">#}
+{#                    <img src="images/team/pixeliris.jpg" width="35" alt="ProfilePage Avatar" title="Bradley Jones" />#}
+{#                </a>#}
+{##}
+{#                <p>Suspendisse gravida sem sit amet molestie portitor?</p>#}
+{##}
+{#			</li>#}
+{##}
+{#            <li class="comment author-comment">#}
+{##}
+{#                <div class="info">#}
+{#                    <a href="#">Jack Smith</a>#}
+{#                    <span>1 hour ago</span>#}
+{#                </div>#}
+{##}
+{#                <a class="avatar" href="#">#}
+{#                    <img src="images/team/commadelimited.jpg" width="35" alt="ProfilePage Avatar" title="Jack Smith" />#}
+{#                </a>#}
+{##}
+{#                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisee gravida sem sit amet molestie porttitor.</p>#}
+{##}
+{#            </li>#}
+{##}
+{#            <li class="write-new">#}
+{##}
+{#                <form action="#" method="post">#}
+{##}
+{#                    <textarea placeholder="Write your comment here" name="comment"></textarea>#}
+{##}
+{#                    <div>#}
+{#                        <img src="images/team/commadelimited.jpg" width="35" alt="ProfilePage of Bradley Jones" title="Bradley Jones" />#}
+{#                        <button type="submit" class="btn btn-primary">Submit</button>#}
+{#                    </div>#}
+{##}
+{#                </form>#}
+{##}
+{#            </li>#}
+{##}
+{#		</ul>#}
+      <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://esports-equity-llc.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+  <div class="tab-pane" id="settings" role="tabpanel">...</div>
+</div>
+
+
+
+
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="row">
+				<div class="col-sm-11 offset-sm-1">
+					<div class="card ">
+						<div class="card-block" class="pb-1">
+							<div class="row ">
+								<div class="col-sm-12">
+
+{#									<h4>Project by {{ team.user.first_name }} {{ team.user.last_name|make_list|first }}.</h4>#}
+
+									<div class="row ">
+										<div class="col-sm-5">
+                                            {% if team.profile_image %}
+											<a href="{% url 'accounts:profile' profile_pk=team.user.pk %}"><img src="{{ team.profile_image.url }}" class="img-fluid rounded-circle" ></a>
+                                            {% else %}
+                                                <a href="{% url 'accounts:profile' profile_pk=team.user.pk %}"><img src="{% static 'img/main/avatar.jpg' %}" class="img-fluid rounded-circle" style="border: 1px solid #336699;" /></a>
+                                            {% endif %}
+											<br />
+											<br />
+										</div>
+										<div class="col-sm-6">
+                                            <h3 class="mb-0"><strong><a href="{% url 'accounts:profile' profile_pk=team.user.pk %}">Project by {{ team.user.first_name }} {{ team.user.last_name|make_list|first }}.</a></strong></h3>
+{#											<p class="mt-0 mb-0">{{ team.primCity }}, {{ team.primState }}</p>#}
+{#											<p class="">{{ team.user.bio }}</p>#}
+
+										</div>
+
+
+									</div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h4>About the Owner</h4>
+                                            <p>{{ team.profile_biography }}</p>
+                                        </div>
+                                    </div>
+									<a href="{% url 'stripe_api:back_page' project_pk=team.id %}" class="btn btn-lg btn-primary btn-block">Back this project</a><br />
+{#                                {% if request.user ==  %}#}
+{#                                <a href="{% url 'teams:follow' team_id=team.pk %}" class="btn btn-lg btn-primary btn-block">Follow this project</a><br />#}
+                                {% if request.user == team.user %}
+                                <a href="{% url 'accounts:create_project_2' project_pk=team.pk %}" class="btn btn-lg btn-primary btn-block">Edit this project</a><br />
+                                {% endif %}
+{#                                <a href="https://connect.stripe.com/express/oauth/authorize?redirect_uri=https://stripe.com/connect/default/oauth/test&client_id=ca_AlOTQVWj5BENnbWgZ4nTSa7bVCkCngod&state={STATE_VALUE}" class="btn btn-lg btn-primary btn-block">Back this project</a><br />#}
+									<p>This project will only be funded if at least ${{ team.funding_goal }} is pledged by {{ team.duration }}</p>
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+<br />
+<br />
+
+{% if reward_objects %}
+                    <h4>Rewards</h4><hr />
+					<div id="accordion" role="tablist" aria-multiselectable="true">
+
+                        {% for reward in reward_objects %}
+						<div class="card">
+							<div class="card-header" role="tab" id="heading1">
+							<h6 class="mb-0">
+{#								<a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">#}
+								Pledge ${{ reward.reward_amount }}
+{#								</a>#}
+{#                                <a href="{% url 'teams:back_team' pk=project.pk %}" class="btn btn-danger btn-fill">Back Now!</a>#}
+							</h6>
+							</div>
+
+							<div id="collapse1" class="collapse  show" role="tabpanel" aria-labelledby="heading1">
+							<div class="card-block">
+								<h5><strong>{{ reward.reward_title }}</strong></h5>
+                                <p>{{ reward.reward_description }}</p>
+{#								<p>Have more than one device? Get another Android or iOS receiver for your smartphone! Free shipping!</p>#}
+{#								<p>Items included:</p>#}
+{#								<ul>#}
+{#									<li>Receiver</li>#}
+{#									<li>Receiver</li>#}
+{#								</ul>#}
+{#								<small class="text-muted">172 claimed</small><br />#}
+								<small class="text-muted">{{ reward.shipping_details }}</small><br /><br />
+
+{#																	<a href="" class="btn btn-lg btn-primary btn-block">Select this reward</a>#}
+                                {% if user.is_authenticated %}
+                                <form action="{% url 'stripe_api:back_team_3' %}" method="POST">
+
+    {% csrf_token %}
+    <input type='hidden' name='amount' value={{ reward.reward_amount }}00>
+    <input type='hidden' name='project_pk' value={{ project_pk }}>
+                                    <input type='hidden' name='reward_pk' value={{ reward.pk }}>
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_GDrVvjI5isbYy25WNwZuR4sh"
+    data-amount="{{ reward.reward_amount }}00"
+    data-name="Esports Equity"
+    data-description=""
+    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+    data-locale="auto">
+  </script>
+                                    <script>
+        // Hide default stripe button, be careful there if you
+        // have more than 1 button of that class
+        document.getElementsByClassName("stripe-button-el")[{{ forloop.counter0 }}].style.display = 'none';
+    </script>
+                                    <button type="submit" class="btn btn-lg btn-primary btn-block">Select Reward</button>
+                                    {% else %}
+                                    <a class="btn btn-lg btn-primary btn-block" href="{% url 'accounts:login' %}">Select Reward</a>
+                                        {% endif %}
+
+</form>
+{#                                                                <a href="{% url 'teams:back_team' pk=team.pk reward_pk=reward.pk %}" class="btn btn-lg btn-primary btn-block">Back Now!</a>#}
+
+							</div>
+							</div>
+						</div>
+                        {% endfor %}
+                    {% else %}
+                    {% endif %}
+
+
+
+
+{#						<div class="card">#}
+{#							<div class="card-header" role="tab" id="heading2">#}
+{#							<h6 class="mb-0">#}
+{#								<a data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="true" aria-controls="collapse2">#}
+{#								Pledge $2 or more#}
+{#								</a>#}
+{#							</h6>#}
+{#							</div>#}
+{##}
+{#							<div id="collapse2" class="collapse " role="tabpanel" aria-labelledby="heading2">#}
+{#							<div class="card-block">#}
+{#								<h5><strong>SuperBox Receiver</strong></h5>#}
+{#								<p>Have more than one device? Get another Android or iOS receiver for your smartphone! Free shipping!</p>#}
+{#								<p>Items included:</p>#}
+{#								<ul>#}
+{#									<li>Receiver</li>#}
+{#									<li>Receiver</li>#}
+{#								</ul>#}
+{#								<small class="text-muted">172 claimed</small><br />#}
+{#								<small class="text-muted">Ships Worldwide</small><br /><br />#}
+{##}
+{#																	<a href="" class="btn btn-lg btn-primary btn-block">Select this reward</a>#}
+{##}
+{#							</div>#}
+{#							</div>#}
+{#						</div>#}
+{##}
+{##}
+{##}
+{##}
+{#						<div class="card">#}
+{#							<div class="card-header" role="tab" id="heading3">#}
+{#							<h6 class="mb-0">#}
+{#								<a data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="true" aria-controls="collapse3">#}
+{#								Pledge $3 or more#}
+{#								</a>#}
+{#							</h6>#}
+{#							</div>#}
+{##}
+{#							<div id="collapse3" class="collapse " role="tabpanel" aria-labelledby="heading3">#}
+{#							<div class="card-block">#}
+{#								<h5><strong>SuperBox Receiver</strong></h5>#}
+{#								<p>Have more than one device? Get another Android or iOS receiver for your smartphone! Free shipping!</p>#}
+{#								<p>Items included:</p>#}
+{#								<ul>#}
+{#									<li>Receiver</li>#}
+{#									<li>Receiver</li>#}
+{#								</ul>#}
+{#								<small class="text-muted">172 claimed</small><br />#}
+{#								<small class="text-muted">Ships Worldwide</small><br /><br />#}
+{##}
+{#																	<a href="" class="btn btn-lg btn-primary btn-block">Select this reward</a>#}
+{##}
+{#							</div>#}
+{#							</div>#}
+{#						</div>#}
+{##}
+{##}
+{##}
+{##}
+{#						<div class="card">#}
+{#							<div class="card-header" role="tab" id="heading4">#}
+{#							<h6 class="mb-0">#}
+{#								<a data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="true" aria-controls="collapse4">#}
+{#								Pledge $4 or more#}
+{#								</a>#}
+{#							</h6>#}
+{#							</div>#}
+{##}
+{#							<div id="collapse4" class="collapse " role="tabpanel" aria-labelledby="heading4">#}
+{#							<div class="card-block">#}
+{#								<h5><strong>SuperBox Receiver</strong></h5>#}
+{#								<p>Have more than one device? Get another Android or iOS receiver for your smartphone! Free shipping!</p>#}
+{#								<p>Items included:</p>#}
+{#								<ul>#}
+{#									<li>Receiver</li>#}
+{#									<li>Receiver</li>#}
+{#								</ul>#}
+{#								<small class="text-muted">172 claimed</small><br />#}
+{#								<small class="text-muted">Ships Worldwide</small><br /><br />#}
+{##}
+{#																	<a href="" class="btn btn-lg btn-primary btn-block">Select this reward</a>#}
+{##}
+{#							</div>#}
+{#							</div>#}
+{#						</div>#}
+{##}
+{##}
+{##}
+{##}
+{#						<div class="card">#}
+{#							<div class="card-header" role="tab" id="heading5">#}
+{#							<h6 class="mb-0">#}
+{#								<a data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="true" aria-controls="collapse5">#}
+{#								Pledge $5 or more#}
+{#								</a>#}
+{#							</h6>#}
+{#							</div>#}
+{##}
+{#							<div id="collapse5" class="collapse " role="tabpanel" aria-labelledby="heading5">#}
+{#							<div class="card-block">#}
+{#								<h5><strong>SuperBox Receiver</strong></h5>#}
+{#								<p>Have more than one device? Get another Android or iOS receiver for your smartphone! Free shipping!</p>#}
+{#								<p>Items included:</p>#}
+{#								<ul>#}
+{#									<li>Receiver</li>#}
+{#									<li>Receiver</li>#}
+{#								</ul>#}
+{#								<small class="text-muted">172 claimed</small><br />#}
+{#								<small class="text-muted">Ships Worldwide</small><br /><br />#}
+{##}
+{#																	<a href="" class="btn btn-lg btn-primary btn-block">Select this reward</a>#}
+{##}
+{#							</div>#}
+{#							</div>#}
+{#						</div>#}
+{##}
+{##}
+{##}
+{##}
+{#						<div class="card">#}
+{#							<div class="card-header" role="tab" id="heading6">#}
+{#							<h6 class="mb-0">#}
+{#								<a data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="true" aria-controls="collapse6">#}
+{#								Pledge $6 or more#}
+{#								</a>#}
+{#							</h6>#}
+{#							</div>#}
+{##}
+{#							<div id="collapse6" class="collapse " role="tabpanel" aria-labelledby="heading6">#}
+{#							<div class="card-block">#}
+{#								<h5><strong>SuperBox Receiver</strong></h5>#}
+{#								<p>Have more than one device? Get another Android or iOS receiver for your smartphone! Free shipping!</p>#}
+{#								<p>Items included:</p>#}
+{#								<ul>#}
+{#									<li>Receiver</li>#}
+{#									<li>Receiver</li>#}
+{#								</ul>#}
+{#								<small class="text-muted">172 claimed</small><br />#}
+{#								<small class="text-muted">Ships Worldwide</small><br /><br />#}
+{##}
+{#																	<a href="" class="btn btn-lg btn-primary btn-block">Select this reward</a>#}
+{##}
+{#							</div>#}
+{#							</div>#}
+{#						</div>#}
+{##}
+{##}
+{##}
+{##}
+{#						<div class="card">#}
+{#							<div class="card-header" role="tab" id="heading7">#}
+{#							<h6 class="mb-0">#}
+{#								<a data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="true" aria-controls="collapse7">#}
+{#								Pledge $7 or more#}
+{#								</a>#}
+{#							</h6>#}
+{#							</div>#}
+{##}
+{#							<div id="collapse7" class="collapse " role="tabpanel" aria-labelledby="heading7">#}
+{#							<div class="card-block">#}
+{#								<h5><strong>SuperBox Receiver</strong></h5>#}
+{#								<p>Have more than one device? Get another Android or iOS receiver for your smartphone! Free shipping!</p>#}
+{#								<p>Items included:</p>#}
+{#								<ul>#}
+{#									<li>Receiver</li>#}
+{#									<li>Receiver</li>#}
+{#								</ul>#}
+{#								<small class="text-muted">172 claimed</small><br />#}
+{#								<small class="text-muted">Ships Worldwide</small><br /><br />#}
+{##}
+{#																	<a href="" class="btn btn-lg btn-primary btn-block">Select this reward</a>#}
+{##}
+{#							</div>#}
+{#							</div>#}
+{#						</div>#}
+{##}
+{##}
+{##}
+{##}
+{#						<div class="card">#}
+{#							<div class="card-header" role="tab" id="heading8">#}
+{#							<h6 class="mb-0">#}
+{#								<a data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="true" aria-controls="collapse8">#}
+{#								Pledge $8 or more#}
+{#								</a>#}
+{#							</h6>#}
+{#							</div>#}
+{##}
+{#							<div id="collapse8" class="collapse " role="tabpanel" aria-labelledby="heading8">#}
+{#							<div class="card-block">#}
+{#								<h5><strong>SuperBox Receiver</strong></h5>#}
+{#								<p>Have more than one device? Get another Android or iOS receiver for your smartphone! Free shipping!</p>#}
+{#								<p>Items included:</p>#}
+{#								<ul>#}
+{#									<li>Receiver</li>#}
+{#									<li>Receiver</li>#}
+{#								</ul>#}
+{#								<small class="text-muted">172 claimed</small><br />#}
+{#								<small class="text-muted">Ships Worldwide</small><br /><br />#}
+{##}
+{#																	<a href="" class="btn btn-lg btn-primary btn-block">Select this reward</a>#}
+{##}
+{#							</div>#}
+{#							</div>#}
+{#						</div>#}
+{##}
+{##}
+{##}
+{##}
+{#						<div class="card">#}
+{#							<div class="card-header" role="tab" id="heading9">#}
+{#							<h6 class="mb-0">#}
+{#								<a data-toggle="collapse" data-parent="#accordion" href="#collapse9" aria-expanded="true" aria-controls="collapse9">#}
+{#								Pledge $9 or more#}
+{#								</a>#}
+{#							</h6>#}
+{#							</div>#}
+{##}
+{#							<div id="collapse9" class="collapse " role="tabpanel" aria-labelledby="heading9">#}
+{#							<div class="card-block">#}
+{#								<h5><strong>SuperBox Receiver</strong></h5>#}
+{#								<p>Have more than one device? Get another Android or iOS receiver for your smartphone! Free shipping!</p>#}
+{#								<p>Items included:</p>#}
+{#								<ul>#}
+{#									<li>Receiver</li>#}
+{#									<li>Receiver</li>#}
+{#								</ul>#}
+{#								<small class="text-muted">172 claimed</small><br />#}
+{#								<small class="text-muted">Ships Worldwide</small><br /><br />#}
+{##}
+{#																	<a href="" class="btn btn-lg btn-primary btn-block">Select this reward</a>#}
+{##}
+{#							</div>#}
+{#							</div>#}
+{#						</div>#}
+{##}
+{##}
+{##}
+{##}
+{#						<div class="card">#}
+{#							<div class="card-header" role="tab" id="heading10">#}
+{#							<h6 class="mb-0">#}
+{#								<a data-toggle="collapse" data-parent="#accordion" href="#collapse10" aria-expanded="true" aria-controls="collapse10">#}
+{#								Pledge $10 or more#}
+{#								</a>#}
+{#							</h6>#}
+{#							</div>#}
+{##}
+{#							<div id="collapse10" class="collapse " role="tabpanel" aria-labelledby="heading10">#}
+{#							<div class="card-block">#}
+{#								<h5><strong>SuperBox Receiver</strong></h5>#}
+{#								<p>Have more than one device? Get another Android or iOS receiver for your smartphone! Free shipping!</p>#}
+{#								<p>Items included:</p>#}
+{#								<ul>#}
+{#									<li>Receiver</li>#}
+{#									<li>Receiver</li>#}
+{#								</ul>#}
+{#								<small class="text-muted">172 claimed</small><br />#}
+{#								<small class="text-muted">Ships Worldwide</small><br /><br />#}
+{##}
+{#																	<a href="" class="btn btn-lg btn-primary btn-block">Select this reward</a>#}
+{##}
+{#							</div>#}
+{#							</div>#}
+						</div>
+
+
+
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+$('.nav-tabs a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+{)
+</script>
+
+
+
+	<script>
+		var eventTime = moment().add(8, 'hours'); // Timestamp - Sun, 21 Apr 2013 13:00:00 GMT
+		var currentTime = 1366547400; // Timestamp - Sun, 21 Apr 2013 12:30:00 GMT
+		var diffTime = eventTime - currentTime;
+		var duration = moment.duration(diffTime*1000, 'milliseconds');
+		var interval = 1000;
+
+		setInterval(function(){
+		  duration = moment.duration(duration - interval, 'milliseconds');
+			$('#current_time').text(moment().format('MMMM Do YYYY, h:mma'));
+		}, interval);
+	</script>
+
+
+<!--
+<footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <span class="text-muted">&copy; CrowdFundr - by ExpressPixel</span>
+      </div>
+
+      <div class="col-md-4">
+        <ul class="social-media-list">
+
+          <li>
+            <a href="https://github.com/jekyll"><span class="icon icon--github"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">jekyll</span></a>
+
+          </li>
+
+
+
+          <li>
+            <a href="https://twitter.com/jekyllrb"><span class="icon icon--twitter"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">jekyllrb</span></a>
+
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>-->
+
+
+
+
+
+{#<div class="modal fade login-modal-lg" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">#}
+{#  <div class="modal-dialog modal-sm">#}
+{#    <div class="modal-content" style="background: transparent; border: none;">#}
+{##}
+{#            <div class="modal-body">#}
+{##}
+{#            <div class="row">#}
+{##}
+{#                <div class="col-sm-12">#}
+{#                    <div class="row">#}
+{#                        <div class="col-sm-12  pull-right">#}
+{#                            <h4  style="color: #fff; font-weight: 100;">Login</h4>#}
+{#                            <a href="#" data-dismiss="modal" style="position: absolute; top: 0; right: 0;"><i class="icon-close icons" aria-hidden="true" style="color: #fff; font-size: 26px"></i></a>#}
+{#                            <div class="card mt-3" style="background: #fff; padding: 10px">#}
+{#                              <h6 style="color: #000;font-weight: 100;">Already have an account</h6>#}
+{#                                <p>Please login to continue.</p><br />#}
+{#                                <form>#}
+{#                                    <div class="form-group row">#}
+{#                                      <div class="col-sm-12">#}
+{#                                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">#}
+{#                                      </div>#}
+{#                                    </div>#}
+{#                                    <div class="form-group row">#}
+{#                                      <div class="col-sm-12">#}
+{#                                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">#}
+{#                                      </div>#}
+{#                                    </div>#}
+{#                                    <div class="form-group row">#}
+{#                                      <label class="col-sm-2s"></label>#}
+{#                                      <div class="col-sm-10">#}
+{#                                        <div class="form-check">#}
+{#                                          <label class="form-check-label">#}
+{#                                            <input class="form-check-input" type="checkbox"> Remember me#}
+{#                                          </label>#}
+{#                                        </div>#}
+{#                                      </div>#}
+{#                                    </div>#}
+{#                                    <br /><br />#}
+{#                                    <div class="form-group row">#}
+{#                                      <div class="offset-sm-3 col-sm-6 text-center">#}
+{#                                        <a href="account-dashboard.html" class="btn btn-primary btn-block">Sign in</a>#}
+{#                                      </div>#}
+{#                                    </div>#}
+{#                                    <div class="form-group row">#}
+{#                                      <div class="offset-sm-2 col-sm-8 text-center">#}
+{#                                        <a href="" class="mt-2">Forgotten your password</a>#}
+{#                                      </div>#}
+{#                                    </div>#}
+{#                                  </form>#}
+{#                              </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{##}
+{#            </div>#}
+{#            </div>#}
+{#    </div>#}
+{#  </div>#}
+{#</div>#}
+{##}
+{#<div class="modal fade signup-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">#}
+{#  <div class="modal-dialog">#}
+{#    <div class="modal-content" style="background: transparent; border: none;">#}
+{##}
+{#            <div class="modal-body">#}
+{##}
+{#            <div class="row">#}
+{##}
+{#                <div class="col-sm-12">#}
+{#                    <div class="row">#}
+{#                        <div class="col-md-11 col-sm-12">#}
+{#                            <h4  style="color: #fff; font-weight: 100;">Register</h4>#}
+{#                                                        <a href="#" data-dismiss="modal" style="position: absolute; top: 0; right: 0;"><i class="icon-close icons" aria-hidden="true" style="color: #fff; font-size: 26px"></i></a>#}
+{##}
+{#                            <div class="card  mt-3" style="background: #fff; padding: 10px">#}
+{#                              <h6 style="color: #000">New to CrowdFunding?</h6>#}
+{#                                <p>A crowdfunding account is required to continue.</p>#}
+{##}
+{#                                <form role="form">#}
+{#                                    <div class="form-group">#}
+{#                                        <input type="email" class="form-control " placeholder="Enter email">#}
+{#                                    </div>#}
+{#                                    <div class="row">#}
+{#                                        <div class="col-6">#}
+{#                                          <div class="form-group">#}
+{#                                              <input type="text" class="form-control"placeholder="First name">#}
+{#                                          </div>#}
+{#                                        </div>#}
+{##}
+{#                                        <div class="col-6">#}
+{#                                          <div class="form-group">#}
+{#                                              <input type="text" class="form-control"placeholder="Last name">#}
+{#                                          </div>#}
+{#                                        </div>#}
+{#                                      </div>#}
+{#                                    <div class="row">#}
+{#                                        <div class="col-6">#}
+{#                                          <div class="form-group">#}
+{#                                              <input type="password" class="form-control"placeholder="Password">#}
+{#                                          </div>#}
+{#                                        </div>#}
+{##}
+{#                                        <div class="col-6">#}
+{#                                          <div class="form-group">#}
+{#                                              <input type="password" class="form-control"placeholder="Confirm password">#}
+{#                                          </div>#}
+{#                                        </div>#}
+{#                                      </div>#}
+{##}
+{#                                  <div class="text-center">#}
+{#                                    <br /><br />#}
+{#                                    <p>By signing up you agree to our terms and conditions and privacy policy</p>#}
+{#                                    <a href="account-dashboard.html" class="btn btn-primary">Create account</a><br /><br />#}
+{#                                    </div>#}
+{#                                </form>#}
+{##}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{##}
+{##}
+{##}
+{#            </div>#}
+{#            </div>#}
+{#    </div>#}
+{#  </div>#}
+{#</div>#}
+<script>
+
+
+var app = new Vue({
+  el: '#navbar',
+  data: {
+    search: false
+  },
+  methods: {
+    showSearchBar: function () {
+      this.search = true;
+    },
+    hideSearchBar: function () {
+      this.search = false;
+    }
+  }
+{)
+
+</script>
+{% endblock %}
+{#  </body>#}
+{#</html>#}

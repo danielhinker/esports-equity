@@ -1,0 +1,27 @@
+{% extends 'layout-new.html' %}
+{% load static %}
+
+{% block body %}
+    <head>
+        <link rel="stylesheet" href="{% static 'css/success-redirect.css' %}">
+    </head>
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-5">
+            <h2>You have been logged out!</h2>
+            <h3>You will be redirected momentarily.</h3>
+        </div>
+        <div class="col-md-7">
+            <img class="success-image" src="{% static 'img/icons/redirects/loggedout.png' %}">
+        </div>
+    </div>
+
+    </div>
+
+    <script>
+  window.setTimeout(function(){
+    window.location.href = "{% url 'home' %}";
+  }, 4000);
+</script>
+
+{% endblock %}

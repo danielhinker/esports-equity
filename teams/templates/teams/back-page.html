@@ -1,0 +1,125 @@
+{% extends 'layout-new.html' %}
+{% load static %}
+
+
+{% block body %}
+<head>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.payment/1.2.3/jquery.payment.min.js"></script>
+
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script type="text/javascript">
+        Stripe.setPublishableKey('');
+
+        var stripeResponseHandler = function(status, response) {
+            var $form = $('#checkout-form');
+
+            if (response.error) {
+                // Show the errors on the form
+                $form.find('.payment-errors').text(response.error.message);
+                $form.find('.payment-errors').addClass('alert');
+                $form.find('.payment-errors').addClass('alert-error');
+                $form.find('button').prop('disabled', false);
+            } else {
+                // token contains id, last4, and card type
+                var token = response.id;
+                // Insert the token into the form so it gets submitted to the server
+                $form.append($('<input type="hidden" name="stripe_token" />').val(token));
+                // and re-submit
+                $form.get(0).submit();
+            }
+        };
+
+        jQuery(function($) {
+            $('#checkout-form').submit(function(e) {
+                var $form = $(this);
+
+                // Disable the submit button to prevent repeated clicks
+                $form.find('button').prop('disabled', true);
+
+                Stripe.createToken($form, stripeResponseHandler);
+
+                // Prevent the form from submitting with the default action
+                return false;
+            });
+        });
+    </script>
+    <link href="{% static 'css/back-page.css' %}" rel="stylesheet">
+
+</head>
+
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-sm-12">
+<h1>Back this project</h1>
+
+
+
+<form>
+  <fieldset >
+
+
+      {% if reward_objects %}
+                    <h3>Rewards</h3><hr />
+					<div id="accordion" role="tablist" aria-multiselectable="true">
+
+                        {% for reward in reward_objects %}
+
+						<div class="card">
+							<div class="card-header" role="tab" id="heading1">
+							<h6 class="mb-0">
+{#								<a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">#}
+								Pledge ${{ reward.reward_amount }}
+{#								</a>#}
+{#                                <a href="{% url 'teams:back_team' pk=project.pk %}" class="btn btn-danger btn-fill">Back Now!</a>#}
+							</h6>
+							</div>
+
+							<div id="collapse1" class="collapse  show" role="tabpanel" aria-labelledby="heading1">
+							<div class="card-block">
+								<h5><strong>{{ reward.reward_title }}</strong></h5>
+                                <p>{{ reward.reward_description }}</p>
+{#								<p>Have more than one device? Get another Android or iOS receiver for your smartphone! Free shipping!</p>#}
+{#								<p>Items included:</p>#}
+{#								<ul>#}
+{#									<li>Receiver</li>#}
+{#									<li>Receiver</li>#}
+{#								</ul>#}
+{#								<small class="text-muted">172 claimed</small><br />#}
+								<small class="text-muted">{{ reward.shipping_details }}</small><br /><br />
+
+{#																	<a href="" class="btn btn-lg btn-primary btn-block">Select this reward</a>#}
+                                                                <a href="" class="btn btn-lg btn-primary btn-block pull-right">Back Now!</a>
+
+							</div>
+							</div>
+						</div>
+                            </div>
+                        {% endfor %}
+{#                    {% else %}#}
+                    {% endif %}
+  </fieldset>
+</form>
+
+                </div>
+{#   <div class="col-sm-6 ">#}
+{#        <h3>Login History</h3>#}
+{#        <p>This feature provides information about your account usage and other related changes. If you see any suspicious activity, change your password immediately.</p>#}
+{#        <p>No security events found.</p>#}
+{#    </div>#}
+
+
+
+            </div>
+            <br />
+<br />
+<br />
+            </div>
+
+
+{% endblock %}
+
+{#{% endblock %}#}

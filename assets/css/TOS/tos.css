@@ -1,0 +1,42 @@
+.container-fluid{
+    /*text-align: center;*/
+    margin-top: 80px;
+    margin-bottom: 40px;
+}
+
+@media (min-width: 768px){
+    .container-fluid{
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+}
+
+.fading-side-menu{
+    text-align: left;
+    margin-right: 20px;
+}
+
+.point{
+    text-decoration: line-through;
+}
+
+.row p{
+    text-align: left;
+      font-weight: 400;
+      font-size: larger;
+
+}
+
+.h2, h2{
+    font-size: 32px;
+}
+
+.row h2{
+      font-weight: 200;
+  font-size: 35px;
+}
+
+.page-header {
+  text-align: center;
+  margin-top: auto;
+}

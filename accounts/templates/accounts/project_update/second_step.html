@@ -1,0 +1,416 @@
+{% extends 'layout-new.html' %}
+{% load account_extras %}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block title_tag %}Esports Equity: Project Information{% endblock %}
+{% block title %}Project Information{% endblock %}
+
+
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+ <head>
+{# {% block head %}#}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Pricing</title>
+  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search resu...">
+
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="canonical" href="/edit.html">
+  <link rel="alternate" type="application/rss+xml" title="Esports Equity" href="/feed.xml">
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+  <script src="{% static 'js/scrollPosStyler.js' %}"></script>
+  <!-- JavaScript -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.1/vue.min.js" ></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.4/vue.min.js"></script>
+
+ <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=your_API_key"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
+
+
+
+
+
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+{#{% endblock %}#}
+
+</head>
+  <body>
+{% block body %}
+    <!--<nav class="navbar navbar-toggleable-sm navbar-light bg-primary fixed-top"  id="navbar" v-cloak >-->
+  <!--<div class="container top-nav" v-if="!search">-->
+
+  <!--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">-->
+  <!--<span class="navbar-toggler-icon"></span>-->
+<!--</button>-->
+  <!--<a class="navbar-brand" href="index.html">CrowdFundr</a>-->
+
+  <!--<div class="collapse navbar-collapse" id="navbarColor01">-->
+    <!--<ul class="navbar-nav mr-auto" >-->
+      <!--<li class="nav-item active">-->
+        <!--<a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>-->
+      <!--</li>-->
+      <!--<li class="nav-item">-->
+        <!--<a class="nav-link" href="explore.html">Explore</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item">-->
+        <!--<a class="nav-link" href="edit.html">Start a project</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item">-->
+        <!--<a class="nav-link" href="about.html">About us</a>-->
+      <!--</li>-->
+    <!--</ul>-->
+    <!--<ul class="navbar-nav" >-->
+      <!--<li class="nav-item hidden-sm-down">-->
+        <!--<a class="nav-link" href="#" v-on:click.prevent="showSearchBar"><i class="fa fa-search" aria-hidden="true"></i></a>-->
+      <!--</li>-->
+      <!--<li class="nav-item hidden-sm-up">-->
+        <!--<a class="nav-link" href="#" v-on:click.prevent="showSearchBar">Search</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item">-->
+        <!--<a class="nav-link" href="#" data-toggle="modal" data-target=".login-modal-lg">Login</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item">-->
+        <!--<a class="nav-link"href="#" data-toggle="modal" data-target=".signup-modal-lg">Sign up</a>-->
+      <!--</li>-->
+    <!--</ul>-->
+    <!--<form class="form-inline" style="display: none">-->
+      <!--<input class="form-control mr-sm-2" type="text" placeholder="Search">-->
+      <!--<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>-->
+    <!--</form>-->
+  <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="container" v-else>-->
+  <!--<div class="input-group search-bar">-->
+  <!--<span class="input-group-addon"><i class="icon-magnifier icons"></i></span>-->
+  <!--<input type="text" class="form-control form-control-lg" placeholder="Search">-->
+  <!--<span class="input-group-addon" ><a href="" class="text-muted" v-on:click.prevent="hideSearchBar"><i class="icon-close icons"></i></a></span>-->
+<!--</div>-->
+    <!--</div>-->
+
+<!--</nav>-->
+
+    <br />
+<br />
+<br />
+<div class="container-fluid">
+    <div class="row">
+
+
+        <div class="col-sm-12">
+<ul class="breadcrumb">
+  <li><a href="">Basics</a></li>
+  <li><a href="{% url 'accounts:create_project_3' project_pk=team.pk %}">Story</a></li>
+  <li><a href="{% url 'accounts:create_project_4' project_pk=team.pk %}">Perks</a></li>
+  <li><a href="{% url 'accounts:create_project_5' project_pk=team.pk %}">About you</a></li>
+  <li><a href="{% url 'accounts:create_project_6' project_pk=team.pk %}">Account</a></li>
+</ul>
+
+          </div>
+
+
+        <div class="col-sm-8">
+<h1>Let’s get started.</h1>
+<p>Make a great first impression with your project’s title and image, and set your funding goal, campaign duration, and project category.</p>
+{% load widget_tweaks %}
+    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+{% for field in form.visible_fields %}
+    {% if forloop.counter == 1 %}
+  <div class="form-group light-blue" >
+    <label for="exampleInputEmail1">Project image</label>
+        <p class="form-text text-muted">
+      This is the first thing that people will see when they come across your project. Choose an image that’s crisp and text-free.
+    </p>
+                                    <p class="form-control-static">
+                                        <div style="border: 1px dashed #000; background: #fff; width: 100%; display: block; padding: 20px;" class="text-center">
+                                            <p class="text-center">
+                                              <strong>Choose an image from your computer</strong>{{ field|add_class:'form-control' }}
+                                            </p>
+                                            <p>This is the main image associated with your project. Make it count!</p>
+                                            <p>At least <strong>1024x576 pixels</strong> • 16:9 aspect ratio</p>
+                                        </div>
+                                    </p>
+                                    <p class="form-text text-muted">
+                                        JPEG, PNG, GIF, or BMP • 50MB file limit
+                                    </p>
+
+  </div>
+            {% endif %}
+    {% if forloop.counter == 2 %}
+  <div class="form-group light-blue">
+    <label for="exampleInputEmail1">Project title</label>
+    <!--<input type="email" class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">-->
+      {{ field|add_class:'form-control' }}
+
+<p class="form-text text-muted">
+{#  Our search looks through words from your project title and blurb, so make them clear and descriptive of what you’re making. Your profile name will be searchable, too.<br />#}
+
+Thi words will help people find your project, so choose them wisely!
+</p>
+    </div>
+        <script>
+            var inputBox2 = document.getElementById('title-input');
+
+            inputBox2.onkeypress = function(){
+                document.getElementById('title-display').innerHTML = inputBox2.value;
+            }
+        </script>
+{% endif %}
+{% if forloop.counter == 3 %}
+  <div class="form-group light-blue">
+    <label for="exampleInputEmail1">Short blurb</label>
+{#      <textarea id="html-wrapper" action="" method="post" name="html_wrapper" style="display: none;"></textarea>#}
+    {{ field|add_class:"form-control form-control-lg" }}
+          <script>
+            var inputBox = document.getElementById('description-input');
+
+            inputBox.onkeypress = function(){
+                document.getElementById('description-display').innerHTML = inputBox.value;
+            }
+        </script>
+{#      {% endif %}#}
+{#    <textarea class="form-control form-control-lg" rows="3"></textarea>#}
+{#    <textarea>{{ field|add_class:'form-control form-control-lg' }}</textarea>#}
+{#      {% endif %}#}
+<p id="passwordHelpBlock" class="form-text text-muted">
+  Give people a sense of what you’re doing. Skip “Help me” and focus on what you’re making.
+</p>
+    </div>
+{% endif %}
+    {% if forloop.counter == 4 %}
+  <div class="form-group light-blue">
+    <label for="exampleInputEmail1">Category</label>
+    <div class="row">
+      <div class="col-6">
+        {{ field|add_class:'form-control' }}
+      </div>
+
+
+      <div class="col-6">
+{#        <select class="form-control custom-select">#}
+
+{#        </select>#}
+      </div>
+    </div>
+    </div>
+    {% endif %}
+    {% if forloop.counter == 5 %}
+  <div class="form-group light-blue">
+    <label for="exampleInputEmail1">Project location</label>
+      {{ field|add_class:'form-control' }}
+     <div class="input-group  input-group-lg">
+      <span class="input-group-btn">
+{#        <button class="btn btn-secondary" type="button"><i class="fa fa-location-arrow" aria-hidden="true"></i></button>#}
+
+{#      </span>#}
+{#      <input type="text" class="form-control" placeholder="Search for...">#}
+
+    </div>
+  </div>
+    {% endif %}
+    {% if forloop.counter == 6 %}
+  <div class="form-group light-blue">
+    <label for="exampleInputEmail1">Funding duration</label>
+    <div class="input-group">
+{#  <input type="text" class="form-control form-control-lg" placeholder="" aria-describedby="basic-addon2">#}
+        {{ field|add_class:'form-control' }}
+  <span class="input-group-addon" id="basic-addon2">number of days</span>
+</div>
+
+<p id="passwordHelpBlock" class="form-text text-muted">
+  Up to 60 days, but we recommend 30 or fewer
+</p>
+    </div>
+        {% endif %}
+    {% if forloop.counter == 7 %}
+  <div class="form-group light-blue">
+    <label for="exampleInputEmail1">Funding goal</label>
+    <div class="input-group  col-4 pl-0">
+{#  <input type="text" class="form-control form-control-lg" placeholder="" value="0" aria-describedby="basic-addon2">#}
+        {{ field|add_class:'form-control' }}
+  <span class="input-group-addon" id="basic-addon2">USD</span>
+</div>
+    {% endif %}
+    {% endfor %}
+<p id="passwordHelpBlock" class="form-text text-muted">
+  If your project is successfully funded, the following fees will be collected from your funding total:  5% fee and payment processing fees (between 3% and 5%). Please note we do not withhold VAT. If funding isn’t successful, there are no fees.
+</p>
+    </div>
+
+{#  <div class="form-group light-blue">#}
+{#    <label for="exampleInputEmail1">Project collaborators</label>#}
+{##}
+{##}
+{#    <div class="row mb-2">#}
+{#      <div class="col-6">#}
+{#        <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">#}
+{#      </div>#}
+{#      <div class="col-6">#}
+{##}
+{#      </div>#}
+{#    </div>#}
+{##}
+{##}
+{#    <div class="row">#}
+{#      <div class="col-6">#}
+{#        <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">#}
+{#      </div>#}
+{#      <div class="col-6">#}
+{#        <p  class="form-control-static pt-3"><a href="#"><i class="fa fa-plus" aria-hidden="true"></i> Add collaborator</a></p>#}
+{#      </div>#}
+{#    </div>#}
+{##}
+{#    </div>#}
+
+  </fieldset>
+{#        {% endif %}#}
+{#    {% endif %}#}
+
+    <nav class="navbar fixed-bottom navbar-light bg-faded" style="background: #fff; border-top: 1px solid #eee">
+          <div class="container">
+<input type="submit" value='Update' class="btn btn-primary btn-lg float-right" data-wow-delay="0.7s">
+{#    <a href="edit.html" class="btn btn-primary btn-lg float-right">Save campaign</a>#}
+        <a href="{% url 'accounts:profile' profile_pk=request.user.pk %}" class="btn btn-link btn-lg float-right">Discard changes</a>
+
+  </div>
+</nav>
+
+</form>
+
+<br />
+<br />
+<br />
+
+                </div>
+
+
+        <div class="col-sm-4">
+        <div class="row">
+        <div class="col-sm-10 offset-sm-2">
+
+
+               <strong>Getting started?</strong>
+               <p>Visit our Handbook to read discussions about preparing for a project and more.</p>
+               <br />
+               <strong>Preview</strong>
+<hr />
+
+					          <div class="card box">
+{#		<a href="project.html" >#}
+                                  {% if team.project_image %}
+		<img src="{{ team.project_image.url }}" class="img-fluid hidden-xs-down"/>
+		<img src="{{ team.project_image.url }}" class="img-fluid hidden-sm-up"/>
+                                  {% else %}
+                                  <img src="http://i.expresspixel.com/unsplash.it/310/210?image=11" class="img-fluid hidden-xs-down"/>
+		<img src="http://i.expresspixel.com/unsplash.it/610/210?image=11" class="img-fluid hidden-sm-up"/>
+                                  {% endif %}
+{#	</a>#}
+
+	<div class="card-block" class="pb-1" style="position: relative; padding-bottom: 60px; min-height: 250px;">
+
+				<h6><a href="">{{ team.title }}</a></h6>
+				<p class="text-muted">By <strong><a href="" class="text-muted">{{ team.user.first_name }} {{ team.user.last_name|make_list|first }}</a></strong></p>
+				<p class="desc">{{ team.short_description }}</p>
+
+				<div style="position: absolute; bottom: 10px; width: 86%; ">
+				<div class="progress">
+  					<div class="progress-bar" role="progressbar" style="width: 76%" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+				<p class="mb-1">76% funded</p>
+				</div>
+
+
+</div>
+
+<div class="card-footer text-muted">
+                                    <div class="row ">
+                                            <div class="col-12">
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-4 text-center">
+                                                        <p class="mt-0 mb-0">Backers</p>
+                                                        {% if not team.backed_by %}
+                                                        <h6 class="mt-0 mb-0"><strong>0</strong></h6>
+                                                        {% else %}
+                                                        <h6 class="mt-0 mb-0"><strong>{{ team.backed_by.count }}</strong></h6>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col-4 text-center">
+                                                        <p class="mt-0 mb-0">Pledged</p>
+                                                        {% if not team.current_raise %}
+                                                        <h6 class="mt-0 mb-0"><strong>&dollar;0</strong></h6>
+                                                        {% else %}
+                                                        <h6 class="mt-0 mb-0"><strong>&dollar;{{ team.current_raise }}</strong></h6>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col-4 text-center">
+                                                        <p class="mt-0 mb-0">Days&nbsp;Left</p>
+                                                        <h6 class="mt-0 mb-0"><strong>{{ team.duration|days_left }}</strong></h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+</div>
+
+          </div>
+          </div>
+          </div>
+
+
+            </div>
+            <br />
+<br />
+<br />
+            </div>
+
+
+
+
+
+
+{#  <script>#}
+{#      function ajaxSave() {#}
+{#            var ed = tinyMCE.get('tinymce_short').getContent();#}
+{#            console.log(" ->" + ed );#}
+{##}
+{#            $("textarea#html_wrapper").val( ed );#}
+{##}
+{#            #}
+{#            console.log(   " -> " +  $("textarea#html_wrapper").val(  ));#}
+{#        }#}
+{#  </script>#}
+
+
+
+
+
+
+
+
+
+  {% endblock %}
+  </body>
+</html>

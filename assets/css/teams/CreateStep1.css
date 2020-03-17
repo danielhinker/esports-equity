@@ -1,0 +1,56 @@
+body{
+    /*font-family: stheiti;*/
+    padding-top: 70px;
+  padding-bottom: 0px;
+  background-color: #eee;
+  /*background-image: url("../../img/main/logopng2.png");*/
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.page-header{
+    border-bottom: 1px solid #000;
+}
+
+.container-fluid{
+    margin-top: 40px;
+    text-align: center;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.form-horizontal{
+    /*margin-left: 20%;*/
+    /*margin-right: 20%;*/
+    background-color: transparent;
+    border: hidden;
+    width: 50%;
+    margin: 45px auto;
+    margin-bottom: 10%;
+}
+
+.form-horizontal .form-group{
+    width: 60%;
+    margin-left: 35%;
+}
+
+.form-control{
+    height: 50px;
+    width: 50%;
+}
+
+.control-label{
+    font-size: 20px;
+    /*margin-right: 10px;*/
+}
+
+.btn-primary{
+    color: #000;
+    background-color: transparent;
+    border-color: #000;
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 70px;
+    margin-bottom: 25px;
+}
+

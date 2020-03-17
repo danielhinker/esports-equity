@@ -1,0 +1,247 @@
+{% extends 'layout.html' %}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block title_tag %}Welcome to Esports Equity{% endblock %}
+{% block title %}Become part of the esports scene{% endblock %}
+
+{% block body %}
+  <head>
+    <link href="{% static 'css/buttons/button.css' %}" rel="stylesheet">
+    <link href="{% static 'css/land.css' %}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+
+  </head>
+
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img class="first-slide" src="{% static 'img/main/own.png' %}" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Own The Scene</h1>
+              <p>By using our site, you can help eSports grow while becoming a part of the scene.</p>
+              <p><a class="btn btn-lg btn-primary" href="{% url 'accounts:signup' %}" role="button">Signup Now</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="second-slide" src="{% static 'img/main/team.png' %}" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Support Your Team</h1>
+              <p>Help a new esports company rise to their next level by investing in their brand.</p>
+              <p><a class="btn btn-lg btn-primary" href="{% url 'accounts:signup' %}" role="button">Signup Now</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="third-slide" src="{% static 'img/main/thirdimage2.png' %}" alt="Third slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Fund Your Dream</h1>
+              <p>You own part of the company in which you choose to invest.<br> This means that when the team does well, you'll do well.</p>
+              <p><a class="btn btn-lg btn-primary" href="{% url 'accounts:signup' %}" role="button">Signup Now</a></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+{#        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>#}
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+{#        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>#}
+        <span class="sr-only">Next</span>
+      </a>
+    </div><!-- /.carousel -->
+
+
+    <div class="container marketing">
+      <div class="page-header">
+          <h1>Equity Crowdfunding</h1>
+      </div>
+
+      <div class="row" id="pc">
+        <div class="col-md-6 leftimage image-responsive-before"><img src="{% static 'img/land/equitydemo.jpg'%}"></div>
+        <div class="col-md-6 righttext">
+          <h2>Teams Sell Their Shares</h2>
+{#          <p>Teams sell part of their equity, you can invest in them and own percentage of the team.</p>#}
+            <p>Teams sell part of their equity in order to raise money to pay for things like salaries and other expenses linked to running a team. In exchange, you get part of the company so you can benefit when the team does well.</p>
+        </div>
+
+        <div class="col-md-6 leftimage image-responsive-after"><img src="{% static 'img/land/equitydemo.jpg'%}"></div>
+
+      </div>
+      <div class="row" id="pc">
+        <div class="col-md-6 lefttext">
+          <h2>Choose Your Company</h2>
+          <p>Browse through a variety of teams and companies in the esports scene that interest you and read up on the details of their business to see if you like the company.
+        </p>
+        </div>
+        <div class="col-md-6 rightimage"><img src="{% static 'img/land/selectiondemo.png'%}"></div>
+      </div>
+      <div class="row" id="pc">
+        <div class="col-md-6 leftimage image-responsive-before"><img src="{% static 'img/land/investdemo.png'%}"></div>
+        <div class="col-md-6 righttext">
+          <h2>Invest in a Company</h2>
+          <p>Once you find a team or company that you like, you can invest in them. If their funding campaign is successful, then you become a partial owner of that team with everything that entails.</p>
+        </div>
+        <div class="col-md-6 leftimage image-responsive-after"><img src="{% static 'img/land/investdemo.png'%}"></div>
+      </div>
+
+      <div class="row well" id="pc">
+        <div class="col-md-12">
+          <h2>Involve in esports</h2>
+          <p>
+              Esports is one of the fastest growing markets in the world. Professional sports teams,
+              venture capital firms, and entertainment investors are pouring money into the scene so they
+              can reap the rewards later on down the road. We  firmly believe that an investment in esports
+              now could pay off massively down the road.
+          </p>
+            <div id="container" class="landing-chart" style="min-width: 300px; height: 400px; margin: 20px 0px 0px 0px"></div>
+        <script>
+            Highcharts.chart('container', {
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: 'esports Revenue Growth (Global)'
+                    },
+                     credits: {
+                        enabled: false
+                      },
+                    xAxis: {
+                        type: 'category',
+                        labels: {
+                            rotation: -45,
+                            style: {
+                                fontSize: '13px',
+                                fontFamily: 'Verdana, sans-serif'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'US Dollars(million)'
+                        }
+                    },
+                    legend: {
+                        enabled: false
+                    },
+                    tooltip: {
+                        pointFormat: 'Revenue: <b>{point.y:.1f} millions</b>'
+                    },
+                    series: [{
+                        name: 'revenue',
+                        data: [
+                            ['2015', 325],
+                            ['2016', 493],
+                            ['2017', 696],
+                            ['2020', 1488]
+                        ],
+                        dataLabels: {
+                            enabled: true,
+                            rotation: 0,
+                            color: '#FFFFFF',
+                            align: 'right',
+                            format: '{point.y:.1f}', // one decimal
+                            y: 10, // 10 pixels down from the top
+                            style: {
+                                fontSize: '13px',
+                                fontFamily: 'STHeiti'
+                            }
+                        }
+                    }]
+                });
+
+        </script>
+        </div>
+{#        <div class="col-md-6 rightimage"><img src="{% static 'img/land/involvedemo.png'%}"></div>#}
+      </div>
+
+
+{#      <div class="jumbotron">#}
+{#        <h2>Coming Soon...</h2>#}
+{#        <p><small>Sign up with your email and get occasional updates from us about teams and companies you can invest in.#}
+{#            </small></p>#}
+{#        <p><a class="btn btn-lg btn-outline btn-theme btn-primary" href="{% url 'accounts:signup' %}" role="button">Register</a></p>#}
+{#      </div>#}
+    </div>
+
+        <div class="chart">
+            <h2>If their funding campaign is successful,<br> then you become a partial owner of that team with everything that entails.</span></h2>
+            <h3>We only take a percentage of your total funds</h3>
+            <div id="container1" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto">
+
+                <script>
+                    Highcharts.chart('container1', {
+                        chart: {
+                            plotBackgroundColor: null,
+                            plotBorderWidth: null,
+                            plotShadow: false,
+                            type: 'pie',
+                        },
+                         credits: {
+                            enabled: false
+                          },
+                        tooltip: {
+                            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        },
+                        plotOptions: {
+                            pie: {
+                                allowPointSelect: true,
+                                cursor: 'pointer',
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                    style: {
+                                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                                    }
+                                }
+                            }
+                        },
+                        series: [{
+                            name: 'Percentage',
+                            colorByPoint: true,
+                            data: [{
+                                name: 'Your total raise',
+                                y: 95
+                            }, {
+                                name: 'How much we take',
+                                y: 5,
+                                sliced: true,
+                                selected: true
+                            }]
+                        }]
+                    });
+                </script>
+
+            </div>
+
+        </div>
+
+
+        <div class="join-now">
+            <h1>Start fundraising now!</h1>
+            <h3>Register now and start your own fund raising when we officially launch</h3>
+            <p><a class="btn btn-lg btn-outline btn-theme btn-primary btn-join" href="{% url 'accounts:signup' %}" role="button">Register</a></p>
+        </div>
+{% endblock %}
+

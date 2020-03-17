@@ -1,0 +1,38 @@
+/*.mt-5{*/
+    /*margin-top: 8rem !important;*/
+/*}*/
+
+#profile-avartar{
+    border: 1px solid #000;
+    margin-bottom: 30px;
+}
+
+@media (min-width: 768px){
+    .productinfo{
+        padding: 0px 0px;
+    }
+}
+
+.card{
+    border: 1px solid rgba(0,0,0,0.125);
+    border-radius: 0.25em;
+}
+
+#followed-projects{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    /*background-color: rgba(0,0,0,0.1);*/
+    margin-top: 0.2rem !important;
+}
+#recently-backed{
+    margin-top: 0.2rem !important;
+}
+
+#backed-projects{
+    margin-top: 0.2rem !important;
+}
+
+.text-center{
+    text-align: left !important;
+}
+

@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ player.title }} - {{ player.team.title }}{% endblock %}
+
+{% block body_content %}
+<article>
+    <h2><a href="">{{ player.team.title }}</a></h2>
+    <h3>{{ player.title }}</h3>
+    {{ player.content|linebreaks }}
+</article>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'layout-new.html' %}
+{% load static %}
+
+
+
+{% block body %}
+    <head>
+        <link rel="stylesheet" href="{% static 'css/success-redirect.css' %}">
+    </head>
+    <div class="container-fluid" style="margin-bottom: 200px;">
+    <div class="row">
+        <div class="col-md-5">
+            <h2>Thank you for backing this team!</h2>
+{#            <h4>Your reward will be shipped as soon as possible from the team owner</h4>#}
+            <h4>You will be redirected to the team page soon</h4>
+        </div>
+        <div class="col-md-7">
+            <img class="success-image" src="{% static 'img/icons/redirects/thankyou.png' %}">
+        </div>
+    </div>
+
+    </div>
+
+{% endblock %}

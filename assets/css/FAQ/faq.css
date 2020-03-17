@@ -1,0 +1,60 @@
+.container-fluid{
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+
+.container-fluid button{
+    margin-bottom: 30px;
+    margin-top: 30px;
+    text-align: left;
+}
+
+
+.btn{
+    color:white;
+}
+
+.btn-info1{
+    background-color: rgba(51, 161, 255,0.7);
+}
+
+.btn-info2{
+    background-color: rgba(0, 158, 255,0.7);
+}
+
+.btn-info3{
+    background-color: rgba(0, 116, 255,0.7);
+}
+
+.btn-info4{
+    background-color: rgba(0, 96, 179,0.7);
+}
+
+.btn{
+    font-size: 20px;
+    padding:10px 160px;
+    text-align: left;
+}
+
+.question p{
+    margin-left: 15%;
+    margin-right: 15%;
+    font-size: large;
+}
+
+
+.question{
+    align-content: center;
+}
+
+.faqglyphicon{
+    float: right;
+}
+
+@media(max-width:991px){
+
+}

@@ -1,0 +1,171 @@
+body{
+    font-family: stheiti;
+      /*font-family: 'Lato', sans-serif;*/
+    padding-top: 70px;
+  padding-bottom: 0px;
+  background-color: #eee;
+  /*background-image: url("../../img/main/logopng2.png");*/
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url("../../img/main/logonew.png") fixed center center;
+
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.page-header{
+    border-bottom: 1px solid #000;
+}
+
+.container-fluid{
+    margin-bottom: 100px;
+    margin-top: 0px;
+    text-align: center;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.form-horizontal{
+    /*margin-left: 20%;*/
+    /*margin-right: 20%;*/
+    background-color: transparent;
+    border: hidden;
+    width: 50%;
+    margin: 45px auto;
+    margin-bottom: 10%;
+}
+
+.form-horizontal .form-group{
+    width: 60%;
+    margin-left: 35%;
+}
+
+.form-control{
+    height: 50px;
+    width: 50%;
+}
+
+.control-label{
+    font-size: 20px;
+    /*margin-right: 10px;*/
+}
+
+.btn-primary{
+    color: #000;
+    background-color: transparent;
+    border-color: #000;
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 70px;
+    margin-bottom: 25px;
+}
+
+/*.option{*/
+    /*height: 100px;*/
+/*}*/
+
+.option h3{
+    margin-top: 110px;
+    color: black;
+}
+.option p{
+    text-align: center;
+    margin-bottom: 40px;
+    margin-left: 15px;
+    margin-right: 15px;
+    color: black;
+}
+.option{
+    margin-top: 80px;
+    margin-bottom: 100px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
+    height: 450px;
+    width: 40%;
+    margin-left:5%;
+    margin-right: 5%;
+}
+
+.option:hover{
+  -moz-box-shadow: 0 0 10px #ccc;
+  -webkit-box-shadow: 0 0 10px #ccc;
+  box-shadow: 0 0 10px #ccc;
+  transition: all 0.3s ease 0s;
+}
+/*.option1{*/
+    /*background-color: rgba(255,77,77,0.4);*/
+/*}*/
+
+.option1{
+    background-color:  rgba(0, 96, 179,0.3);
+}
+
+.option2{
+    background-color: rgba(177,219,255,0.3);
+}
+
+.option3{
+    background-color: rgba(0,128,255,0.3)
+}
+
+.option4{
+    background-color: rgba(0,90,179,0.3);
+}
+
+.option1:hover{
+    background-color: rgba(0, 96, 190,0.6);
+}
+/*.option2{*/
+    /*background-color: rgba(177,219,255,0.4);*/
+/*}*/
+.option2:hover{
+    background-color: rgba(177,219,255,0.7);
+}
+
+/*.option3{*/
+    /*background-color: rgba(0,128,255,0.3);*/
+/*}*/
+.option3:hover{
+    background-color: rgba(0,128,255,0.7);
+}
+
+/*.option4{*/
+    /*background-color: rgba(0,90,179,0.4);*/
+/*}*/
+.option4:hover{
+    background-color: rgba(0,90,179,0.8);
+}
+
+
+@media screen and (min-width: 992px) and (max-width: 1200px){
+    .container-fluid{
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px){
+    .container-fluid{
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+}
+
+@media (max-width: 768px){
+    .container-fluid{
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+    .width{
+        width: 0%;
+    }
+    .col-xs-5{
+        width: 90%;
+    }
+    .option{
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+}
+
+

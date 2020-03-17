@@ -1,0 +1,30 @@
+{% load static %}
+<head>
+
+      <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+
+</head>
+
+<h3>My Services</h3>
+<form method="POST" enctype="multipart/form-data">
+{{ formset.management_form }}
+{% csrf_token %}
+{% for form in formset %}
+    <div class='table'>
+    <table class='no_error'>
+        {{ form.as_table }}
+    </table>
+    </div>
+{% endfor %}
+<input type="submit" value='Next' class="btn btn-primary btn-lg float-right" data-wow-delay="0.7s">
+</form>
+
+{#<input type="button" value="Add More" id="add_more">#}
+<p id="add_more">add more</p>
+    <script src="{% static 'js/vendor/jquery.formset.js' %}"></script>
+<script>
+    $('.table').formset({
+        addText: 'Add Reward',
+        deleteText: 'Remove'
+    });
+</script>

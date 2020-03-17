@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block title_tag %}eSports Equity: Teams{% endblock %}
+{% block title %}Teams{% endblock %}
+
+{% block body_content %}
+<h3>This is the teams page! MORE TEAMS COMING SOON</h3>
+
+<div class="cards">
+    {% for team in teams %}
+
+    <div class="card">
+    <img src="" style="width:280px;height:228px">
+        <header><a href="{% url 'teams:detail' pk=team.pk %}">{{ team.title }}</a></header>
+        <div class="card-copy">
+            {{ team.description | safe }}
+            {{ team.roster }}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+
+
+

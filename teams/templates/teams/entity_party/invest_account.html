@@ -1,0 +1,152 @@
+{% extends 'layout.html' %}
+{% load bootstrap3 %}
+{% load static %}
+{% load static %}
+
+{% block title_tag %}eSports Equity: Investor Account Info{% endblock %}
+{% block title %}Investor Account Information{% endblock %}
+
+{% block body %}
+    <head>
+        <link href="{% static 'css/teams/entity.css' %}" rel="stylesheet">
+        <link href="{% static 'css/buttons/button.css' %}" rel="stylesheet">
+        <link href="{% static 'css/teams/form_responsive.css' %}" rel="stylesheet">
+        <script type='text/javascript' src='{% static 'js/jquery-ui.js' %}'></script>
+        <link rel='stylesheet' type='text/css' href='{% static 'css/jquery-ui/smoothness/jquery-ui.css' %}' />
+    </head>
+    <div class="container-fluid">
+        <div class="page-header">
+            <h1>Investor Account Information</h1>
+        </div>
+
+    <div class="form-general">
+        {% load widget_tweaks %}
+        <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+            <div class="form-horizontal">
+{#            {% for field in form.visible_fields%}#}
+{#              <div class="form-group">#}
+{#                  <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>#}
+{#                        {{ field|add_class:'form-control' }}#}
+{#                          <script>#}
+{#                            $(function() {#}
+{#                                $( "#datepicker" ).datepicker();#}
+{#                            });#}
+{#                        </script>#}
+{#                </div>#}
+{#                {% endfor %}#}
+
+{#                <div class="form-group">#}
+{#                  <label for="{{ form.duration.id_for_label }}" class="control-label pull-left">Duration</label>#}
+{#                        {{ form.duration|add_class:'form-control'}}#}
+{#                </div>#}
+            {% for field in form.visible_fields%}
+                {% if forloop.counter == 1 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text"><span class="glyphicon glyphicon-triangle-right"></span>Select your KYC Status</p>
+                    </div>
+                {% endif %}
+                {% if forloop.counter == 2 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text"><span class="glyphicon glyphicon-triangle-right"></span>Choose the type of your Investor Account.</p>
+                    </div>
+                {% endif %}
+                {% if forloop.counter == 3 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text"><span class="glyphicon glyphicon-triangle-right"></span>Pick the type of your Investor Account.</p>
+                    </div>
+                {% endif %}
+                {% if forloop.counter == 4 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text"><span class="glyphicon glyphicon-triangle-right"></span>Is your Account International or Domestic?</p>
+                    </div>
+                {% endif %}
+                {% if forloop.counter == 5 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text"><span class="glyphicon glyphicon-triangle-right"></span>Enter the Street Address of your Investor Account.</p>
+                    </div>
+                {% endif %}
+                {% if forloop.counter == 6 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text"><span class="glyphicon glyphicon-triangle-right"></span>The City of Your Investor Account.</p>
+                    </div>
+                {% endif %}
+                {% if forloop.counter == 7 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text"><span class="glyphicon glyphicon-triangle-right"></span>The state your Investor account is located in (Leave blank if your account
+                        is not domestic).</p>
+                    </div>
+                {% endif %}
+                {% if forloop.counter == 8 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text"><span class="glyphicon glyphicon-triangle-right"></span>Choose the Country your Investor account.</p>
+                    </div>
+                {% endif %}
+                {% if forloop.counter == 9 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text"><span class="glyphicon glyphicon-triangle-right"></span>Please enter the Zip code of your entity's address.</p>
+                    </div>
+                {% endif %}
+        {% endfor %}
+
+              <button type="submit" class="btn btn-lg btn-primary pull-right">Save and Continue</button>
+              <button type="submit" class="btn btn-lg btn-primary pull-left">Go Back</button>
+            </div>
+        </form>
+    </div>
+        </div>
+{% endblock %}

@@ -1,0 +1,151 @@
+{% extends 'layout.html' %}
+{% load bootstrap3 %}
+{% load static %}
+{% load static %}
+
+{% block title_tag %}eSports Equity: Individual Information{% endblock %}
+{% block title %}Individual Investor Information{% endblock %}
+
+{% block body %}
+    <head>
+        <link href="{% static 'css/teams/entity.css' %}" rel="stylesheet">
+        <link href="{% static 'css/buttons/button.css' %}" rel="stylesheet">
+        <link href="{% static 'css/teams/form_responsive.css' %}" rel="stylesheet">
+        <script type='text/javascript' src='{% static 'js/jquery-ui.js' %}'></script>
+        <link rel='stylesheet' type='text/css' href='{% static 'css/jquery-ui/smoothness/jquery-ui.css' %}' />
+    </head>
+    <div class="container-fluid">
+        <div class="page-header">
+            <h1>Individual Investor Information</h1>
+        </div>
+
+    <div class="form-general">
+        {% load widget_tweaks %}
+        <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+            <div class="form-horizontal">
+            {% for field in form.visible_fields%}
+                {% if forloop.counter == 1 %}
+                    <div class="col-md-6" id="first-name">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+{#                    <div class="col-md-4">#}
+{#                        <p class="help-text"><span class="glyphicon glyphicon-triangle-right"></span>Enter your first name.</p>#}
+{#                    </div>#}
+                {% endif %}
+                {% if forloop.counter == 2 %}
+                    <div class="col-md-6">
+                      <div class="form-group" id="last-name">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+{#                    <div class="col-md-4">#}
+{#                        <p class="help-text"><span class="glyphicon glyphicon-triangle-right"></span>Enter your last name.</p>#}
+{#                    </div>#}
+                {% endif %}
+                {% if forloop.counter == 3 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                                <script>
+                                    $(function() {
+                                        $( "#datepicker" ).datepicker(
+                                            {
+                                                changeYear: true,
+                                                changeMonth: true,
+                                                yearRange: '1930:2017',
+                                            }
+                                        );
+                                    });
+{#                                    // Getter#}
+{#                                    var yearRange = $( "#datepicker" ).datepicker( "option", "yearRange" );#}
+{##}
+{#                                    // Setter#}
+{#                                    $( "#datepicker" ).datepicker( "option", "yearRange", "2002:2012" );#}
+                                </script>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text"><span class="glyphicon glyphicon-triangle-right"></span>Select your Date of Birth</p>
+                    </div>
+                {% endif %}
+                {% if forloop.counter == 4 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text"><span class="glyphicon glyphicon-triangle-right"></span>Choose who you are investing for, either for yourself or for another person or entity.</p>
+                    </div>
+                {% endif %}
+                {% if forloop.counter == 5 %}
+                    <div class="col-md-6" id="current-annual-income">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+{#                    <div class="col-md-4">#}
+{#                        <p class="help-text"><span class="glyphicon glyphicon-triangle-right"></span>Enter party's current annual income.</p>#}
+{#                    </div>#}
+                {% endif %}
+                {% if forloop.counter == 6 %}
+                    <div class="col-md-6" id="average-annual-income">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+{#                    <div class="col-md-4">#}
+{#                        <p class="help-text"><span class="glyphicon glyphicon-triangle-right"></span>Enter party's average annual income, make sure it's average.</p>#}
+{#                    </div>#}
+                {% endif %}
+                {% if forloop.counter == 7 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text"><span class="glyphicon glyphicon-triangle-right"></span>Enter party's current household income.</p>
+                    </div>
+                {% endif %}
+                {% if forloop.counter == 8 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text"><span class="glyphicon glyphicon-triangle-right"></span>Enter party's average household income, please make sure it's the average.</p>
+                    </div>
+                {% endif %}
+                {% if forloop.counter == 9 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text"><span class="glyphicon glyphicon-triangle-right"></span>Enter the total household networth.</p>
+                    </div>
+                {% endif %}
+        {% endfor %}
+
+              <button type="submit" class="btn btn-lg btn-outline btn-theme btn-primary pull-right">Save and Continue</button>
+              <button type="submit" class="btn btn-lg btn-outline btn-theme btn-primary pull-left">Go Back</button>
+            </div>
+        </form>
+    </div>
+        </div>
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+{% load bootstrap3 %}
+{% load static %}
+{% block title_tag %}eSports Equity: Teams{% endblock %}
+{% block title %}Teams{% endblock %}
+
+{#{% block body_content %}#}
+{#<h3>This is the teams page! MORE TEAMS COMING SOON</h3>#}
+{##}
+{#<div class="cards">#}
+{#    {% for team in team_list %}#}
+{##}
+{#    <div class="card">#}
+{#    <img src="" style="width:280px;height:228px">#}
+{#        <header><a href="{% url 'teams:detail' pk=team.pk %}">{{ team.title }}</a></header>#}
+{#        <div class="card-copy">#}
+{#            {{ team.description }}#}
+{#            {{ team.roster }}#}
+{#        </div>#}
+{#    </div>#}
+{#    {% endfor %}#}
+{#</div>#}
+{#{% endblock %}#}
+
+
+{% block body %}
+    <head>
+        <link href="{% static 'css/browse.css' %}" rel="stylesheet">
+
+    </head>
+    <div class="container-fluid">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="nav-header">
+                <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img-circle" src="{% static 'img/icons/userimg.png' %}" >
+                             </span>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">username</strong>
+                             </span> </span> </a>
+                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="#">Mailbox</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Logout</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li  class="active"><a href="#">All Teams<span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Featured Teams</a></li>
+            <li><a href="#">New Teams</a></li>
+            <li><a href="#">Nearly Funded</a></li>
+            <li><a href="#">Equity Crowdfunding</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">CS:GO</a></li>
+            <li><a href="">League of Legends</a></li>
+            <li><a href="">Overwatch</a></li>
+            <li><a href="">Rocket League</a></li>
+            <li><a href="">DOTA 2</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Following</a></li>
+            <li><a href="">Funded</a></li>
+            <li><a href="">Followed by Friends</a></li>
+          </ul>
+        </div>
+                {% load widget_tweaks %}
+                <div class="col-sm-9 offset-3 col-md-10 col-md-offset-2 main">
+                  <h1 class="page-header">All Teams</h1>
+                      <ol class="breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">All Teams</a></li>
+                      </ol>
+
+                <div class="row placeholders">
+                {% for team in followed_list %}
+                <div class="col-xs-6 col-sm-3 placeholder">
+                <div class="productinfo">{{ team.image.url }}</div>
+                <h4>{{ team.team.title }}</h4>
+                <p><span class="text-muted">{{ team.description }}</span></p>
+                </div>
+
+                {% endfor %}
+
+
+                </div>
+                </div>
+
+
+
+
+    </div>
+{% endblock %}

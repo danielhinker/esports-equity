@@ -1,0 +1,664 @@
+{% extends "layout-new.html" %}
+{% load account_extras %}
+{% load static %}
+
+{% block title_tag %}Trending Teams | {{ block.super }}{% endblock %}
+
+{% block body %}
+{#<html lang="en">#}
+    <head>
+        <link rel="stylesheet" href="{% static 'css/crowdfund/css/main.css' %}">
+        <link rel="stylesheet" href="{% static 'css/crowdfund/css/leaderboard.css' %}">
+    </head>
+        {% for team in team_list %}
+            {% if team.is_verified %}
+            <div class="container-fluid inner mt-5 hidden-sm-up">
+                <div>
+                    <div class="card" style="border: hidden;">
+                        <div class="ribbon-wrapper">
+                            <div class="ribbon-front">
+                                Staff Pick
+                            </div>
+                            <div class="ribbon-edge-topleft"></div>
+                            <div class="ribbon-edge-topright"></div>
+                            <div class="ribbon-edge-bottomleft"></div>
+                            <div class="ribbon-edge-bottomright"></div>
+                            <div class="ribbon-back-left"></div>
+                            <div class="ribbon-back-right"></div>
+                        </div>
+                        {% if team.project_image %}
+                        <a href="{% url 'teams:detail' team.id %}" class="thumbnaidl"><img class="img-fluid" src="{{ team.project_image.url }}" /></a>
+                            {% else %}
+                            {% endif %}
+
+                        <div class="card-block">
+                            <div class="row ">
+                                    <div class="col-sm-6">
+
+                                        <!--<a href="" class="thumbnail"><img class="img-fluid img-thumbnail" src="images/eat-1892990_1920.jpg" /></a>-->
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h4 class="display-8"><a href="{% url 'teams:detail' team.id %}">{{ team.title }}</a></h4>
+                                        <p class="text-muted">By <strong><a href="/project" class="text-muted">Otto Payne</a></strong> in <strong>London, UK</strong></p>
+                                        <p>{{ team.description | safe }}</p>
+                                            <br />
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-striped progress-bar-animated active" role="progressbar" style="width: {% widthratio team.current_raise team.funding_goal 100 %}%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            <p>{% widthratio team.current_raise team.funding_goal 100 %}% funded</p>
+                                    </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer text-muted mt-4" style="background: #f7f8fa">
+                            <div class="row ">
+                                    <div class="col-sm-12">
+                                        <div class="row ">
+                                            <div class="col">
+                                                <p class="mt-0 mb-0">Pledged</p>
+                                                <h5 class="mt-0 mb-0">&dollar;50,000</h5>
+                                            </div>
+                                            <div class="col">
+                                                <p class="mt-0 mb-0">Backers</p>
+                                                <h5 class="mt-0 mb-0">250</h5>
+                                            </div>
+                                            <div class="col">
+                                                <p class="mt-0 mb-0">Days Left</p>
+                                                <h5 class="mt-0 mb-0">27</h5>
+                                            </div>
+                                            <div class="col">
+                                                <p class="mt-0 mb-0">Funding goal</p>
+                                                <h5 class="mt-0 mb-0">&dollar;175,000</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+			</div>
+
+
+        <div class="container-fluid inner hidden-xs-down" style="height: 650px;">
+            <br />
+            <br />
+            <div class="row mt-5">
+
+				<div class="col-12" id="staff-picked">
+
+					<div id="" class="">
+						<div class="swiper-wrapper" id="staff-picked-wrapper">
+
+
+							<div class="" data-hash="art">
+								<div>
+								<h2>Staff pick: <span class="text-primary">{{ team.get_category_display }}</span></h2><br />
+								<div class="card" style="border: hidden;">
+
+									<div class="card-blocks">
+
+										<div class="row ">
+												<div class="col-sm-6">
+
+													<!--<a href="" class="thumbnail"><img class="img-fluid img-thumbnail" src="images/eat-1892990_1920.jpg" /></a>-->
+													<a href="{% url 'teams:detail' team.id %}" class="thumbnaidl"><img class="img-fluid" id="staff-picked-image" src="{{ team.image.url }}" /></a>
+
+												</div>
+												<div class="col-sm-6">
+
+
+													<h4 class="display-8"><a href="{% url 'teams:detail' team.id %}">{{ team.title }}</a></h4>
+													<p class="text-muted">By <strong><a href="/project" class="text-muted">Otto Payne</a></strong> in <strong>London, UK</strong></p>
+													<p>{{ team.description | safe }}</p>
+
+                                                    <br />
+                                                    <div class="progress">
+                                                      <div class="progress-bar progress-bar-striped progress-bar-animated active" role="progressbar" style="width: {% widthratio team.current_raise team.funding_goal 100 %}%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                    <p>{% widthratio team.current_raise team.funding_goal 100 %}% funded</p>
+												</div>
+										</div>
+									</div>
+
+									<div class="card-footer text-muted mt-4" style="background: #f7f8fa">
+										<div class="row ">
+												<div class="col-sm-12">
+													<div class="row ">
+														<div class="col">
+															<p class="mt-0 mb-0">Pledged</p>
+															<h5 class="mt-0 mb-0">&dollar;{{ team.current_raise }}</h5>
+														</div>
+														<div class="col">
+															<p class="mt-0 mb-0">Backers</p>
+                                                            {% if not team.backed_by %}
+                                                        <h6 class="mt-0 mb-0"><strong>0</strong></h6>
+                                                        {% else %}
+                                                        <h6 class="mt-0 mb-0"><strong>{{ team.backed_by.count }}</strong></h6>
+                                                        {% endif %}
+														</div>
+														<div class="col">
+															<p class="mt-0 mb-0">Days Left</p>
+															<h5 class="mt-0 mb-0">27</h5>
+														</div>
+														<div class="col">
+															<p class="mt-0 mb-0">Funding goal</p>
+															<h5 class="mt-0 mb-0">&dollar;{{ team.funding_goal }}</h5>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+								    </div>
+								</div>
+
+							</div>
+
+						</div>
+
+
+					</div>
+
+                <script>
+					var swiper = null;
+					function start_swiper() {
+						swiper = new Swiper('#home-swiper', {
+							pagination: '.swiper-pagination',
+							initialSlide: 1,
+							paginationClickable: false,
+							hashnav: false,
+							hashnavWatchState: false,
+							replaceState: true,
+							keyboardControl: true,
+							mousewheelControl: true,
+							simulateTouch: false,
+							direction: 'vertical',
+
+							onInit: function(swiper){
+								// do something
+								$('.carousel-list .nav-link').eq(swiper.activeIndex).addClass('active');
+							}
+						});
+						// Later add callback
+						swiper.on('init', function () {
+									//alert('clickedSlide', swiper.activeIndex);
+
+							$('.carousel-list .nav-link.active').removeClass('active');
+							$('.carousel-list .nav-link').eq(swiper.activeIndex).addClass('active');
+						});
+						swiper.on('slideChangeStart', function () {
+							console.log('clickedSlide', swiper.activeIndex);
+							$('.carousel-list .nav-link.active').removeClass('active');
+							$('.carousel-list .nav-link').eq(swiper.activeIndex).addClass('active');
+						});
+						swiper.on('slideChangeEnd', function () {
+							//$('.carousel-list .nav-link.active').removeClass('active');
+							$('.carousel-list .nav-link').eq(swiper.activeIndex).addClass('active');
+							console.log('slide change start', swiper.activeIndex);
+						});
+						$('.carousel-list a[data-slide]').click(function(e){
+							e.preventDefault();
+							swiper.slideTo( $(this).data('slide') );
+						})
+					}
+					setTimeout(start_swiper, 100);
+
+                </script>
+
+
+            </div>
+        </div>
+    </div>
+            {% endif %}
+        {% endfor %}
+
+
+
+
+
+
+<div class=" light-blue  mt-3 pt-5 pb-5">
+	<div class="container-fluid inner">
+
+
+		<div class="row">
+			<div class="col-8">
+				<h3>Trending Projects</h3>
+			</div>
+			<div class="col-4">
+				<a href="{% url 'teams:explore' %}" class="btn btn-secondary pull-right">View all</a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="boxes swiper-container">
+				<div class="row mt-2 swiper-wrapper">
+                    {% for team in verified_team_list %}
+                        <div class="col-md-4 col-lg-3 col-sm-6 col-xs-3  col-12 swiper-slide">
+                            <div class="card box">
+                                <div class="productinfo" style="height: 205px; overflow: hidden;">
+                                    <a href="{% url 'teams:detail' team.id %}">
+    {#                                    <img src="http://i.expresspixel.com/unsplash.it/310/210?image=11" class="img-fluid hidden-xs-down"/>#}
+                                        {% if team.project_image %}
+                                        <img src="{{ team.project_image.url }}" class="img-fluid hidden-xs-down" style="overflow: hidden"/>
+                                        <img src="{{ team.project_image.url }}" class="img-fluid hidden-sm-up"/>
+                                        {% else %}
+                                        {% endif %}
+                                    </a>
+                                </div>
+                                <div class="card-block" class="pb-1" style="position: relative; padding-bottom: 60px; min-height: 250px;">
+
+                                            <h6><a href="{% url 'teams:detail' team.id %}">{{ team.title }}</a></h6>
+                                            <p class="text-muted">By <strong><a href="{% url 'accounts:profile' profile_pk=team.user.pk %}" class="text-muted">{{ team.user.first_name }} {{ team.user.last_name|make_list|first }}.</a></strong></p>
+                                            <p class="desc">{{ team.short_description }}</p>
+
+                                            <div style="position: absolute; bottom: 10px; width: 86%; ">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated active" role="progressbar" style="width: {% widthratio team.current_raise team.funding_goal 100 %}%" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            {% if team.current_raise == 0 %}
+                                                    <p class="mb-1">0% funded</p>
+                                                    {% else %}
+                                                <p class="mb-1">{% widthratio team.current_raise team.funding_goal 100 %}% funded</p>
+                                                    {% endif %}
+                                            </div>
+
+
+                                </div>
+                                <div class="card-footer text-muted">
+                                    <div class="row ">
+                                            <div class="col-12">
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-4 text-center">
+                                                        <p class="mt-0 mb-0">Backers</p>
+                                                        {% if not team.backed_by %}
+                                                        <h6 class="mt-0 mb-0"><strong>0</strong></h6>
+                                                        {% else %}
+                                                        <h6 class="mt-0 mb-0"><strong>{{ team.backed_by.count }}</strong></h6>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col-4 text-center">
+                                                        <p class="mt-0 mb-0">Pledged</p>
+                                                        {% if not team.current_raise %}
+                                                        <h6 class="mt-0 mb-0"><strong>&dollar;0</strong></h6>
+                                                        {% else %}
+                                                        <h6 class="mt-0 mb-0"><strong>&dollar;{{ team.current_raise }}</strong></h6>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col-4 text-center">
+                                                        <p class="mt-0 mb-0">Days&nbsp;Left</p>
+                                                        <h6 class="mt-0 mb-0"><strong>{{ team.duration|days_left }}</strong></h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+
+				</div>
+
+				<div class="swiper-button-next hidden-lg-up"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+				<div class="swiper-button-prev hidden-lg-up"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+			</div>
+		</div>
+</div>
+</div>
+
+
+
+{#		<div class="pt-3 pb-3">#}
+			<div class="container">
+				<div class="row">
+					<div class="col-8" id="global-leaderboard-title">
+						<h3 style="color: black;">Global Leaderboard</h3>
+					</div>
+				</div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="container">
+                            <div class="leaderboard">
+                                <div class="leaderboard--header">
+                                    <div class="leaderboard--item--title">
+                                        <div class="leaderboard--item--cell leaderboard--item--cell__rank">
+                                            <span>Rank</span>
+                                        </div>
+                                        <div class="leaderboard--item--cell leaderboard--item--cell__user">
+                                            <span>User</span>
+                                        </div>
+{#                                        <div class="leaderboard--item--cell leaderboard--item--cell__thirty">#}
+{#                                            <span>30 Days</span>#}
+{#                                        </div>#}
+                                        <div class="leaderboard--item--cell leaderboard--item--cell__alltime">
+                                            <span>All-time</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="leaderboard--list">
+                                    {% for user, amount in user_list|slice:":5" %}
+                                    <div class="leaderboard--item">
+                                        <div class="leaderboard--item--cell leaderboard--item--cell__rank">
+                                            {{ forloop.counter }}
+                                        </div>
+                                        <div class="leaderboard--item--cell leaderboard--item--cell__user">
+                                            {{ user }}.
+                                        </div>
+{#                                        <div class="leaderboard--item--cell leaderboard--item--cell__thirty">#}
+{#                                            46#}
+{#                                        </div>#}
+                                        <div class="leaderboard--item--cell leaderboard--item--cell__alltime">
+                                            ${{ amount }}
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="container">
+                            <div class="leaderboard">
+                                <div class="leaderboard--header">
+                                    <div class="leaderboard--item--title">
+                                        <div class="leaderboard--item--cell leaderboard--item--cell__rank">
+                                            <span>Rank</span>
+                                        </div>
+                                        <div class="leaderboard--item--cell leaderboard--item--cell__user">
+                                            <span>User</span>
+                                        </div>
+                                        <div class="leaderboard--item--cell leaderboard--item--cell__thirty">
+                                            <span>30 Days</span>
+                                        </div>
+{#                                        <div class="leaderboard--item--cell leaderboard--item--cell__alltime">#}
+{#                                            <span>All-time</span>#}
+{#                                        </div>#}
+                                    </div>
+                                </div>
+
+
+                                <div class="leaderboard--list">
+                                    {% for user, amount in limited_user_list|slice:":5" %}
+                                    <div class="leaderboard--item">
+
+                                        <div class="leaderboard--item--cell leaderboard--item--cell__rank">
+                                            {{ forloop.counter }}
+                                        </div>
+                                        <div class="leaderboard--item--cell leaderboard--item--cell__user">
+                                            {{ user }}.
+                                        </div>
+{#                                        <div class="leaderboard--item--cell leaderboard--item--cell__thirty">#}
+{#                                            46#}
+{#                                        </div>#}
+                                        <div class="leaderboard--item--cell leaderboard--item--cell__alltime">
+                                            ${{ amount }}
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+{#		</div>#}
+
+
+		<div class=" light-blue  mt-5 pt-5 pb-5">
+
+	<div class="container-fluid">
+
+
+		<div class="row mt-3">
+			<!--<div class="col-sm-4">
+		        <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150" class="img-fluid" />
+			</div>-->
+			<div class="col-12 col-md-10 offset-md-1">
+            <div class="row">
+                <div class="col-sm-10 offset-sm-1">
+                    <h3 class="display-6 text-center">How does it work?</h3>
+                    <p class="text-center text-muted">Access your data anywhere from any device</p>
+                </div>
+            </div>
+
+			<div class="row mt-3">
+
+				<div class="col-5  offset-1">
+					<p>Access your data from absolutely anywhere and on any device your phone, ipad, laptop. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+				</div>
+
+				<div class="col-5  offset-1">
+					<p>Create your own graphs and visualizztions to you can capture trends immediately. Donec nec tortor lorem. Integer nulla quam, convallis ut consectetur vel, dignissim et ex.</p>
+				</div>
+
+				<div class="col-5  offset-1">
+					<p>Ideal for shop owners selling over 100 products a day. We make sure you find our what your best products are, what products you could sell.</p>
+				</div>
+
+				<div class="col-5  offset-1">
+					<p> Nam porttitor quam pellentesque, mollis arcu tincidunt, faucibus tellus. Fusce nec sem ut risus auctor iaculis id a libero. </p>
+				</div>
+
+			</div>
+		</div>
+		</div>
+		</div>
+		</div>
+
+				<div class="mt-5 pt-2 pb-2">
+
+	<div class="container-fluid">
+
+		<div class="row">
+
+
+
+			<div class="col-12 col-md-10 offset-md-1">
+<div class="card ">
+  <div class="card-block">
+      <div class="row">
+      <div class="col-sm-8">
+        <h4 class="card-title">Get Started!</h4>
+        <p class="card-text">Create your own project. Raise money online. Get started today.</p>
+      </div>
+        <div class="col-sm-4 text-center">
+            <br />
+            {% if user.is_authenticated %}
+            <a href="{% url 'teams:create_project' %}" class="btn btn-primary btn-lg">Start your project <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+            {% else %}
+            <a href="{% url 'accounts:login' %}" class="btn btn-primary btn-lg">Start your project <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+            {% endif %}
+        </div>
+        </div>
+  </div>
+</div>
+			</div>
+		</div>
+		</div>
+		</div>
+<script>
+	var box_swiper = new Swiper('.boxes', {
+	slidesPerView: 'auto',
+	grabCursor: true,
+	freeMode: true,
+	freeModeMomentum: false,
+	scrollbarHide: true,
+	scrollbarDraggable: true,
+	scrollbarSnapOnRelease: true,
+	nextButton: '.swiper-button-next',
+    prevButton: '.swiper-button-prev'
+});
+</script>
+
+
+
+
+	<script>
+		var eventTime = moment().add(8, 'hours'); // Timestamp - Sun, 21 Apr 2013 13:00:00 GMT
+		var currentTime = 1366547400; // Timestamp - Sun, 21 Apr 2013 12:30:00 GMT
+		var diffTime = eventTime - currentTime;
+		var duration = moment.duration(diffTime*1000, 'milliseconds');
+		var interval = 1000;
+
+		setInterval(function(){
+		  duration = moment.duration(duration - interval, 'milliseconds');
+			$('#current_time').text(moment().format('MMMM Do YYYY, h:mma'));
+		}, interval);
+	</script>
+
+
+<div class="modal fade login-modal-lg" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content" style="background: transparent; border: none;">
+
+            <div class="modal-body">
+
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-12  pull-right">
+                            <h4  style="color: #fff; font-weight: 100;">Login</h4>
+                            <a href="#" data-dismiss="modal" style="position: absolute; top: 0; right: 0;"><i class="icon-close icons" aria-hidden="true" style="color: #fff; font-size: 26px"></i></a>
+                            <div class="card mt-3" style="background: #fff; padding: 10px">
+                              <h6 style="color: #000;font-weight: 100;">Already have an account</h6>
+                                <p>Please login to continue.</p><br />
+                                <form>
+                                    <div class="form-group row">
+                                      <div class="col-sm-12">
+                                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                      </div>
+                                    </div>
+                                    <div class="form-group row">
+                                      <div class="col-sm-12">
+                                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                      </div>
+                                    </div>
+                                    <div class="form-group row">
+                                      <label class="col-sm-2s"></label>
+                                      <div class="col-sm-10">
+                                        <div class="form-check">
+                                          <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox"> Remember me
+                                          </label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <br /><br />
+                                    <div class="form-group row">
+                                      <div class="offset-sm-3 col-sm-6 text-center">
+                                        <a href="account-dashboard.html" class="btn btn-primary btn-block">Sign in</a>
+                                      </div>
+                                    </div>
+                                    <div class="form-group row">
+                                      <div class="offset-sm-2 col-sm-8 text-center">
+                                        <a href="" class="mt-2">Forgotten your password</a>
+                                      </div>
+                                    </div>
+                                  </form>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade signup-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="background: transparent; border: none;">
+
+            <div class="modal-body">
+
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-md-11 col-sm-12">
+                            <h4  style="color: #fff; font-weight: 100;">Register</h4>
+                                                        <a href="#" data-dismiss="modal" style="position: absolute; top: 0; right: 0;"><i class="icon-close icons" aria-hidden="true" style="color: #fff; font-size: 26px"></i></a>
+
+                            <div class="card  mt-3" style="background: #fff; padding: 10px">
+                              <h6 style="color: #000">New to CrowdFunding?</h6>
+                                <p>A crowdfunding account is required to continue.</p>
+
+                                <form role="form">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control " placeholder="Enter email">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                          <div class="form-group">
+                                              <input type="text" class="form-control"placeholder="First name">
+                                          </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                          <div class="form-group">
+                                              <input type="text" class="form-control"placeholder="Last name">
+                                          </div>
+                                        </div>
+                                      </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                          <div class="form-group">
+                                              <input type="password" class="form-control"placeholder="Password">
+                                          </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                          <div class="form-group">
+                                              <input type="password" class="form-control"placeholder="Confirm password">
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                  <div class="text-center">
+                                    <br /><br />
+                                    <p>By signing up you agree to our terms and conditions and privacy policy</p>
+                                    <a href="account-dashboard.html" class="btn btn-primary">Create account</a><br /><br />
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            </div>
+    </div>
+  </div>
+</div>
+<script>
+
+
+var app = new Vue({
+  el: '#navbar',
+  data: {
+    search: false
+  },
+  methods: {
+    showSearchBar: function () {
+      this.search = true;
+    },
+    hideSearchBar: function () {
+      this.search = false;
+    }
+  }
+})
+
+</script>
+{% endblock %}
+{#  </body>#}
+{#</html>#}

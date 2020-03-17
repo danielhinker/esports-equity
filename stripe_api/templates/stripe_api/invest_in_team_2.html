@@ -1,0 +1,36 @@
+{#{% extends "layout.html" %}#}
+{#{% load bootstrap3 %}#}
+{##}
+{#{% block title %}Invest in {{ team.title }} | {{ block.super }}{% endblock %}#}
+{##}
+{#{% block body %}#}
+
+<head>
+<script src="https://js.stripe.com/v2/"></script>
+<script src="https://js.stripe.com/v3/"></script>
+<script>Stripe.setPublishableKey("pk_test_GDrVvjI5isbYy25WNwZuR4sh");
+var stripe = Stripe('pk_test_GDrVvjI5isbYy25WNwZuR4sh');
+</script>
+</head>
+
+<br>
+    <br>
+    <br>
+    <br>
+    <br>
+<form action="{% url 'stripe_api:back_team_3' %}" method="POST">
+    {% csrf_token %}
+    <input type='hidden' name='amount' value={{ amount }}>
+    <input type='hidden' name='project_pk' value={{ project_pk }}>
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_GDrVvjI5isbYy25WNwZuR4sh"
+    data-amount="{{ amount }}"
+    data-name="EEWeb"
+    data-description="2 widgets"
+    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+    data-locale="auto">
+  </script>
+</form>
+
+{#{% endblock %}#}

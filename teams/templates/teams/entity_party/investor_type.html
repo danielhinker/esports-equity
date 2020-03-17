@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block title_tag %}eSports Equity: Choose Investor Type{% endblock %}
+{% block title %}Investor Type{% endblock %}
+
+{% block body %}
+    <head>
+        <link href="{% static 'css/teams/CreateStep1.css' %}" rel="stylesheet">
+        <link href="{% static 'css/teams/Type_Select.css' %}" rel="stylesheet">
+
+    </head>
+    <div class="container-fluid">
+        <div class="page-header">
+            <h1>You are investing as...</h1>
+        </div>
+        <div class="option-group">
+            <a href="{% url 'teams:create_party' %}">
+                    <div class="option option3 col-xs-5">
+                        <h3>Party/Individual</h3>
+                        <p>Click here if you are investing for yourself</p>
+                        <img src="{% static 'img/icons/partyicon.png' %}">
+{#                        <p>#}
+{#                            This is a paragraph for equity crowdfunding.#}
+{#                            This is a paragraph for equity crowdfunding.#}
+{#                            This is a paragraph for equity crowdfunding.#}
+{#                            This is a paragraph for equity crowdfunding.#}
+{#                            This is a paragraph for equity crowdfunding.#}
+{#                            This is a paragraph for equity crowdfunding.#}
+{#                            This is a paragraph for equity crowdfunding.#}
+{#                        </p>#}
+                    </div>
+            </a>
+            <a href="{% url 'teams:create_entity' %}">
+                <div class="option option4 col-xs-5">
+                    <h3>Entity</h3>
+                    <p>Click here if you are investing on behalf of a company</p>
+                    <img src="{% static 'img/icons/entityicon.png' %}">
+{#                    <p>#}
+{#                        This is a paragraph for traditional crowdfunding.#}
+{#                        This is a paragraph for traditional crowdfunding.#}
+{#                        This is a paragraph for traditional crowdfunding.#}
+{#                        This is a paragraph for traditional crowdfunding.#}
+{#                        This is a paragraph for traditional crowdfunding.#}
+{#                        This is a paragraph for traditional crowdfunding.#}
+{#                    </p>#}
+                </div>
+            </a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'layout-new-landing.html' %}
+{% load bootstrap3 %}
+{% load static %}
+{% block title_tag %}eSports Equity:Signup{% endblock %}
+{% block title %}eSports Equity Signup Page{% endblock %}
+
+{% block body %}
+  <head>
+    <link href="{% static 'css/buttons/button.css'%}" rel="stylesheet">
+    <link href="{% static 'css/land.css'%}" rel="stylesheet">
+    <link href="{% static 'css/signin.css' %}" rel="stylesheet">
+  <script src="https://js.stripe.com/v3/"></script>
+  <script>Stripe.setPublishableKey("pk_test_GDrVvjI5isbYy25WNwZuR4sh");
+var stripe = Stripe('pk_test_GDrVvjI5isbYy25WNwZuR4sh');
+</script>
+  </head>
+    <div class="container">
+
+      <form action="" method="POST" class="form-signin">
+          <div class="page-header">
+              <h2>Signup</h2>
+          </div>
+          {% csrf_token %}
+          {% bootstrap_form form %}
+          <button type="submit" class="btn btn-lg btn-theme btn-outline btn-primary btn-block" value="Sign Up">
+              Register</button>
+      </form>
+    </div>
+{% endblock %}

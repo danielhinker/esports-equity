@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% load bootstrap3 %}
+
+{% block title_tag %}Upload | {{ block.super }}{% endblock %}
+
+{% block body_content %}
+<div class="container">
+    <h1>Upload Account Document</h1>
+    <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" value="Upload Account Document" class="btn btn-default">
+    </form>
+</div>
+{% endblock %}

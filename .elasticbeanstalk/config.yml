@@ -1,0 +1,21 @@
+branch-defaults:
+  daniel:
+    environment: EEWeb-main
+  master:
+    environment: EEWeb-main
+environment-defaults:
+  EEWeb-main:
+    branch: null
+    repository: null
+global:
+  application_name: EEWeb
+  default_ec2_keyname: Daniel's Key
+  default_platform: arn:aws:elasticbeanstalk:us-east-1::platform/Python 3.4 running
+    on 64bit Amazon Linux/2.3.3
+  default_region: us-east-1
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: eeweb
+  sc: git
+  workspace_type: Application

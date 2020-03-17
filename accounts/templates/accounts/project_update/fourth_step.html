@@ -1,0 +1,521 @@
+{% extends 'layout-new.html' %}
+{% load account_extras %}
+{% load bootstrap3 %}
+{% load static %}
+
+{#{% block title_tag %}Esports Equity: Project Information{% endblock %}#}
+{#{% block title %}Project Information{% endblock %}#}
+{% block title_tag %}Perks | {{ block.super }}{% endblock %}
+
+<html lang="en">
+
+  <head>
+      {% block head %}
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+{#  <title>Pricing</title>#}
+  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search resu...">
+
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="canonical" href="/edit-perks.html">
+{#  <link rel="alternate" type="application/rss+xml" title="Esports Equity LLC" href="/feed.xml">#}
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+  <script src="{% static 'javascripts/scrollPosStyler.js' %}"></script>
+          <script src="{% static 'js/cloneMore.js' %}"></script>
+  <!-- JavaScript -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.1/vue.min.js" ></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.4/vue.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
+
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+{% endblock %}
+
+</head>
+  <body>
+
+{% block body %}
+
+{% if not reward_object %}
+
+
+  <br />
+<br />
+<br />
+<div class="container-fluid">
+    <div class="row">
+
+
+        <div class="col-sm-12">
+<ul class="breadcrumb">
+  <li><a href="{% url 'teams:create_project_2' project_pk=project_pk %}">Basics</a></li>
+  <li><a href="{% url 'teams:create_project_3' project_pk=project_pk %}">Story</a></li>
+  <li><a href="">Perks</a></li>
+  <li><a href="{% url 'teams:create_project_5' project_pk=project_pk %}">About you</a></li>
+  <li><a href="{% url 'teams:create_project_6' project_pk=project_pk %}">Account</a></li>
+</ul>
+
+          </div>
+
+
+    <div class="col-sm-8">
+<h1>Set your rewards and shipping costs.</h1>
+<p>Invite backers to be a part of the creative experience by offering rewards like a copy of what you’re making, a special experience, or a behind-the-scenes look into your process.</p>
+
+{% load widget_tweaks %}
+
+
+<form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+{#            {{ form.as_p }}#}
+
+{#{{ formset.management_form }}#}
+
+{#    {{ reward_list_form.as_p }}#}
+{{ formset.management_form }}
+
+    {% for form in formset %}
+
+  <div class="form-group light-blue">
+
+    <div class="row">
+
+      <div class="col-md-3"><strong>Reward</strong></div>
+
+      <div class="col-md-9">
+
+
+{% for field in form.visible_fields %}
+    {% if forloop.counter == 1 %}
+        <div class="form-group row">
+          <label for="example-text-input" class="col-3 col-form-label">Title</label>
+          <div class="col-9">
+            {{ field|add_class:'form-control' }}
+
+          </div>
+        </div>
+    {% endif %}
+    {% if forloop.counter == 2 %}
+        <div class="form-group row">
+          <label for="example-search-input" class="col-3 col-form-label">Pledge amount</label>
+          <div class="col-9">
+                {{ field|add_class:'form-control' }}
+          </div>
+        </div>
+    {% endif %}
+    {% if forloop.counter == 3 %}
+<div class="form-group row">
+  <label for="example-email-input" class="col-3 col-form-label">Description</label>
+  <div class="col-9">
+{#    <textarea class="form-control" rows="6" type="text" value="" id="example-email-input"></textarea>#}
+      {{ field|add_class:'form-control' }}
+  </div>
+</div>
+      {% endif %}
+      {% if forloop.counter == 4 %}
+<div class="form-group row">
+  <label for="example-url-input" class="col-3 col-form-label">Estimated&nbsp;delivery</label>
+  <div class="col-9">
+{#    <input class="form-control" type="text" value="" id="example-url-input">#}
+      {{ field|add_class:'form-control datepicker1' }}
+
+  </div>
+</div>
+      {% endif %}
+      {% if forloop.counter == 5 %}
+<div class="form-group row">
+  <label for="example-tel-input" class="col-3 col-form-label">Shipping details</label>
+  <div class="col-9">
+{#    <input class="form-control" type="tel" value="" id="example-tel-input">#}
+      {{ field|add_class:'form-control' }}
+  </div>
+</div>
+
+{% endif %}
+      {% endfor %}
+      {% endfor %}
+</div>
+      </div>
+    </div>
+
+{#      <script>#}
+{#            $( function() {#}
+{#                $( ".datepicker1").datepicker('destroy');#}
+{#                $( ".datepicker1").datepicker({ dateFormat: 'dd-mm-yy'});#}
+{#              } );#}
+{##}
+{#            function renewDatePickers() {#}
+{#                $('.datepicker').datepicker('destroy');#}
+{#                $(".datepicker").datepicker({dateFormat: 'yy-mm-dd'});#}
+{#            }#}
+{##}
+{#            $(renewDatePickers);#}
+{##}
+{#            $(function() {#}
+{#                $('.form-row.inline.{{ book_form.prefix }}').formset({#}
+{#                    prefix: '{{ book_form.prefix }}',#}
+{#                    added: renewDatePickers // Event -- read inline docs#}
+{#                });#}
+{#            })#}
+{##}
+{#      </script>#}
+
+
+
+  </fieldset>
+<nav class="navbar fixed-bottom navbar-light bg-faded" style="background: #fff; border-top: 1px solid #eee">
+          <div class="container">
+
+<input type="submit" value='Next' class="btn btn-primary btn-lg float-right" data-wow-delay="0.7s">
+{#    <a href="edit.html" class="btn btn-primary btn-lg float-right">Save campaign</a>#}
+        <a href="edit.html" class="btn btn-link btn-lg float-right">Discard changes</a>
+
+  </div>
+</nav>
+</form>
+
+
+{#<a id="add_more" value="Add More" type="button" class="float-sm-right"><i class="fa fa-plus" aria-hidden="true"></i> Add reward/perk</a></p>#}
+
+
+                </div>
+
+
+
+        <div class="col-sm-4">
+        <div class="row">
+        <div class="col-sm-10 offset-sm-2">
+
+
+               <strong>Getting started?</strong>
+               <p>Visit Campus to read discussions about preparing for a project and more.</p>
+               <br />
+               <strong>Preview</strong>
+<hr />
+
+					          <div class="card box">
+
+{#		<a href="project.html" >#}
+                                  {% if team.project_image %}
+		<img src="{{ team.project_image.url }}" class="img-fluid hidden-xs-down"/>
+		<img src="{{ team.project_image.url }}" class="img-fluid hidden-sm-up"/>
+                                  {% else %}
+                                  <img src="http://i.expresspixel.com/unsplash.it/310/210?image=11" class="img-fluid hidden-xs-down"/>
+		<img src="http://i.expresspixel.com/unsplash.it/610/210?image=11" class="img-fluid hidden-sm-up"/>
+                                  {% endif %}
+{#	</a>#}
+
+	<div class="card-block" class="pb-1" style="position: relative; padding-bottom: 60px; min-height: 250px;">
+
+				<h6><a href="project.html">{{ team.title }}</a></h6>
+				<p class="text-muted">By <strong><a href="" class="text-muted">{{ team.user.first_name }} {{ team.user.last_name|make_list|first }}</a></strong></p>
+				<p class="desc">{{ team.short_description }}</p>
+
+				<div style="position: absolute; bottom: 10px; width: 86%; ">
+				<div class="progress">
+  					<div class="progress-bar" role="progressbar" style="width: 76%" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+				<p class="mb-1">76% funded</p>
+				</div>
+
+
+</div>
+
+<div class="card-footer text-muted">
+                                    <div class="row ">
+                                            <div class="col-12">
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-4 text-center">
+                                                        <p class="mt-0 mb-0">Backers</p>
+                                                        {% if not team.backed_by %}
+                                                        <h6 class="mt-0 mb-0"><strong>0</strong></h6>
+                                                        {% else %}
+                                                        <h6 class="mt-0 mb-0"><strong>{{ team.backed_by.count }}</strong></h6>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col-4 text-center">
+                                                        <p class="mt-0 mb-0">Pledged</p>
+                                                        {% if not team.current_raise %}
+                                                        <h6 class="mt-0 mb-0"><strong>&dollar;0</strong></h6>
+                                                        {% else %}
+                                                        <h6 class="mt-0 mb-0"><strong>&dollar;{{ team.current_raise }}</strong></h6>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col-4 text-center">
+                                                        <p class="mt-0 mb-0">Days&nbsp;Left</p>
+                                                        <h6 class="mt-0 mb-0"><strong>{{ team.duration|days_left }}</strong></h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+</div>
+
+
+          </div>
+          </div>
+          </div>
+
+
+            </div>
+            <br />
+<br />
+<br />
+            </div>
+
+
+
+
+
+{#    {{ form.media.js }}#}
+    <script src="{% static 'js/vendor/jquery.formset.js' %}"></script>
+    <script>
+        $('.light-blue').formset({
+            addText: 'Add Reward',
+            deleteText: 'Remove'
+        });
+    </script>
+
+{% else %}
+      <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Pricing</title>
+  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search resu...">
+
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="canonical" href="/edit-perks.html">
+{#  <link rel="alternate" type="application/rss+xml" title="Esports Equity LLC" href="/feed.xml">#}
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+  <script src="javascripts/scrollPosStyler.js"></script>
+  <!-- JavaScript -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.1/vue.min.js" ></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.4/vue.min.js"></script>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
+
+  <link rel="stylesheet" href="css/main.css">
+
+
+
+</head>
+
+<div class="container-fluid">
+    <div class="row">
+
+
+        <div class="col-sm-12">
+      <ul class="breadcrumb">
+        <li><a href="{% url 'accounts:create_project_2' project_pk=team.pk %}">Basics</a></li>
+  <li><a href="{% url 'accounts:create_project_3' project_pk=team.pk %}">Story</a></li>
+  <li><a href="">Perks</a></li>
+  <li><a href="{% url 'accounts:create_project_5' project_pk=team.pk %}">About you</a></li>
+  <li><a href="{% url 'accounts:create_project_6' project_pk=team.pk %}">Account</a></li>
+      </ul>
+
+    </div>
+
+
+        <div class="col-sm-8">
+<h1>Set your rewards and shipping costs.</h1>
+<p>Invite backers to be a part of the creative experience by offering rewards like a copy of what you’re making, a special experience, or a behind-the-scenes look into your process.</p>
+            {% load widget_tweaks %}
+<form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+
+<div class="alert alert-warning" role="alert">You have to delete your rewards if you want to create new ones.</div>
+
+{% for reward in reward_object %}
+  <div class="form-group light-blue" >
+    <div class="row">
+      <div class="col-md-3"><strong>Reward</strong></div>
+      <div class="col-md-9">
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-3 col-form-label">Title</label>
+  <div class="col-9">
+{#    <input class="form-control" type="text" value="" placeholder="" id="example-text-input">#}
+      <h5>{{ reward.reward_title }}</h5>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-search-input" class="col-3 col-form-label">Pledge amount</label>
+  <div class="col-9">
+{#    <input class="form-control" type="text" value="" id="example-search-input">#}
+      <h5>$ {{ reward.reward_amount }}</h5>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-email-input" class="col-3 col-form-label">Description</label>
+  <div class="col-9">
+{#    <textarea class="form-control" rows="6" type="text" value="" id="example-email-input"></textarea>#}
+      <h5>{{ reward.reward_description }}</h5>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-url-input" class="col-3 col-form-label">Estimated&nbsp;delivery</label>
+  <div class="col-9">
+{#    <input class="form-control" type="text" value="" id="example-url-input">#}
+      <h5>{{ reward.estimated_delivery }}</h5>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-tel-input" class="col-3 col-form-label">Shipping details</label>
+  <div class="col-9">
+{#    <input class="form-control" type="tel" value="" id="example-tel-input">#}
+      <h5>{{ reward.shipping_details }}</h5>
+  </div>
+</div>
+          <a href="{% url 'teams:delete_reward' project_pk=project_pk reward_pk=reward.pk %}" class="btn btn-link btn-lg float-right">Delete Reward</a>
+
+      </div>
+    </div>
+
+  </div>
+    {% endfor %}
+
+  </fieldset>
+
+<nav class="navbar fixed-bottom navbar-light bg-faded" style="background: #fff; border-top: 1px solid #eee">
+          <div class="container">
+
+<input type="submit" value='Next' class="btn btn-primary btn-lg float-right" data-wow-delay="0.7s">
+{#    <a href="edit.html" class="btn btn-primary btn-lg float-right">Save campaign</a>#}
+{#        <a href="edit.html" class="btn btn-link btn-lg float-right">Discard changes</a>#}
+{#              <a href="{% url 'teams:delete_project_4' project_pk=project_pk %}" class="btn btn-link btn-lg float-right">Delete Reward</a>#}
+
+  </div>
+</nav>
+</form>
+
+                </div>
+
+
+        <div class="col-sm-4">
+        <div class="row">
+        <div class="col-sm-10 offset-sm-2">
+
+
+               <strong>Getting started?</strong>
+               <p>Visit Campus to read discussions about preparing for a project and more.</p>
+               <br />
+               <strong>Preview</strong>
+<hr />
+
+					          <div class="card box">
+{#		<a href="project.html" >#}
+                                  {% if team.project_image %}
+		<img src="{{ team.project_image.url }}" class="img-fluid hidden-xs-down"/>
+		<img src="{{ team.project_image.url }}" class="img-fluid hidden-sm-up"/>
+                                  {% else %}
+                                  <img src="http://i.expresspixel.com/unsplash.it/310/210?image=11" class="img-fluid hidden-xs-down"/>
+		<img src="http://i.expresspixel.com/unsplash.it/610/210?image=11" class="img-fluid hidden-sm-up"/>
+                                  {% endif %}
+{#	</a>#}
+
+	<div class="card-block" class="pb-1" style="position: relative; padding-bottom: 60px; min-height: 250px;">
+
+				<h6><a href="">{{ team.title }}</a></h6>
+				<p class="text-muted">By <strong><a href="" class="text-muted">{{ team.user.first_name }} {{ team.user.last_name|make_list|first }}</a></strong></p>
+				<p class="desc">{{ team.short_description }}</p>
+
+				<div style="position: absolute; bottom: 10px; width: 86%; ">
+				<div class="progress">
+  					<div class="progress-bar" role="progressbar" style="width: 76%" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+				<p class="mb-1">76% funded</p>
+				</div>
+
+
+</div>
+<div class="card-footer text-muted">
+	<div class="row ">
+			<div class="col-12">
+			</div>
+			<div class="col-12">
+				<div class="row">
+					<div class="col-4 text-center">
+						<p class="mt-0 mb-0">Backers</p>
+						<h6 class="mt-0 mb-0"><strong>117</strong></h6>
+					</div>
+					<div class="col-4 text-center">
+						<p class="mt-0 mb-0">Pledged</p>
+						<h6 class="mt-0 mb-0"><strong>&dollar;50,000</strong></h6>
+					</div>
+					<div class="col-4 text-center">
+						<p class="mt-0 mb-0">Days&nbsp;Left</p>
+						<h6 class="mt-0 mb-0"><strong>14</strong></h6>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+          </div>
+          </div>
+          </div>
+
+
+            </div>
+            <br />
+<br />
+<br />
+            </div>
+
+<nav class="navbar fixed-bottom navbar-light bg-faded" style="background: #fff; border-top: 1px solid #eee">
+          <div class="container">
+
+    <a href="edit.html" class="btn btn-primary btn-lg float-right">Save campaign</a>
+              <a href="edit.html" class="btn btn-link btn-lg float-right">Discard Project</a>
+              <a href="{% url 'teams:delete_rewards_all' project_pk=project_pk %}" class="btn btn-link btn-lg float-right">Delete Rewards</a>
+{#              <a href="edit.html" class="btn btn-link btn-lg float-right">Delete Rewards</a>#}
+{#              <a href="edit.html" class="btn btn-primary btn-lg float-right">Save campaign</a>#}
+
+
+  </div>
+</nav>
+    {% endif %}
+
+  {% endblock %}
+
+
+  </body>
+
+
+</html>

@@ -1,0 +1,25 @@
+{% extends "layout-new.html" %}
+{% load static %}
+{#{% block title_tag %}Fundraise For Your Team {% endblock %}#}
+
+{#{% block body_content %}#}
+{% block body %}
+<div class="container">
+<br/>
+<br/>
+<br/>
+<br/>
+<h1>Start your own fundraise</h1>
+
+    <div id="block1">
+        Why should you invest?
+    </div>
+
+
+    {% if user.is_authenticated %}
+        <h3><a href="{% url 'teams:create_project' %}" class="btn btn-simple">Fundraise Now</a></h3>
+    {% else %}
+        <h3><a href="{% url 'accounts:signup' %}" class="btn btn-simple">Sign up</a></h3>
+    {% endif %}
+</div>
+{% endblock %}

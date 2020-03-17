@@ -1,0 +1,328 @@
+.nav-sidebar > .hometab > a,
+.nav-sidebar > .hometab > a:hover,
+.nav-sidebar > .hometab > a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+.navbar-inverse .navbar-nav>.hometab>a, .navbar-inverse .navbar-nav>.hometab>a:focus, .navbar-inverse .navbar-nav>.hometab>a:hover{
+  background-color:rgba(0, 137, 255, 0.3);
+}
+
+
+
+/*---------------------------- general START-----------------------------------*/
+body {
+  padding-bottom: 0px;
+  color: #000;
+  /*font-family: stheiti;*/
+    font-family: 'Lato', sans-serif;
+}
+
+.h1, h1{
+  font-size:50px;
+}
+
+.h2, h2{
+  font-size: 32px;
+}
+
+.Newprojectheader{
+  margin-top: 80px;
+}
+
+
+.img-rounded{
+  border-radius: 3px;
+}
+
+.productinfo{
+  /*padding:90px 0;*/
+  /*background-color:rgba(0, 157, 255, 0.2);*/
+  /*width: 267.09px;*/
+    background-color:rgba(0, 0, 0, 1);
+  /*height: 205px;*/
+}
+
+.teamimage{
+  /*max-width: 100%;*/
+  /*height: inherit;*/
+  /*max-height: 100%;*/
+  width: 100%;
+}
+
+
+/*---------------------------- general end -----------------------------------*/
+
+
+/*---------------------------- jumbotron start -----------------------------------*/
+
+.jumbotron{
+  margin-top: 40px;
+  margin-bottom:80px;
+  text-align: center;
+}
+
+.jumbotron{
+  background-image: url("../img/main/jumbotronback.png")
+}
+
+.jumbotron > h2{
+  color:white;
+}
+
+.jumbotron > p{
+  color:white;
+}
+
+/*---------------------------- jumbotron end -----------------------------------*/
+
+
+
+/*---------------------------- nav bar start -----------------------------------*/
+
+
+
+
+
+
+
+/*---------------------------- nav bar end -----------------------------------*/
+
+
+/*---------------------------- div marketing start -----------------------------------*/
+.marketing .col-lg-4 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: normal;
+}
+.marketing .col-lg-4 p {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+
+/*---------------------------- div marketing end -----------------------------------*/
+
+
+/*---------------------------- buttons start -----------------------------------*/
+
+
+.next>a{
+  color:black;
+}
+.pager li>a, .pager li>span{
+  border-radius: 2px;
+}
+
+.btn{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+/*#btn-signup{*/
+  /*color: white;*/
+/*}*/
+
+.btn-primary{
+  color: white;
+}
+/*---------------------------- buttons end -----------------------------------*/
+
+
+/*---------------------------- Carousels START-----------------------------------*/
+@media (min-width: 768px) {
+
+  .carousel-caption p {
+    margin-bottom: 70px;
+    font-size: 21px;
+    line-height: 1.4;
+  }
+}
+
+
+.carousel {
+  height: 600px;
+  margin-bottom: 60px;
+}
+
+.carousel-caption {
+  z-index: 10;
+}
+
+
+.carousel .item {
+  height: 600px;
+  background-color: #777;
+}
+.carousel-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 600px;
+  object-fit: cover;
+}
+.carousel-indicators .active{
+  background-color: #0089ff;
+}
+
+.carousel-indicators li{
+  border-radius: 2px;
+}
+
+.carousel-caption > h1{
+  color:rgba(255,255,255,1);
+  font-weight: 100;
+}
+
+.carousel-caption > p{
+  font-weight:100;
+  color: rgba(255,255,255,0.8);
+}
+
+@media (max-width:768px){
+  .carousel-caption p{
+    margin-bottom:60px;
+  }
+}
+
+/*---------------------------- Carousels END-----------------------------------*/
+
+
+
+
+
+
+
+/*---------------------------- placeholder start  -----------------------------------*/
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+
+.placeholder:hover{
+  -moz-box-shadow: 0 0 10px #ccc;
+  -webkit-box-shadow: 0 0 10px #ccc;
+  box-shadow: 0 0 10px #ccc;
+
+}
+.placeholder h4{
+  margin-top: 40px;
+}
+.placeholder p{
+  margin-bottom: 30px;
+}
+
+
+.placeholder{
+  border:1px solid #e7eaec;
+}
+
+.placeholder{
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-right: 5.16%;
+  margin-left: 5.16%;
+}
+
+
+
+/*---------------------------- placeholder end  -----------------------------------*/
+
+/*---------------------------- col-lg-6 start -----------------------------------*/
+
+@media screen and (min-width: 992px) and (max-width: 1200px){
+      .placeholder{
+      width:267px;
+      margin-left: 10%;
+      margin-right: 10%;
+  }
+}
+
+
+@media(min-width: 992px){
+  .col-lg-6{
+    width:40%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  .col-lg-6{
+    border-style:solid;
+    border-width: 1px 1px 1px 1px;
+    border-radius: 5px;
+    border-color: rgba(0,0,0,0.2);
+}
+
+  .col-lg-6{
+    width:40%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+    .placeholder{
+      width:267px;
+  }
+    .productinfo{
+      width: 267.09px;
+      height: 205px;
+      overflow: hidden;
+    }
+
+}
+
+
+.marketing .col-lg-6{
+  margin-bottom:20px;
+  text-align:center;
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px){
+  .col-sm-4{
+    width: 40%;
+  }
+  .placeholder{
+    margin-right: 5%;
+    margin-left: 5%;
+  }
+    .productinfo{
+      /*width: 267.09px;*/
+      height: 205px;
+      width: 100%;
+      overflow: hidden;
+  }
+
+}
+@media screen and (min-width: 400px) and (max-width: 767px){
+  .col-sm-4{
+    width: 50%;
+  }
+  .placeholder{
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+}
+/*---------------------------- col-lg-6 end-----------------------------------*/
+
+.join-now{
+  text-align: center;
+  margin-top: 90px;
+  /*margin-bottom: 70px;*/
+  padding: 90px;
+  color: white;
+  background-color: #1a2d40;
+}
+
+.btn-join{
+  margin-top: 40px;
+
+}
+
+

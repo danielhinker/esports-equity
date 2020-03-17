@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+{% load bootstrap3 %}
+{% load static %}
+{% load static %}
+
+{% block title_tag %}eSports Equity:Employer Information{% endblock %}
+{% block title %}Employer Information{% endblock %}
+
+{% block body %}
+    <head>
+        <link href="{% static 'css/teams/investor_account.css' %}" rel="stylesheet">
+{#        <link href="{% static 'css/teams/entity.css' %}" rel="stylesheet">#}
+        <link href="{% static 'css/teams/entity.css' %}" rel="stylesheet">
+        <link href="{% static 'css/buttons/radio-button.css' %}" rel="stylesheet">
+        <link href="{% static 'css/teams/form_responsive.css' %}" rel="stylesheet">
+        <script type='text/javascript' src='{% static 'js/jquery-ui.js' %}'></script>
+        <link rel='stylesheet' type='text/css' href='{% static 'css/jquery-ui/smoothness/jquery-ui.css' %}' />
+    </head>
+    <div class="container-fluid">
+        <div class="page-header">
+            <h1>Suitability</h1>
+        </div>
+
+    <div class="form-general">
+        {% load widget_tweaks %}
+        <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+            <div class="form-horizontal">
+            {% for field in form.visible_fields%}
+              <div class="form-group">
+                  <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label><br>
+                  {{ field|add_class:'form-control' }}
+                          <script>
+                            $(function() {
+                                $( "#datepicker" ).datepicker();
+                            });
+                        </script>
+                </div>
+
+                {% endfor %}
+
+
+
+              <button type="submit" class="btn btn-lg btn-primary pull-right">Save and Continue<span class="glyphicon glyphicon-chevron-right"></span></button>
+              <button type="submit" class="btn btn-lg btn-primary pull-left"><span class="glyphicon glyphicon-chevron-left"></span>Go Back</button>
+            </div>
+        </form>
+    </div>
+        </div>
+{% endblock %}

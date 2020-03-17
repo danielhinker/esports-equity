@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% load bootstrap3 %}
+{% load account_extras %}
+{% block title_tag %}Update KYC and AML | {{ block.super }}{% endblock %}
+
+{% block body_content %}
+<div class="container">
+    <h1>Update KYC and AML</h1>
+    <h3>{{ object.prompt1 }}</h3>
+    {% for thing in object.answer1|string_to_list %}
+    <h3>{{ thing }}</h3>
+    {% endfor %}
+
+    <h3>{{ object.prompt2 }}</h3>
+    {% for thing in object.answer2|string_to_list %}
+    <h3>{{ thing }}</h3>
+    {% endfor %}
+
+    <h3>{{ object.prompt3 }}</h3>
+    {% for thing in object.answer3|string_to_list %}
+    <h3>{{ thing }}</h3>
+    {% endfor %}
+
+<h3>{{ object.prompt4 }}</h3>
+    {% for thing in object.answer4|string_to_list %}
+    <h3>{{ thing }}</h3>
+    {% endfor %}
+
+<h3>{{ object.prompt5 }}</h3>
+    {% for thing in object.answer5|string_to_list %}
+    <h3>{{ thing }}</h3>
+    {% endfor %}
+
+
+    <form method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" value="Update KYC and AML" class="btn btn-default">
+    </form>
+</div>
+{% endblock %}

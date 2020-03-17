@@ -1,0 +1,110 @@
+
+
+/*---------------------------- general START-----------------------------------*/
+body {
+  padding-bottom: 0px;
+  color: #000;
+}
+
+
+.row{
+  /*background-color: rgba(198,198,198,0.2);*/
+  /*background-color: rgba(0,137,255,0.2);*/
+    background-color: transparent;
+  padding-top: 15px;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  height:80%;
+  margin-top: 4%;
+  margin-bottom: 2%;
+}
+
+.introduction{
+  height:150px;
+}
+.nav-pills{
+  margin-left: 40px;
+}
+
+.row ul{
+  margin-bottom: 15px;
+}
+
+.btn-group{
+  margin-top: 35px;
+  margin-bottom: 15px;
+  float:right;
+}
+.btn-group2{
+  margin-top: 40px;
+  margin-bottom: 5px;
+  margin-left: 50px;
+  float:left;
+}
+
+.btn-group-justified{
+  width:40%;
+}
+
+.form-control{
+  width: 60%;
+}
+.side{
+  float: left;
+}
+
+@media(max-width: 768px){
+  .row{
+    width:80%;
+    margin: auto;
+    margin-top: 13%;
+    margin-bottom: 3%;
+  }
+}
+
+
+.form-horizontal{
+  /*background-color: rgba(198,198,198,0.3);*/
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border: 1.5px solid #eee;
+  margin-bottom: 10px;
+}
+
+.gifttitle{
+    margin-left: 40px;
+}
+
+@media (min-width:992px){
+    .user-summary{
+        padding-left: 10%;
+    }
+
+    .row{
+        margin-top: 4%;
+        margin-bottom: 4%;
+        width: 60%;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px){
+    .row{
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width: 767px){
+    .form-horizontal .form-group{
+        margin-left: 20px;
+        margin-right: -120px;
+    }
+}
+
+.glyphicon{
+  padding-right: 8px;
+}

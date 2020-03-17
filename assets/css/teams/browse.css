@@ -1,0 +1,272 @@
+body {
+  padding-top: 50px;
+  padding-bottom: 0px;
+  /*font-family: 'Lato', sans-serif;*/
+  font-family: stheiti;
+}
+
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.main {
+  padding: 20px;
+}
+
+
+
+.img-circle{
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.form-control{
+  padding:0px 0px;
+}
+
+.faqglyphicon{
+  float:right;
+  margin-left: 5px;
+}
+
+.btn{
+    color:black;
+}
+
+.container-fluid button{
+  /*margin-bottom: 30px;*/
+  /*margin-top: 30px;*/
+  text-align: right;
+  float: right;
+  background-color: transparent;
+}
+
+.col-sm-12{
+  margin-top: -5px;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+.search-query{
+  float: right;
+}
+
+
+.pagination-bar{
+  align-content: center;
+}
+
+.btn-default{
+  border: none;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+
+/*---------------------------- placeholder start  -----------------------------------*/
+.productinfo{
+  /*padding:90px 0;*/
+  /*background-color:rgba(0, 157, 255, 0.2);*/
+  /*width: 267.09px;*/
+    background-color:rgba(0, 0, 0, 1);
+  /*height: 205px;*/
+}
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+
+.placeholder:hover{
+  -moz-box-shadow: 0 0 10px #ccc;
+  -webkit-box-shadow: 0 0 10px #ccc;
+  box-shadow: 0 0 10px #ccc;
+
+}
+.placeholder h4{
+  margin-top: 40px;
+}
+.placeholder p{
+  margin-bottom: 30px;
+}
+
+
+.placeholder{
+  border:1px solid #e7eaec;
+}
+
+.placeholder{
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-right: 5.16%;
+  margin-left: 5.16%;
+}
+
+.teamimage{
+  width: 100%;
+}
+
+
+
+
+/*---------------------------- placeholder end  -----------------------------------*/
+
+/*---------------------------- col-lg-6 start -----------------------------------*/
+
+@media screen and (min-width: 992px) and (max-width: 1200px){
+      .placeholder{
+      width:267px;
+      margin-left: 5%;
+      margin-right: 5%;
+  }
+}
+
+
+@media(min-width: 992px){
+  .col-lg-6{
+    width:40%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  .col-lg-6{
+    border-style:solid;
+    border-width: 1px 1px 1px 1px;
+    border-radius: 5px;
+    border-color: rgba(0,0,0,0.2);
+}
+
+  .col-lg-6{
+    width:40%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+    .placeholder{
+      width:267px;
+  }
+    .productinfo{
+      width: 267.09px;
+      height: 205px;
+      overflow: hidden;
+    }
+
+}
+
+@media(max-width: 768px){
+    .productinfo{
+      /*width: 267.09px;*/
+      height: 205px;
+      width: 100%;
+      overflow: hidden;
+  }
+
+
+}
+
+
+.marketing .col-lg-6{
+  margin-bottom:20px;
+  text-align:center;
+}
+
+@media (max-width: 992px){
+  .sidebar{
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px){
+  .col-sm-4{
+    width: 40%;
+  }
+  .placeholder{
+    margin-right: 5%;
+    margin-left: 5%;
+  }
+    .productinfo{
+      /*width: 267.09px;*/
+      height: 205px;
+      width: 100%;
+      overflow: hidden;
+  }
+
+}
+@media screen and (min-width: 400px) and (max-width: 767px){
+  .col-sm-4{
+    width: 70%;
+  }
+  .placeholder{
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+}
+
+@media(max-width: 992px){
+  .col-md-offset-2{
+    margin-left: 10%;
+  }
+}
+/*---------------------------- col-lg-6 end-----------------------------------*/
+@media screen and (min-width: 992px) and (max-width: 1200px){
+  #custom-search-input{
+    width: 40%;
+  }
+}
+
+@media screen and (min-width: 1200px){
+    #custom-search-input{
+    width: 30%;
+  }
+}
+@media screen and (max-width: 992px){
+    #custom-search-input{
+    width: 45%;
+  }
+}
+@media screen and (min-width: 400px) and (max-width: 767px){
+  #custom-search-input{
+    width: 60%;
+  }
+}
+
+
+#custom-search-input{
+  padding: 3px;
+  border: solid 1px #E4E4E4;
+  border-radius: 6px;
+  background-color: #fff;
+  /*width: 30%;*/
+}
+
+#custom-search-input input{
+    border: 0;
+    box-shadow: none;
+}
+
+#custom-search-input button{
+    margin: 2px 0 0 0;
+    background: none;
+    box-shadow: none;
+    border: 0;
+    color: #666666;
+    padding: 0 8px 0 10px;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input button:hover{
+    border: 0;
+    box-shadow: none;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input .glyphicon-search{
+    font-size: 23px;
+}

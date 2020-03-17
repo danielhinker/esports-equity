@@ -1,0 +1,110 @@
+{% extends "layout_browse.html" %}
+{% load bootstrap3 %}
+{% load static %}
+{% block title_tag %}eSports Equity: Browse{% endblock %}
+{% block title %}Teams{% endblock %}
+
+{% block body %}
+    <head>
+        <link href="{% static 'css/teams/browse.css' %}" rel="stylesheet">
+
+    </head>
+    <div class="container-fluid">
+                {% load widget_tweaks %}
+            <div class="col-sm-9 offset-3 col-md-10 col-md-offset-2 main">
+                <div class="page-header">
+                    <h1>All Teams1</h1>
+                        <div id="custom-search-input">
+                            <div class="input-group col-md-12">
+                                <input type="text" class="form-control input-lg" placeholder="Search" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-info btn-lg" type="button">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                </div>
+                      <ol class="breadcrumb">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="#">All Teams</a></li>
+                      </ol>
+                <div class="col-sm-12">
+                        <div class="pull-left">
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Filter <span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Following</a></li>
+                            <li><a href="#">Recently Backed</a></li>
+
+                            <li role="separator" class="divider"></li>
+
+                            <li><a href="#">Equity Crowdfunding</a></li>
+                            <li><a href="#">Featured Projects</a></li>
+                            <li><a href="#">Almost Funded</a></li>
+                            <li><a href="#">New Projects</a></li>
+
+                            <li role="separator" class="divider"></li>
+
+                            <li><a href="">CS:GO</a></li>
+                            <li><a href="">League of Legends</a></li>
+                            <li><a href="">Overwatch</a></li>
+                            <li><a href="">Rocket League</a></li>
+                            <li><a href="">DOTA 2</a></li>
+                          </ul>
+                    </div>
+                </div>
+
+                <div class="row placeholders">
+                  {% for team in team_list %}
+                      {% if team.is_verified %}
+                      <a href="{% url 'teams:detail' team_id=team.pk %}">
+                        <div class="col-xs-6 col-sm-4 placeholder">
+                          <div class="productinfo"><img src="{{ MEDIA_URL }}{{ team.image }}" class="teamimage"></div>
+                          <h4>{{ team.title }}</h4>
+                          <p><span class="text-muted">{{ team.description | safe }}</span></p>
+                        </div>
+                      </a>
+                      {% endif %}
+                  {% endfor %}
+                </div>
+{##}
+                <div class="col-sm-12 text-center">
+                    {% if is_paginated %}
+                      <ul class="pagination">
+                        {% if page_obj.has_previous %}
+                          <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                        {% else %}
+                          <li class="disabled"><span>&laquo;</span></li>
+                        {% endif %}
+                        {% for i in paginator.page_range %}
+                          {% if page_obj.number == i %}
+                            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                          {% else %}
+                            <li><a href="?page={{ i }}">{{ i }}</a></li>
+                          {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                          <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                        {% else %}
+                          <li class="disabled"><span>&raquo;</span></li>
+                        {% endif %}
+                      </ul>
+                    {% endif %}
+                </div>
+{#            <ul class="pagination pagination-lg">#}
+{#  <li><a href="#">1</a></li>#}
+{#  <li><a href="#">2</a></li>#}
+{#  <li><a href="#">3</a></li>#}
+{#  <li><a href="#">4</a></li>#}
+{#  <li><a href="#">5</a></li>#}
+{#</ul>#}
+            </div>
+    </div>
+{% endblock %}
+
+
+
+
+

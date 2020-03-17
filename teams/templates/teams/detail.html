@@ -1,0 +1,215 @@
+{% extends 'layout.html' %}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block title_tag %}{{ team.title }} | {{ block.super }}{% endblock %}
+
+{% block body %}
+
+<head>
+        <link href="{% static 'css/teampage.css' %}" rel="stylesheet">
+        <script src="https://js.stripe.com/v3/"></script>
+</head>
+    <div class="container-fluid">
+
+      <div class="teamarea">
+        <div class="aboutsection">
+              <div class="about-title">
+                  <div class="page-header">
+                      <h1>{{ team.title }}
+                          <small class=""><span style="color:#0089ff; margin-left: 20px"><span class="glyphicon glyphicon-th-large"></span>Equity Crowdfunding</span></small>
+                      </h1>
+                  </div>
+              </div>
+        </div>
+        <div class="col-xs-6 col-sm-3 placeholder image-holder">
+            <img src="{{ MEDIA_URL }}{{ team.image }}" class="teamimage image-responsive">
+        </div>
+        <div class="col-xs-6 col-sm-3 placeholder stats">
+
+                <div class="progress">
+                  <div class="progress-bar progress-bar-striped active" role="progressbar"
+                  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                    40%
+                  </div>
+                </div>
+
+
+          <div class="progress-stats">
+              <div class="user-created pull-right">
+                <a href="" class="create-by">Owner: {{ team.user.first_name }}</a>
+                <img alt="image" class="img-circle jumbotron-heading" src="{% static 'img/icons/avatar.png' %}">
+              </div>
+              <strong class="currentamout">${{ team.current_raise }}</strong> <br>
+              <small class="totalamout">Goal of ${{ team.raising_minimum }}</small>
+          </div>
+          <div class="progress-stats">
+            <strong class="currentamout">{{ team.following.count }}</strong><br>
+            <small class="totalamout">Backers</small>
+          </div>
+          <div class="progress-stats">
+              <strong class="currentamout">{{ team.duration }}</strong> <br>
+              <small class="totalamout">Deadline</small>
+          </div>
+
+                <div class="back-button">
+                    <a href="{% url 'transact:backform' pk=team.id %}">
+                        <button class="btn btn-info btn-lg btn-block">Invest Now</button>
+                    </a>
+                </div>
+
+                {% if not request.user in team.following.all  %}
+                    <div class="follow-button">
+                        <a href="{% url 'teams:follow' team.id %}">
+                            <button type="button" class="btn btn-info btn-lg btn-block">Follow</button>
+                        </a>
+                    </div>
+                {% else %}
+                    <div class="follow-button">
+                        <a href="{% url 'teams:unfollow' team.id %}">
+                            <button type="button" class="btn btn-info btn-lg btn-block unfollow">Unfollow</button>
+                        </a>
+                    </div>
+                {% endif %}
+                <p class="category pull-left"><span class="glyphicon glyphicon-tag"></span>{{ team.get_category_display }}</p>
+                <p class="category pull-left"><span class="glyphicon glyphicon-pushpin"></span>{{ team.get_state_display }}</p>
+
+                <div class="back-button">
+                    <a href="">
+                        <button class="btn btn-info btn-lg btn-block"><span class="glyphicon glyphicon-link"></span>Visit Their Site</button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xs-6 col-sm-3 placeholder about-placeholder">
+
+                 <ul id="myTab" class="nav nav-tabs">
+                    <li class="active"><a href="#home" data-target="#overview, #overview_else" data-toggle="tab">Overview</a></li>
+                    <li><a href="#profile" data-target="#question, #question_else" data-toggle="tab">the Team</a></li>
+                    <li><a href="#profile" data-target="#document, #document_else" data-toggle="tab">Documents</a></li>
+                    <li><a href="#profile" data-target="#faq, #faq_else" data-toggle="tab">Comments</a></li>
+                </ul>
+
+                <div id="myTabContent" class="tab-content">
+
+
+                    <div class="tab-pane fade in active" id="overview">
+                        <h2 class="page-header">About this Project</h2>
+                        <p>{{ projectoverview_object.intro1 }}</p>
+                    </div>
+
+
+                    <div class="tab-pane fade" id="question">
+                        <h2 class="page-header">About this Team</h2>
+                        <p>{{ projectstory_object.para_story }}</p>
+                        <img src="{{ MEDIA_URL }}{{ projectstory_object.image_story }}" class="teamimage image-responsive">
+                    </div>
+                    <div class="tab-pane fade" id="document">
+                        <p>Documents</p>
+                    </div>
+                    <div class="tab-pane fade" id="faq">
+                        <p><br>Leave a comment on this project page.</p>
+                    </div>
+                </div>
+
+            <hr>
+
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade in active" id="overview_else">
+
+                        <h2 class="sub-titles page-header overview-title">{{ projectoverview_object.title1 }}</h2>
+                        <p>{{ projectoverview_object.para1 }}</p>
+                        <img src="{{ MEDIA_URL }}{{ projectoverview_object.image1 }}" class="teamimage image-responsive">
+
+                        <h2 class="sub-titles page-header overview-title">{{ projectoverview_object.title2 }}</h2>
+                        <p>{{ projectoverview_object.para2 }}</p>
+                        <img src="{{ MEDIA_URL }}{{ projectoverview_object.image2 }}" class="teamimage image-responsive">
+
+                        <h2 class="sub-titles page-header overview-title">{{ projectoverview_object.title3 }}</h2>
+                        <p>{{ projectoverview_object.para3 }}</p>
+                        <img src="{{ MEDIA_URL }}{{ projectoverview_object.image3 }}" class="teamimage image-responsive">
+
+                        <h2 class="sub-titles page-header overview-title">{{ projectoverview_object.title4 }}</h2>
+                        <p>{{ projectoverview_object.para4 }}</p>
+                        <img src="{{ MEDIA_URL }}{{ projectoverview_object.image4 }}" class="teamimage image-responsive">
+                </div>
+
+
+
+                <div class="tab-pane fade" id="question_else">
+                    <h4 class="member-name"><img src="">{{ projectstory_object.member1_name }}</h4>
+                    <h5 class="job-title">{{ projectstory_object.member1_title }}</h5><br>
+                    <p id="member1-para">{{ projectstory_object.member1_para }}</p>
+
+                    <h4 class="member-name"><img src="">{{ projectstory_object.member2_name }}</h4>
+                    <h5 class="job-title">{{ projectstory_object.member2_title }}</h5><br>
+                    <p id="member1-para">{{ projectstory_object.member2_para }}</p>
+
+
+                    <h4 class="member-name"><img src="">{{ projectstory_object.member3_name }}</h4>
+                    <h5 class="job-title">{{ projectstory_object.member3_title }}</h5><br>
+                    <p id="member1-para">{{ projectstory_object.member3_para }}</p>
+
+
+                    <h4 class="member-name"><img src="">{{ projectstory_object.member4_name }}</h4>
+                    <h5 class="job-title">{{ projectstory_object.member4_title }}</h5><br>
+                    <p id="member1-para">{{ projectstory_object.member4_para }}</p>
+                </div>
+                <div class="tab-pane fade" id="document_else">
+                    <p>Content 3333.</p>
+                </div>
+                <div class="tab-pane fade" id="faq_else">
+                    <p><div id="disqus_thread"></div>
+                        <script>
+
+                        /**
+                        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                        /*
+                        var disqus_config = function () {
+                        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                        };
+                        */
+                        (function() { // DON'T EDIT BELOW THIS LINE
+                        var d = document, s = d.createElement('script');
+                        s.src = 'https://esports-equity.disqus.com/embed.js';
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                        })();
+                        </script>
+                        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></p>
+                </div>
+
+            </div>
+              </div>
+
+            <div class="col-xs-6 col-sm-3 placeholder stats">
+              <div class="">Rewards</div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <h3 class="panel-title">If you Invest $10</h3>
+                    </div>
+                    <div class="panel-body">
+                        Robert's Team T-Shirt
+                    </div>
+                    <div class="reward-image-holder">
+                        <img class="reward-image image-responsive" src="{% static 'img/main/shirt.jpg' %}">
+                    </div>
+                  </div>
+
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">If you back $20</h3>
+                </div>
+                <div class="panel-body">
+                  You get a T-Shirt
+                </div>
+              </div>
+            </div>
+      </div>
+
+          </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,466 @@
+{% extends 'layout-new.html' %}
+{% load account_extras %}
+{% load bootstrap3 %}
+{% load static %}
+
+{#{% block title_tag %}Esports Equity: Project Information{% endblock %}#}
+{#{% block title %}Account Information{% endblock %}#}
+{% block title_tag %}About you | {{ block.super }}{% endblock %}
+
+<html lang="en">
+  <head>
+      {% block head %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+{#  <title>Pricing</title>#}
+  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search resu...">
+
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="canonical" href="/edit-about.html">
+  <link rel="alternate" type="application/rss+xml" title="Esports Equity" href="/feed.xml">
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+  <script src="{% static 'javascripts/scrollPosStyler.js' %}"></script>
+  <!-- JavaScript -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.1/vue.min.js" ></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.4/vue.min.js"></script>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
+
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+      {% endblock %}
+
+</head>
+  <body>
+{% block body %}
+{#    <nav class="navbar navbar-toggleable-sm navbar-light bg-primary fixed-top"  id="navbar" v-cloak >#}
+{#  <div class="container top-nav" v-if="!search">#}
+{##}
+{#  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">#}
+{#  <span class="navbar-toggler-icon"></span>#}
+{#</button>#}
+{#  <a class="navbar-brand" href="index.html">CrowdFundr</a>#}
+{##}
+{#  <div class="collapse navbar-collapse" id="navbarColor01">#}
+{#    <ul class="navbar-nav mr-auto" >#}
+{#      <li class="nav-item active">#}
+{#        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>#}
+{#      </li>#}
+{#      <li class="nav-item">#}
+{#        <a class="nav-link" href="explore.html">Explore</a>#}
+{#      </li>#}
+{#      <li class="nav-item">#}
+{#        <a class="nav-link" href="edit.html">Start a project</a>#}
+{#      </li>#}
+{#      <li class="nav-item">#}
+{#        <a class="nav-link" href="about.html">About us</a>#}
+{#      </li>#}
+{#    </ul>#}
+{#    <ul class="navbar-nav" >#}
+{#      <li class="nav-item hidden-sm-down">#}
+{#        <a class="nav-link" href="#" v-on:click.prevent="showSearchBar"><i class="fa fa-search" aria-hidden="true"></i></a>#}
+{#      </li>#}
+{#      <li class="nav-item hidden-sm-up">#}
+{#        <a class="nav-link" href="#" v-on:click.prevent="showSearchBar">Search</a>#}
+{#      </li>#}
+{#      <li class="nav-item">#}
+{#        <a class="nav-link" href="#" data-toggle="modal" data-target=".login-modal-lg">Login</a>#}
+{#      </li>#}
+{#      <li class="nav-item">#}
+{#        <a class="nav-link"href="#" data-toggle="modal" data-target=".signup-modal-lg">Sign up</a>#}
+{#      </li>#}
+{#    </ul>#}
+{#    <form class="form-inline" style="display: none">#}
+{#      <input class="form-control mr-sm-2" type="text" placeholder="Search">#}
+{#      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>#}
+{#    </form>#}
+{#  </div>#}
+{#    </div>#}
+{##}
+{#    <div class="container" v-else>#}
+{#  <div class="input-group search-bar">#}
+{#  <span class="input-group-addon"><i class="icon-magnifier icons"></i></span>#}
+{#  <input type="text" class="form-control form-control-lg" placeholder="Search">#}
+{#  <span class="input-group-addon" ><a href="" class="text-muted" v-on:click.prevent="hideSearchBar"><i class="icon-close icons"></i></a></span>#}
+{#</div>#}
+{#    </div>#}
+{##}
+{#</nav>#}
+
+    <br />
+<br />
+<br />
+<div class="container-fluid">
+  <div class="row">
+
+
+    <div class="col-sm-8">
+        <br/>
+        <br/>
+        <br/>
+      <h1>Back {{ team.title }}</h1>
+    <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+
+        {% if user.is_authenticated %}
+                                <form action="{% url 'stripe_api:back_team_3' %}" method="POST">
+
+        <div class="form-group row">
+                                <label for="example-text-input" class="col-3 col-md-2 col-form-label">Amount</label>
+                                <div class="col-9 col-md-10">
+                                    <input class="form-control" type="text" value="{{ amount }}" id="example-text-input">
+                                    <p class="form-text text-muted">
+                                        Amount of money you would like to back.
+                                    </p>
+                                </div>
+                            </div>
+        <div class="form-group row">
+                                <label for="example-text-input" class="col-3 col-md-2 col-form-label">Message</label>
+                                <div class="col-9 col-md-10">
+                                    <input class="form-control" type="text" value="{{ message }}" id="example-text-input">
+                                    <p class="form-text text-muted">
+                                        Leave a message for the Project Creator.
+                                    </p>
+                                </div>
+                            </div>
+
+    <br />
+<br />
+<br />
+
+
+
+    {% csrf_token %}
+        <input id='amount' type='hidden' name='amount' value=''>
+    <input type='hidden' name='project_pk' value={{ project_pk }}>
+                                    <input type='hidden' name='reward_pk' value={{ reward.pk }}>
+{#            <script type="text/javascript">#}
+{#    document.getElementById("amount").value = "100";#}
+{#</script>#}
+  <script
+{#          var amount = $("amount").val();#}
+
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_GDrVvjI5isbYy25WNwZuR4sh"
+    data-amount=document.getElementById("amount").value;
+    data-name="EEWeb"
+    data-description="2 widgets"
+    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+    data-locale="auto">
+  </script>
+
+                                    <script>
+        // Hide default stripe button, be careful there if you
+        // have more than 1 button of that class
+        document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
+    </script>
+                                    <button type="submit" class="btn btn-lg btn-primary btn-block">Back Project</button>
+                                    {% else %}
+                                    <a class="btn btn-lg btn-primary btn-block" href="{% url 'accounts:login' %}">Back this Project</a>
+                                        {% endif %}
+
+</form>
+    </div>
+{#      <p>Add a bio and links to your website and social media profiles. Think of it as your creative resume.</p>#}
+
+{#        <div class="form-group light-blue">#}
+{##}
+{#          <div class="form-group row">#}
+{#            <label for="example-text-input" class="col-3 col-form-label">Your location</label>#}
+{#            <div class="col-9">#}
+{#              <div class="input-group  input-group-lg">#}
+{#                <span class="input-group-btn">#}
+{#                  <button class="btn btn-secondary" type="button"><i class="fa fa-location-arrow" aria-hidden="true"></i></button>#}
+{#                </span>#}
+{#                <input type="text" class="form-control" placeholder="Search for...">#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+
+{#        <div class="form-group light-blue">#}
+{##}
+{#          <div class="form-group row">#}
+{#            <label for="example-text-input" class="col-3 col-form-label">Websites</label>#}
+{#            <div class="col-9">#}
+{#                <input class="form-control" type="url" value="" id="example-tel-input" />#}
+{#                <p>Some suggestions: Link to your blog, portfolio, Twitter, Instagram, etc.</p>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+
+{#        <div class="form-group light-blue">#}
+{##}
+{#          <div class="form-group row">#}
+{#            <label for="example-text-input" class="col-3 col-form-label">Google Analytics</label>#}
+{#            <div class="col-9">#}
+{#                <input class="form-control" placeholder="UA-XXXXXXXX-X" type="text" class="text">#}
+{#                <p>Enter your tracking ID to enable Google Analytics for your project.</p>#}
+{##}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+
+
+
+
+
+  <div class="col-sm-4">
+    <div class="row">
+      <div class="col-sm-10 offset-sm-2">
+
+{##}
+{#        <strong>Getting started?</strong>#}
+{#        <p>Visit Campus to read discussions about preparing for a project and more.</p>#}
+{#        <br />#}
+{#        <strong>Preview</strong>#}
+{#        <hr />#}
+
+
+					          <div class="card box">
+
+
+{#		<a href="project.html" >#}
+                                  {% if team.project_image %}
+		<img src="{{ team.project_image.url }}" class="img-fluid hidden-xs-down"/>
+		<img src="{{ team.project_image.url }}" class="img-fluid hidden-sm-up"/>
+                                  {% else %}
+                                  <img src="http://i.expresspixel.com/unsplash.it/310/210?image=11" class="img-fluid hidden-xs-down"/>
+		<img src="http://i.expresspixel.com/unsplash.it/610/210?image=11" class="img-fluid hidden-sm-up"/>
+                                  {% endif %}
+{#	</a>#}
+
+	<div class="card-block" class="pb-1" style="position: relative; padding-bottom: 60px; min-height: 250px;">
+
+				<h6>{{ team.title }}</h6>
+				<p class="text-muted">By <strong>{{ team.user.first_name }} {{ team.user.last_name|make_list|first }}</strong></p>
+				<p class="desc">{{ team.short_description }}</p>
+
+				<div style="position: absolute; bottom: 10px; width: 86%; ">
+				<div class="progress">
+  					<div class="progress-bar" role="progressbar" style="width: {% widthratio team.current_raise team.funding_goal 100 %}%" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+				<p class="mb-1">{{ team.current_raise }}% funded</p>
+				</div>
+
+
+</div>
+
+<div class="card-footer text-muted">
+                                    <div class="row ">
+                                            <div class="col-12">
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-4 text-center">
+                                                        <p class="mt-0 mb-0">Backers</p>
+                                                        {% if not team.backed_by %}
+                                                        <h6 class="mt-0 mb-0"><strong>0</strong></h6>
+                                                        {% else %}
+                                                        <h6 class="mt-0 mb-0"><strong>{{ team.backed_by.count }}</strong></h6>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col-4 text-center">
+                                                        <p class="mt-0 mb-0">Pledged</p>
+                                                        <h6 class="mt-0 mb-0"><strong>&dollar;{{ team.current_raise }}</strong></h6>
+                                                    </div>
+                                                    <div class="col-4 text-center">
+                                                        <p class="mt-0 mb-0">Days&nbsp;Left</p>
+                                                        <h6 class="mt-0 mb-0"><strong>{{ team.duration|days_left }}</strong></h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+	</div>
+</div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<br />
+<br />
+<br />
+</div>
+
+
+
+
+
+
+
+
+<div class="modal fade login-modal-lg" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content" style="background: transparent; border: none;">
+
+            <div class="modal-body">
+
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-12  pull-right">
+                            <h4  style="color: #fff; font-weight: 100;">Login</h4>
+                            <a href="#" data-dismiss="modal" style="position: absolute; top: 0; right: 0;"><i class="icon-close icons" aria-hidden="true" style="color: #fff; font-size: 26px"></i></a>
+                            <div class="card mt-3" style="background: #fff; padding: 10px">
+                              <h6 style="color: #000;font-weight: 100;">Already have an account</h6>
+                                <p>Please login to continue.</p><br />
+                                <form>
+                                    <div class="form-group row">
+                                      <div class="col-sm-12">
+                                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                      </div>
+                                    </div>
+                                    <div class="form-group row">
+                                      <div class="col-sm-12">
+                                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                      </div>
+                                    </div>
+                                    <div class="form-group row">
+                                      <label class="col-sm-2s"></label>
+                                      <div class="col-sm-10">
+                                        <div class="form-check">
+                                          <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox"> Remember me
+                                          </label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <br /><br />
+                                    <div class="form-group row">
+                                      <div class="offset-sm-3 col-sm-6 text-center">
+                                        <a href="account-dashboard.html" class="btn btn-primary btn-block">Sign in</a>
+                                      </div>
+                                    </div>
+                                    <div class="form-group row">
+                                      <div class="offset-sm-2 col-sm-8 text-center">
+                                        <a href="" class="mt-2">Forgotten your password</a>
+                                      </div>
+                                    </div>
+                                  </form>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade signup-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="background: transparent; border: none;">
+
+            <div class="modal-body">
+
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-md-11 col-sm-12">
+                            <h4  style="color: #fff; font-weight: 100;">Register</h4>
+                                                        <a href="#" data-dismiss="modal" style="position: absolute; top: 0; right: 0;"><i class="icon-close icons" aria-hidden="true" style="color: #fff; font-size: 26px"></i></a>
+
+                            <div class="card  mt-3" style="background: #fff; padding: 10px">
+                              <h6 style="color: #000">New to CrowdFunding?</h6>
+                                <p>A crowdfunding account is required to continue.</p>
+
+                                <form role="form">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control " placeholder="Enter email">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                          <div class="form-group">
+                                              <input type="text" class="form-control"placeholder="First name">
+                                          </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                          <div class="form-group">
+                                              <input type="text" class="form-control"placeholder="Last name">
+                                          </div>
+                                        </div>
+                                      </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                          <div class="form-group">
+                                              <input type="password" class="form-control"placeholder="Password">
+                                          </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                          <div class="form-group">
+                                              <input type="password" class="form-control"placeholder="Confirm password">
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                  <div class="text-center">
+                                    <br /><br />
+                                    <p>By signing up you agree to our terms and conditions and privacy policy</p>
+                                    <a href="account-dashboard.html" class="btn btn-primary">Create account</a><br /><br />
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            </div>
+    </div>
+  </div>
+</div>
+<script>
+
+
+var app = new Vue({
+  el: '#navbar',
+  data: {
+    search: false
+  },
+  methods: {
+    showSearchBar: function () {
+      this.search = true;
+    },
+    hideSearchBar: function () {
+      this.search = false;
+    }
+  }
+})
+
+</script>
+  {% endblock %}
+  </body>
+</html>

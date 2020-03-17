@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block title_tag %}eSports Equity: Subscribed!{% endblock %}
+{% block title %}Subscribed to eSports Equity Newsletter{% endblock %}
+
+{% block body %}
+  <head>
+    <link href="{% static 'css/signin.css' %}" rel="stylesheet">
+  </head>
+
+    <div class="container">
+        <div class="success">
+            <h2>You Have Successfully Subscribed!</h2>
+            <h3>You will start getting Newsletters from us soon!</h3>
+            <img class="successcheck" src="{% static 'img/icon/subscribedicon.png' %}">
+        </div>
+    </div>
+
+    <script>
+      window.setTimeout(function(){
+        window.location.href = "{% url 'accounts:profile' profile_pk=request.user %}";
+      }, 2500);
+    </script>
+
+{% endblock %}

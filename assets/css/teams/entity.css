@@ -1,0 +1,104 @@
+body{
+    font-family: stheiti;
+    padding-top: 70px;
+  padding-bottom: 0px;
+  background-color: #eee;
+  /*background-image: url("../../img/main/logopng2.png");*/
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+.page-header{
+    font-size: 50px;
+    border-bottom: 5px solid #000;
+    margin-bottom: 45px;
+}
+
+.page-header h1{
+    font-size: 50px;
+    /*font-family: 'Lora', serif;*/
+}
+
+.container-fluid{
+    text-align: center;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.container-fluid p{
+    text-align: left;
+}
+
+
+
+.form-control{
+    height: 50px;
+    /*width: 50%;*/
+      border: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      -webkit-transition: none;
+      transition: none;
+      border-bottom: 1px solid #1a2d40;
+      border-radius: 0;
+      background-color: rgba(255,255,255,0);
+}
+
+.form-control:focus{
+    background-color: #1a2d40;
+}
+
+.form-control::after{
+    transition: width .3s;
+}
+
+.form-control:hover::after{
+    width: 100%;
+}
+
+#first-name .form-control{
+    width: 40%;
+}
+#first-name .control-label{
+    margin-right: 30px;
+}
+
+#last-name .form-control{
+    width: 40%;
+}
+
+#last-name .control-label{
+    margin-right: 30px;
+}
+
+
+#current-annual-income .form-control{
+    width: 40%;
+}
+
+#current-annual-income .control-label{
+    margin-right: 30px;
+}
+
+#average-annual-income .form-control{
+    width: 40%;
+}
+
+#average-annual-income .control-label{
+    margin-right: 30px;
+}
+
+.control-label{
+    font-size: 20px;
+    /*margin-right: 10px;*/
+}
+
+
+
+.help-text{
+    margin-bottom: 40px;
+    margin-top: 40px;
+
+}
+

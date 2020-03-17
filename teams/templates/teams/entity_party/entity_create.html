@@ -1,0 +1,135 @@
+{% extends 'layout.html' %}
+{% load bootstrap3 %}
+{% load static %}
+{% load static %}
+
+{% block title_tag %}eSports Equity: Entity Information{% endblock %}
+{% block title %}Investor Entity Information{% endblock %}
+
+{% block body %}
+    <head>
+        <link href="{% static 'css/teams/entity.css' %}" rel="stylesheet">
+        <link href="{% static 'css/buttons/button.css' %}" rel="stylesheet">
+        <link href="{% static 'css/teams/form_responsive.css' %}" rel="stylesheet">
+
+        <script type='text/javascript' src='{% static 'js/jquery-ui.js' %}'></script>
+        <link rel='stylesheet' type='text/css' href='{% static 'css/jquery-ui/smoothness/jquery-ui.css' %}' />
+    </head>
+    <div class="container-fluid">
+        <div class="page-header">
+            <h1>Entity Information</h1>
+        </div>
+
+    <div class="form-general">
+        {% load widget_tweaks %}
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form.visible_fields%}
+                {% if forloop.counter == 1 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text"><span class="glyphicon glyphicon-triangle-right"></span>Name of Your Entity, please include LLC, LTD, Inc, Co. or other annotations.</p>
+                    </div>
+                {% endif %}
+                {% if forloop.counter == 2 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text"><span class="glyphicon glyphicon-triangle-right"></span>Please enter the E-mail address of your entity.</p>
+                    </div>
+                {% endif %}
+                {% if forloop.counter == 3 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text"><span class="glyphicon glyphicon-triangle-right"></span>Are you a United States Citizen or Resident?</p>
+                    </div>
+                {% endif %}
+                {% if forloop.counter == 4 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text"><span class="glyphicon glyphicon-triangle-right"></span>Please enter the address of your entity.</p>
+                    </div>
+                {% endif %}
+                {% if forloop.counter == 5 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text"><span class="glyphicon glyphicon-asterisk"></span>(Optional) Second Line of your address.</p>
+                    </div>
+                {% endif %}
+                {% if forloop.counter == 6 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text"><span class="glyphicon glyphicon-triangle-right"></span>Please enter the city your entity is in.</p>
+                    </div>
+                {% endif %}
+                {% if forloop.counter == 7 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text"><span class="glyphicon glyphicon-triangle-right"></span>Select the State your entity is located.</p>
+                    </div>
+                {% endif %}
+                {% if forloop.counter == 8 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text"><span class="glyphicon glyphicon-triangle-right"></span>Choose the Country your entity is currently in.</p>
+                    </div>
+                {% endif %}
+                {% if forloop.counter == 9 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text"><span class="glyphicon glyphicon-triangle-right"></span>Please enter the Zip code of your entity's address.</p>
+                    </div>
+                {% endif %}
+        {% endfor %}
+    </form>
+
+          <button type="submit" class="btn btn-lg btn-outline btn-theme btn-primary pull-right" data-wow-delay="0.7s">Save and Continue</button>
+          <button type="submit" class="btn btn-lg btn-outline btn-theme btn-primary pull-left" data-wow-delay="0.7s">Go Back</button>
+
+    </div>
+        </div>
+{% endblock %}

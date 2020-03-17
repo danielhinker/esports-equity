@@ -1,0 +1,238 @@
+{% extends 'layout-new.html' %}
+{% load static %}
+
+{% block title_tag %}Profile Settings | {{ block.super }}{% endblock %}
+
+{% block body %}
+
+<head>
+    <link href="{% static 'css/accounts/profile_settings.css' %}" rel="stylesheet">
+</head>
+
+
+
+    <br />
+<br />
+<br />
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-sm-12">
+<h1>Account Settings</h1><br /><br />
+    <ul class="nav nav-tabs hidden-sm-down">
+
+    
+      
+      
+
+      <li class="nav-item active">
+        <a class="nav-link active" href="{% url 'accounts:profile_dashboard' %}">Account</a>
+      </li>
+    
+      
+      
+
+      <li class="nav-item ">
+        <a class="nav-link " href="{% url 'accounts:profile_settings' %}">My Profile</a>
+      </li>
+    
+      
+
+
+</ul>
+
+<div class="btn-group  btn-block  btn-group-justified hidden-md-up" role="group" aria-label="Button group with nested dropdown">
+  <div class="btn-group   btn-block" role="group">
+    <button id="btnGroupDrop1" type="button" class="btn btn-secondary btn-block dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        
+        
+        
+        Account
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </button>
+    <div class="dropdown-menu"  style="width: 100%" aria-labelledby="btnGroupDrop1">
+        
+        
+        
+
+        <li class="nav-item active">
+            <a class="nav-link active" href="account-dashboard.html">Account</a>
+        </li>
+        
+        
+        
+
+        <li class="nav-item ">
+            <a class="nav-link " href="account-profile.html">My rofile</a>
+        </li>
+        
+        
+        
+
+        <li class="nav-item ">
+            <a class="nav-link " href="account-notifications.html">Notifications</a>
+        </li>
+        
+        
+        
+
+        <li class="nav-item ">
+            <a class="nav-link " href="account-payment.html">Payment methods</a>
+        </li>
+        
+        
+        
+
+        <li class="nav-item ">
+            <a class="nav-link " href="start.html">Create new ad</a>
+        </li>
+        
+    </div>
+  </div>
+</div>
+
+<br />
+<br />
+<br />
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+  <fieldset >
+            {% load widget_tweaks %}
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-5 ">
+                        {% for field in form.visible_fields%}
+
+                            {% if forloop.counter == 1 %}
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-3 col-md-2 col-form-label">Email</label>
+                                <div class="col-9 col-md-10">
+{#                                    <input class="form-control" type="email" value="firstname@example.com" id="example-text-input">#}
+{#                                    {{ field|add_class:'form-control' }}#}
+                                        {{ object }}
+                                    <p class="form-text text-muted">
+                                        Your email address.
+                                    </p>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% if forloop.counter == 2 %}
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-3 col-md-2 col-form-label">Password</label>
+                                <div class="col-9 col-md-10">
+{#                                    <input class="form-control" type="password" value="" id="example-text-input">#}
+                                        {{ field|add_class:'form-control' }}
+                                    <p class="form-text text-muted">
+                                        Enter the new password
+                                    </p>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% if forloop.counter == 3 %}
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-3 col-md-2 col-form-label">Current Password</label>
+                                <div class="col-9 col-md-10">
+{#                                    <input class="form-control" type="password" value="" id="example-text-input">#}
+                                    {{ field|add_class:'form-control' }}
+                                    <p class="form-text text-muted">
+                                        Enter the new password again
+                                    </p>
+                                </div>
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                            <div class="form-group row">
+                                <div class="col-9 col-md-10">
+                                        <button type="submit" class="btn btn-primary">Save settings</button>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+{#                        <div class="col-sm-3 offset-sm-3 float-md-right">#}
+{#                            <div class="form-group row">#}
+{#                                <label for="example-search-input" class="col-12 col-form-label">Following</label>#}
+{#                                <div class="col-10">#}
+{#                                    <a href="">Opt out of Following</a><br />#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="form-group row">#}
+{#                                <label for="example-email-input" class="col-12 col-form-label">Facebook</label>#}
+{#                                <div class="col-10">#}
+{#                                    <a href="" class="btn btn-success">Login with facebook</a><br />#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="form-group row">#}
+{#                                <label for="example-email-input" class="col-12 col-form-label">Security</label>#}
+{#                                <div class="col-10">#}
+{#                                    <a href="">Verify Your Email Enable Up Two Factor </a><br />#}
+{#                                    <a href="">Authentication </a><br />#}
+{#                                    <a href="">Log me out on all other devices</a><br />#}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{#                            <div class="form-group row">#}
+{#                                <label for="example-url-input" class="col-12 col-form-label">Delete&nbsp;Account</label>#}
+{#                                <div class="col-10">#}
+{#                                    <a href="">Delete my Crowdfunding account</a><br />#}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+                    </div>
+<hr />
+
+  </fieldset>
+</form>
+
+                </div>
+{#   <div class="col-sm-6 ">#}
+{#<h3>Login History</h3>#}
+{#<p>This feature provides information about your account usage and other related changes. If you see any suspicious activity, change your password immediately.</p>#}
+{#<p>No security events found.</p>#}
+{##}
+{##}
+{##}
+{#                </div>#}
+
+
+
+            </div>
+            <br />
+<br />
+<br />
+            </div>
+
+
+
+
+	<script>
+		var eventTime = moment().add(8, 'hours'); // Timestamp - Sun, 21 Apr 2013 13:00:00 GMT
+		var currentTime = 1366547400; // Timestamp - Sun, 21 Apr 2013 12:30:00 GMT
+		var diffTime = eventTime - currentTime;
+		var duration = moment.duration(diffTime*1000, 'milliseconds');
+		var interval = 1000;
+
+		setInterval(function(){
+		  duration = moment.duration(duration - interval, 'milliseconds');
+			$('#current_time').text(moment().format('MMMM Do YYYY, h:mma'));
+		}, interval);
+	</script>
+
+{% endblock %}

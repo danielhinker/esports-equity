@@ -1,0 +1,136 @@
+{% extends 'layout.html' %}
+{% load bootstrap3 %}
+{% load static %}
+{% load static %}
+
+{% block title_tag %}eSports Equity: Start a Project Step 2{% endblock %}
+{% block title %}Project Creation Step 2{% endblock %}
+
+{% block body %}
+    <head>
+{#        <script type='text/javascript' src='{% static 'js/jquery-ui.js' %}'></script>#}
+{#        <link rel='stylesheet' type='text/css' href='{% static 'css/jquery-ui/smoothness/jquery-ui.css' %}' />#}
+
+        <link href="{% static 'css/teams/investor_account.css' %}" rel="stylesheet">
+        <link href="{% static 'css/teams/entity.css' %}" rel="stylesheet">
+        <link href="{% static 'css/teams/CreateStep2.css' %}" rel="stylesheet">
+        <link href="{% static 'css/teams/form_responsive.css' %}" rel="stylesheet">
+        <link href="{% static 'css/buttons/button.css' %}" rel="stylesheet">
+        <link href="{% static 'css/breadcrumb.css' %}" rel="stylesheet">
+        <script type='text/javascript' src='{% static 'js/jquery-ui.js' %}'></script>
+        <link rel='stylesheet' type='text/css' href='{% static 'css/jquery-ui/smoothness/jquery-ui.css' %}' />
+    </head>
+    <div class="container-fluid">
+
+        <div style="margin-left:20px;margin-top:50px;">
+            <div id="bc1" class="myBreadcrumb">
+                <a href="{% url 'teams:apply' %}" class="active"><i class="fa fa-home fa-2x"></i></a>
+                <div>...</div>
+                <a href="#"><div>Basics</div></a>
+                <a href="{% url 'teams:team_story' %}"><div>Story</div></a>
+                <a href="#"><div>Documents</div></a>
+                <a href="#"><div>Offering Details</div></a>
+                <a href="#"><div>Preview</div></a>
+                <a href="#"><div>Payment</div></a>
+            </div>
+        </div>
+
+
+
+        <div class="page-header">
+            <h1>Let's start with the basics!</h1>
+        </div>
+
+    <div class="form-general">
+        {% load widget_tweaks %}
+        <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+            <div class="form-horizontal">
+{#            {% for field in form.visible_fields%}#}
+{#              <div class="form-group">#}
+{#                  <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>#}
+{#                        {{ field|add_class:'form-control' }}#}
+{#                          <script>#}
+{#                            $(function() {#}
+{#                                $( "#datepicker" ).datepicker();#}
+{#                            });#}
+{#                        </script>#}
+{#                </div>#}
+{#                {% endfor %}#}
+
+                        {% for field in form.visible_fields%}
+                {% if forloop.counter == 1 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text">Your emploer's name, for example, 'BestBuy'.</p>
+                    </div>
+                {% endif %}
+                {% if forloop.counter == 2 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text">Are you associated with a Broker Dealer?</p>
+                    </div>
+                {% endif %}
+                {% if forloop.counter == 3 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text">
+                            Employer's address line 2 (OPTIONAL).
+                            Employer's address line 2 (OPTIONAL).
+                        </p>
+                    </div>
+                {% endif %}
+                {% if forloop.counter == 4 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                                <script>
+                                    $(function() {
+                                        $( "#datepicker" ).datepicker();
+                                    });
+                                </script>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text">Employer's address line 2 (OPTIONAL).</p>
+                    </div>
+                {% endif %}
+                {% if forloop.counter == 5 %}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="{{ field.id_for_label }}" class="control-label pull-left">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="help-text help-text-bot">Enter your employer's city.</p>
+                    </div>
+                {% endif %}
+
+        {% endfor %}
+
+            <button type="submit" class="btn btn-lg btn-outline btn-theme btn-primary pull-right">Save and Continue</button>
+            <button type="submit" class="btn btn-lg btn-outline btn-theme btn-primary pull-left">Go Back</button>
+
+            </div>
+        </form>
+
+    </div>
+        </div>
+{% endblock %}
