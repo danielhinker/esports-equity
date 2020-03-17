@@ -1,1 +1,1 @@
-gunicorn eeweb.wsgi:application --preload --workers 1
+gunicorn --log-file=- eeweb.wsgi:application
