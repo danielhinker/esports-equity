@@ -198,16 +198,16 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 
 # IAM User
-ACCESS_ID = os.environ['ACCESS_ID']
-ACCESS_KEY = os.environ['ACCESS_KEY']
-
-AWS_ACCESS_KEY_ID = os.environ['ACCESS_ID']
-AWS_SECRET_ACCESS_KEY = os.environ['ACCESS_KEY']
-AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
-S3_URL = 'https://%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-AWS_DEFAULT_REGION = os.environ['AWS_DEFAULT_REGION']
-
-ACCOUNT_EMAIL_SUBJECT_PREFIX = 'Esports Equity '
+# ACCESS_ID = os.environ['ACCESS_ID']
+# ACCESS_KEY = os.environ['ACCESS_KEY']
+#
+# AWS_ACCESS_KEY_ID = os.environ['ACCESS_ID']
+# AWS_SECRET_ACCESS_KEY = os.environ['ACCESS_KEY']
+# AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+# S3_URL = 'https://%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+# AWS_DEFAULT_REGION = os.environ['AWS_DEFAULT_REGION']
+#
+# ACCOUNT_EMAIL_SUBJECT_PREFIX = 'Esports Equity '
 
 # if Online:
 #
