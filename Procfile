@@ -1,1 +1,1 @@
-gunicorn --log-file=- eeweb.wsgi:application
+web: gunicorn --log-file=- eeweb.wsgi:application
