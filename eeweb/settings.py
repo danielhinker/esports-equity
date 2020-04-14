@@ -122,7 +122,11 @@ if not Online:
             'PORT': os.environ['RDS_PORT'],
         }
     }
-#
+
+# import dj_database_url
+# db_from_env = dj_database_url.config()
+# DATABASES['default'].update(db_from_env)
+
 # else:
 #     DATABASES = {
 #         'default': {
