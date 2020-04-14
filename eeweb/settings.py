@@ -24,7 +24,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-Online = False
+Online = True
 
 ALLOWED_HOSTS = ['eeweb-test.us-east-1.elasticbeanstalk.com', 'www.esportsequity.com', 'esportsequity.com',
                  'prototype.esportsequity.com', '*']
