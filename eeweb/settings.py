@@ -21,6 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ['SECRET_KEY']
+print(SECRET_KEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -104,13 +105,6 @@ DATE_INPUT_FORMATS = ('%m-%d-%Y',)
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
 if not Online:
     DATABASES = {
         'default': {
@@ -122,7 +116,6 @@ if not Online:
             'PORT': os.environ['RDS_PORT'],
         }
     }
-
 
 
 else:

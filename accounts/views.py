@@ -79,23 +79,26 @@ class SignUp(generic.CreateView):
             if isinstance(usernamesalt, str):
                 usernamesalt = usernamesalt.encode('utf-8')
             data['activation_key'] = hashlib.sha256(salt.encode('utf-8') + usernamesalt).hexdigest()
-            data['email_path'] = "/ActivationEmail.txt"
-            data['email_subject'] = "Esports Equity Account Activation"
-            message = '\n' + 'Thank you for signing up on Esports Equity\n' +\
-                      'Activate your account by clicking on this link!\n'
-            link = "https://www.esportsequity.com/accounts/activate/" + data['activation_key'] + '\n' + '\n'
-            c = Context({'activation_link': link, 'username': data['username']})
-            f = open(MEDIA_ROOT + data['email_path'], 'w')
-            f.write(message)
-            f.write(link)
-            f.close()
-            f = open(MEDIA_ROOT + data['email_path'], 'r')
-            t = Template(f.read())
-            f.close()
-            message = t.render(c)
-            print(str(message).encode('utf8'))
-            send_mail(data['email_subject'], message, 'no-reply@esportsequity.com', [data['username']],
-                      fail_silently=False)
+            
+            ## This code below is for execution of Email Activations which has been disabled
+
+            # data['email_path'] = "/ActivationEmail.txt"
+            # data['email_subject'] = "Esports Equity Account Activation"
+            # message = '\n' + 'Thank you for signing up on Esports Equity\n' +\
+            #           'Activate your account by clicking on this link!\n'
+            # link = "https://www.esportsequity.com/accounts/activate/" + data['activation_key'] + '\n' + '\n'
+            # c = Context({'activation_link': link, 'username': data['username']})
+            # f = open(MEDIA_ROOT + data['email_path'], 'w')
+            # f.write(message)
+            # f.write(link)
+            # f.close()
+            # f = open(MEDIA_ROOT + data['email_path'], 'r')
+            # t = Template(f.read())
+            # f.close()
+            # message = t.render(c)
+            # print(str(message).encode('utf8'))
+            # send_mail(data['email_subject'], message, 'no-reply@esportsequity.com', [data['username']],
+            #           fail_silently=False)
             
             form.save(data)  # Save the user and his profile
             profile = Activation()
@@ -103,6 +106,7 @@ class SignUp(generic.CreateView):
             profile.activation_key = data['activation_key']
             profile.key_expires = datetime.datetime.strftime(datetime.datetime.now() + datetime.timedelta(days=2),
                                                              "%Y-%m-%d %H:%M:%S")
+            
             profile.save()
 
             success_url = self.get_success_url()
